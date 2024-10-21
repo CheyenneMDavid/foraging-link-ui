@@ -43,35 +43,33 @@ The Foraging Link is the front-end React-based user interface that interacts wit
 
 
 ### Wireframes
+All desktop wireframes are based on a screen size of 1920 x 1080, with the main view limited to 1200px wide. All mobile wireframes are based on the Samsung Galaxy S20 screen size of 360 x 800.
+
 **Homepage Wireframe - Desktop view**
-Desktop screen 1920 x 1080, main view limited to 1200 wide
-![Desktop Homepage](https://res.cloudinary.com/cheymd/image/upload/v1729474460/drf-api/Foraging-Link-UI-README-images/wireframe-homepage-desktop_hpebyj.png)
+
+![Desktop Homepage](https://res.cloudinary.com/cheymd/image/upload/v1729524848/drf-api/Foraging-Link-UI-README-images/Home-Desktop_renpop.png)
+
 
 **Post Detail - Wireframe - Desktop view**
-Desktop screen 1920 x 1080, main view limited to 1200 wide
 
-![Desktop Post Detail](https://res.cloudinary.com/cheymd/image/upload/v1729474461/drf-api/Foraging-Link-UI-README-images/wireframe-post-detail-desktop_l9ryhc.png)
+![Desktop Post Detail](https://res.cloudinary.com/cheymd/image/upload/v1729524849/drf-api/Foraging-Link-UI-README-images/Post-Detail-Desktop_ewdsrg.png)
 
 **Comments - Expanded - Wireframe - Desktop view**
-Desktop screen 1920 x 1080, main view limited to 1200 wide
 
-![Desktop Expanded Comments](https://res.cloudinary.com/cheymd/image/upload/v1729474461/drf-api/Foraging-Link-UI-README-images/wireframe-post-detail-desktop_l9ryhc.png)
+![Desktop Expanded Comments](https://res.cloudinary.com/cheymd/image/upload/v1729524849/drf-api/Foraging-Link-UI-README-images/Post-Detail-Desktop_ewdsrg.png)
 
 **Homepage Wireframe - Mobile view**
-Mobile view based on Samsung Galaxy S20 Screen: 360 x 800
 
-![Mobile Homepage](https://res.cloudinary.com/cheymd/image/upload/v1729474460/drf-api/Foraging-Link-UI-README-images/wireframe-homepage-mobile_jqtzrg.png)
+![Mobile Homepage](https://res.cloudinary.com/cheymd/image/upload/v1729524848/drf-api/Foraging-Link-UI-README-images/Home-Mobile_qv6ow1.png)
 
 **Post Detail - Wireframe - Mobile view**
-Mobile view based on Samsung Galaxy S20 Screen: 360 x 800
 
-![Mobile Post Detail](https://res.cloudinary.com/cheymd/image/upload/v1729474462/drf-api/Foraging-Link-UI-README-images/wireframe-post-detail-mobile_hdcx9a.png)
-
+![Mobile Post Detail](https://res.cloudinary.com/cheymd/image/upload/v1729524848/drf-api/Foraging-Link-UI-README-images/Home-Mobile_qv6ow1.png)
 
 **Comments - Expanded - Wireframe - Mobile view**
-Mobile view based on Samsung Galaxy S20 Screen: 360 x 800
 
-![Mobile Expanded Comments](https://res.cloudinary.com/cheymd/image/upload/v1729474460/drf-api/Foraging-Link-UI-README-images/wireframe-expanded-comments-mobile_do5zlu.png)
+![Mobile Expanded Comments](https://res.cloudinary.com/cheymd/image/upload/v1729524847/drf-api/Foraging-Link-UI-README-images/Comments-Expanded-Mobile_temzq2.png)
+
 
 
 
