@@ -1,37 +1,37 @@
 <mxfile host="65bd71144e">
     <diagram id="fj6Aveu1ztHzceYZpA2e" name="Page-1">
-        <mxGraphModel dx="4300" dy="1743" grid="1" gridSize="5" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1784" dy="765" grid="1" gridSize="5" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="2" value="" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=bottom;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;fillColor=#000000;strokeColor=#FFFFFF;strokeWidth=0;" parent="1" vertex="1">
                     <mxGeometry x="-720" y="155" width="360" height="800" as="geometry"/>
                 </mxCell>
-                <mxCell id="7" value="Call to Action" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;strokeColor=#FFFFFF;strokeWidth=0;" parent="1" vertex="1">
+                <mxCell id="7" value="&lt;font color=&quot;#000000&quot;&gt;Call to Action&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;strokeColor=#FFFFFF;strokeWidth=0;gradientColor=default;" parent="1" vertex="1">
                     <mxGeometry x="-720" y="260" width="360" height="170" as="geometry"/>
                 </mxCell>
-                <mxCell id="10" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;Footer with social media links&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;strokeColor=#FFFFFF;strokeWidth=0;" parent="1" vertex="1">
+                <mxCell id="10" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;Footer with social media links&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=15;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;strokeColor=#FFFFFF;strokeWidth=0;gradientColor=default;labelBackgroundColor=none;fontColor=#000000;" parent="1" vertex="1">
                     <mxGeometry x="-720" y="910" width="360" height="45" as="geometry"/>
                 </mxCell>
-                <mxCell id="11" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;fillColor=#18141D;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;strokeColor=#FFFFFF;strokeWidth=0;" parent="1" vertex="1">
+                <mxCell id="11" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=24;fillColor=#18141D;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;strokeColor=#FFFFFF;strokeWidth=0;gradientColor=default;" parent="1" vertex="1">
                     <mxGeometry x="-720" y="155" width="360" height="105" as="geometry"/>
                 </mxCell>
                 <mxCell id="12" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Nav&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fontSize=20;verticalAlign=top;gradientColor=none;fillColor=default;strokeWidth=1;horizontal=1;labelPosition=center;verticalLabelPosition=middle;align=center;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;fontFamily=Helvetica;strokeColor=#999999;spacing=1;rounded=0;glass=0;shadow=0;" parent="1" vertex="1">
                     <mxGeometry x="-705" y="212.5" width="40" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="18" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Post Excerpt&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFFFF;fontFamily=Helvetica;fontSize=11;fontColor=default;fillColor=default;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;strokeWidth=0;" parent="1" vertex="1">
+                <mxCell id="18" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Post Excerpt&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFFFF;fontFamily=Helvetica;fontSize=11;fontColor=#000000;fillColor=default;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;strokeWidth=0;gradientColor=default;labelBackgroundColor=none;" parent="1" vertex="1">
                     <mxGeometry x="-720" y="685" width="360" height="225" as="geometry"/>
                 </mxCell>
-                <mxCell id="25" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Featured Image&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#18141D;strokeColor=#FFFFFF;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;strokeWidth=0;" parent="1" vertex="1">
+                <mxCell id="25" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Featured Image&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#18141D;strokeColor=#FFFFFF;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;strokeWidth=0;gradientColor=default;labelBackgroundColor=none;fontColor=#000000;" parent="1" vertex="1">
                     <mxGeometry x="-720" y="430" width="360" height="225" as="geometry"/>
                 </mxCell>
-                <mxCell id="27" value="Author" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFFFF;strokeWidth=0;fontSize=10;fillColor=#18141D;align=center;spacingLeft=2;verticalAlign=middle;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" parent="1" vertex="1">
+                <mxCell id="27" value="Author" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFFFF;strokeWidth=0;fontSize=10;fillColor=#18141D;align=center;spacingLeft=2;verticalAlign=middle;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;gradientColor=default;labelBackgroundColor=none;fontColor=#000000;" parent="1" vertex="1">
                     <mxGeometry x="-480" y="655" width="120" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="28" value="Number of likes" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFFFF;strokeWidth=0;fontSize=10;fillColor=#18141D;align=center;spacingLeft=2;verticalAlign=middle;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" parent="1" vertex="1">
+                <mxCell id="28" value="&lt;span style=&quot;&quot;&gt;Number of likes&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFFFF;strokeWidth=0;fontSize=10;fillColor=#18141D;align=center;spacingLeft=2;verticalAlign=middle;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;gradientColor=default;labelBackgroundColor=none;fontColor=#000000;" parent="1" vertex="1">
                     <mxGeometry x="-720" y="655" width="120" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="29" value="Number of comments" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFFFF;strokeWidth=0;fontSize=10;fillColor=#18141D;align=center;spacingLeft=2;verticalAlign=middle;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" parent="1" vertex="1">
+                <mxCell id="29" value="Number of comments" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFFFF;strokeWidth=0;fontSize=10;fillColor=#18141D;align=center;spacingLeft=2;verticalAlign=middle;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;gradientColor=default;labelBackgroundColor=none;fontColor=#000000;" parent="1" vertex="1">
                     <mxGeometry x="-600" y="655" width="120" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="32" value="&lt;span style=&quot;text-decoration-line: underline;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Homepage - Mobile view&lt;/font&gt;&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;movable=0;rotatable=0;deletable=0;editable=0;connectable=0;strokeWidth=0;" parent="1" vertex="1">
@@ -46,8 +46,11 @@
                 <mxCell id="35" value="&lt;font style=&quot;font-size: 31px;&quot;&gt;The Foraging link&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=1;fontSize=6;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" parent="1" vertex="1">
                     <mxGeometry x="-655" y="157.5" width="275" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="36" value="Search" style="strokeWidth=2;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.searchBox;strokeColor=#999999;mainText=;strokeColor2=#008cff;fontColor=#666666;fontSize=17;align=left;spacingLeft=3;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" parent="1" vertex="1">
+                <mxCell id="36" value="&lt;font color=&quot;#ffffff&quot;&gt;Search&lt;/font&gt;" style="strokeWidth=2;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.searchBox;strokeColor=#999999;mainText=;strokeColor2=#008cff;fontColor=#666666;fontSize=17;align=left;spacingLeft=3;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" parent="1" vertex="1">
                     <mxGeometry x="-625" y="217.5" width="245" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="" style="rounded=0;whiteSpace=wrap;html=1;gradientColor=none;fillColor=none;strokeColor=#FFFFFF;strokeWidth=5;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;connectable=0;" vertex="1" parent="1">
+                    <mxGeometry x="-720" y="153.75" width="360" height="802.5" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

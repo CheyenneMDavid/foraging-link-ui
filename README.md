@@ -45,32 +45,32 @@ The Foraging Link is the front-end React-based user interface that interacts wit
 ### Wireframes
 All desktop wireframes are based on a screen size of 1920 x 1080, with the main view limited to 1200px wide. All mobile wireframes are based on the Samsung Galaxy S20 screen size of 360 x 800.
 
-**Homepage Wireframe - Desktop view**
+**Homepage Wireframe - Desktop view** (also serves as the homepage/landing page)
 
-![Desktop Homepage](https://res.cloudinary.com/cheymd/image/upload/v1729524848/drf-api/Foraging-Link-UI-README-images/Home-Desktop_renpop.png)
+![Desktop Homepage](https://res.cloudinary.com/cheymd/image/upload/v1730322562/foraging_link/readme_images/desktop_posts_list_zmjl5y.png)
 
 
 **Post Detail - Wireframe - Desktop view**
 
-![Desktop Post Detail](https://res.cloudinary.com/cheymd/image/upload/v1729524849/drf-api/Foraging-Link-UI-README-images/Post-Detail-Desktop_ewdsrg.png)
+![Desktop Post Detail](https://res.cloudinary.com/cheymd/image/upload/v1730322561/foraging_link/readme_images/desktop_post_detail_rxqvn9.png)
 
-**Comments - Expanded - Wireframe - Desktop view**
-The pen and trash icons in the comment box, indictating edit and delete are conditionally displayed, depending on whether the comment belongs to the currently signed-in user.
+**Comments - Expanded - Wireframe - Desktop view** Comments display only if there are any to show.
+The pen and trash icons, representing edit and delete actions, appear conditionally in each comment box, visible only if the comment belongs to the currently signed-in user.
 
-![Desktop Expanded Comments](https://res.cloudinary.com/cheymd/image/upload/v1729531207/drf-api/Foraging-Link-UI-README-images/Comments-Expanded-Desktop_tapxi8.png)
+![Desktop Expanded Comments](https://res.cloudinary.com/cheymd/image/upload/v1730322561/foraging_link/readme_images/desktop_post_detail_comments_section_v99a7m.png)
 
 **Homepage Wireframe - Mobile view**
 
-![Mobile Homepage](https://res.cloudinary.com/cheymd/image/upload/v1729524848/drf-api/Foraging-Link-UI-README-images/Home-Mobile_qv6ow1.png)
+![Mobile Homepage](https://res.cloudinary.com/cheymd/image/upload/v1730322562/foraging_link/readme_images/mobile_post_list_xum0ne.png)
 
 **Post Detail - Wireframe - Mobile view**
 
-![Mobile Post Detail](https://res.cloudinary.com/cheymd/image/upload/v1729524848/drf-api/Foraging-Link-UI-README-images/Home-Mobile_qv6ow1.png)
+![Mobile Post Detail](https://res.cloudinary.com/cheymd/image/upload/v1730322562/foraging_link/readme_images/mobile_post_detail_l7jw4b.png)
 
 **Comments - Expanded - Wireframe - Mobile view**
 The pen and trash icons in the comment box, indictating edit and delete are conditionally displayed, depending on whether the comment belongs to the currently signed-in user.
 
-![Mobile Expanded Comments](https://res.cloudinary.com/cheymd/image/upload/v1729531208/drf-api/Foraging-Link-UI-README-images/Comments-Expanded-Mobile_rn4xyt.png)
+![Mobile Expanded Comments](https://res.cloudinary.com/cheymd/image/upload/v1730322562/foraging_link/readme_images/mobile_post_detail_comments_section_fj7nwu.png)
 
 
 
