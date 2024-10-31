@@ -40,6 +40,7 @@ The Foraging Link is the front-end React-based user interface that interacts wit
 
 
 ## Planning
+![Applications and Permissions Diagram](https://res.cloudinary.com/cheymd/image/upload/v1730408545/foraging_link/readme_images/apps_and_permissions_dlwuut.png)
 
 
 ### Wireframes
