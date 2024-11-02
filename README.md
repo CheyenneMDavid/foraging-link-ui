@@ -76,3 +76,10 @@ The pen and trash icons in the comment box, indictating edit and delete are cond
 
 
 
+
+
+## Credits
+
+Favicon created using: [Favicon.io](https://favicon.io/favicon-generator/)
+
+Font [Awesome](https://fontawesome.com/icons) for the Icons in the navigation
