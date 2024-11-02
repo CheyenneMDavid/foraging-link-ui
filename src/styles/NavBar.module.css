@@ -10,3 +10,9 @@
 .Active i {
   color: #347928;
 }
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  margin-right: 20px; /* Adjust as needed */
+}
