@@ -1,18 +1,30 @@
+/* Navagation text color always stays brown whilst the icons change to green on hover and indictae current page by being green. */
+
 .NavBar {
-  background-color: #fcfcfc;
-  border: 1px solid #dadadf;
+  background-color: #f8f8f8;
+  border: 1px solid #347928;
 }
 
 .NavLink {
   padding: 5px;
 }
 
-.Active i {
-  color: #347928;
+.NavLink,
+.NavLink i,
+.NavLink a {
+  color: #47260e !important;
+  text-decoration: none !important;
 }
 
-.logoContainer {
-  display: flex;
-  align-items: center;
-  margin-right: 20px; /* Adjust as needed */
+.NavLink:hover i {
+  color: #347928 !important;
+}
+
+.Active i {
+  color: #347928 !important;
+}
+
+.NavbarToggle {
+  border: 1px solid #347928 !important;
+  background-color: #532402;
 }
