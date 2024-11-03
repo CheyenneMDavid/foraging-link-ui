@@ -8,6 +8,10 @@
   box-sizing: border-box;
 }
 
+.Main {
+  padding-top: 100px;
+}
+
 a {
   color: #555555;
   transition: color ease-in-out 0.3s;
