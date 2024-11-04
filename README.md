@@ -10,6 +10,7 @@ The Foraging Link is the front-end React-based user interface that interacts wit
 
 - [Planning](#planning)
   - [Wireframes](#wireframes)
+  - [Design Choices](#design-choices)
 
 
 
@@ -73,7 +74,22 @@ The pen and trash icons in the comment box, indictating edit and delete are cond
 
 ![Mobile Expanded Comments](https://res.cloudinary.com/cheymd/image/upload/v1730322562/foraging_link/readme_images/mobile_post_detail_comments_section_fj7nwu.png)
 
+## Design Choices
+### Colors
 
+- Navigation icon/links
+  
+  - Default color: #532402 (brown)
+  - Color on hover: #347928 (green)
+  - Current page: #347928 (green)
+
+- Buttons
+  - Default color #532402 (brown)
+  - Color on hover #347928 (green)
+  - 0.5 opacity: 0.5
+
+- Lines and Borders
+  - #532402 (brown)
 
 
 
