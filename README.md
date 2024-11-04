@@ -5,14 +5,14 @@ The Foraging Link is the front-end React-based user interface that interacts wit
 
 ## Table of Contents
 - [The Foraging Link](#project-description)
-- [Table of Contents](#table-of-contents)
 - [User Stories](#user-stories)
-
+- [Features](#features)
 - [Planning](#planning)
   - [Wireframes](#wireframes)
   - [Design Choices](#design-choices)
-
-
+  - [Form Validation](#form-validation)
+- [Deployment Steps](#deployment-steps)
+- [Credits](#credits)
 
 
 ## User Stories
@@ -76,6 +76,7 @@ The pen and trash icons in the comment box, indictating edit and delete are cond
 
 ## Design Choices
 ### Colors
+The colors selected for "The Foraging Link" were chosen to align with colors found in nature, gentle on the eye, but also a rewarding depth
 
 - Navigation icon/links
   
@@ -86,11 +87,21 @@ The pen and trash icons in the comment box, indictating edit and delete are cond
 - Buttons
   - Default color #532402 (brown)
   - Color on hover #347928 (green)
-  - 0.5 opacity: 0.5
+  - Opacity on hover: 0.8
 
 - Lines and Borders
   - #532402 (brown)
 
+- Site Background
+  - Background color: #f8f8f8 (a light, but gentle on the eyes)
+
+## Form Validation and Defensive Design
+Whilst the Sign-up and Sign-in forms were parallel to Code Institute's `Moments` walkthrough project, the expected behaviour of a returned message informing the user that the field couldn't be left empty didn't happen.
+
+The first solution considered was to set an error state with conditional logic to display specific messages when fields were left empty. This approach proved needlessly complex. The second solution was to use React Hook Form, but for the simplicity needed in this form, it felt like overkill. Instead, adding a simple `required` attribute did the job effectively, keeping the solution browser-friendly. This approach uses the browser’s own validation, so users get instant feedback without extra code, making it simple and efficient.
+
+
+---
 
 
 

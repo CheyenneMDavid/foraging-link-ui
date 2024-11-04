@@ -10,10 +10,10 @@
 }
 
 .Button:hover {
-  opacity: 0.5;
+  opacity: 0.8;
   border-color: transparent;
   cursor: pointer;
-  background-color: #347928;
+  background-color: #532402;
 }
 
 .Button:hover:active {
@@ -35,7 +35,7 @@
 
 .Blue,
 .BlueOutline:hover,
-.Bright:hover {
+.Natural:hover {
   background-color: #532402;
   color: #ffffff;
 }
@@ -64,7 +64,8 @@
   color: #242a3d;
 }
 
-.Bright {
+.Natural {
   background-color: #532402;
   color: #ffffff;
+  border: 1px solid #000000 !important;
 }
