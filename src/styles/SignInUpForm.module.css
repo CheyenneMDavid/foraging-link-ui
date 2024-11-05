@@ -22,14 +22,14 @@
   color: #532402;
 }
 
-.Link {
+.SignIn .Link {
   text-decoration: none;
   text-align: center;
   display: block;
   margin: auto;
 }
 
-.Link span {
+span {
   color: #ff9254;
 }
 
