@@ -2,7 +2,9 @@
 
 .NavBar {
   background-color: #f8f8f8;
-  border: 1px solid #347928;
+  border-bottom: 1px solid #532402;
+  margin: 0;
+  padding: 0;
 }
 
 .NavLink {

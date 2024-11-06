@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
@@ -13,19 +14,21 @@ import { Link, useHistory } from "react-router-dom";
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-import axios from "axios";
 
 function SignInForm() {
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
   });
+  const { username, password } = signInData;
 
   const [errors, setErrors] = useState({});
 
-  const { username, password } = signInData;
   const history = useHistory();
 
+  // Swapped handleChange and handleSubmit order. No impact to functioning
+  // of code, but it makes for an easier read to follow because it makes more
+  // sense that a change would take place before it's submission
   const handleChange = (event) => {
     setSignInData({
       ...signInData,
@@ -36,7 +39,7 @@ function SignInForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("/dj-resrt-auth/login/", signInData);
+      await axios.post("/dj-rest-auth/login/", signInData);
       history.push("/");
     } catch (err) {
       setErrors(err.response?.data);
@@ -55,8 +58,8 @@ function SignInForm() {
                 type="text"
                 placeholder="Username"
                 name="username"
-                value={username}
                 className={styles.Input}
+                value={username}
                 onChange={handleChange}
                 required
               />
@@ -73,8 +76,8 @@ function SignInForm() {
                 type="password"
                 placeholder="Password"
                 name="password"
-                value={password}
                 className={styles.Input}
+                value={password}
                 onChange={handleChange}
                 required
               />
@@ -84,12 +87,11 @@ function SignInForm() {
                 {message}
               </Alert>
             ))}
-
             <Button
               className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Natural}`}
               type="submit"
             >
-              Sign In
+              Sign in
             </Button>
             {errors.non_field_errors?.map((message, idx) => (
               <Alert key={idx} variant="warning" className="mt-3">
@@ -98,14 +100,12 @@ function SignInForm() {
             ))}
           </Form>
         </Container>
-
         <Container className={`mt-3 ${appStyles.Content}`}>
           <Link className={styles.Link} to="/signup">
             Don't have an account? <span>Sign up now!</span>
           </Link>
         </Container>
       </Col>
-
       <Col
         md={6}
         className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}
