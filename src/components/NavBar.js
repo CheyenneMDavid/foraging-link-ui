@@ -33,7 +33,7 @@ const NavBar = () => {
               className={styles.NavLink}
               activeClassName={styles.Active}
             >
-              <i class="fa-solid fa-location-arrow"></i>Courses
+              <i className="fa-solid fa-location-arrow"></i>Courses
             </NavLink>
 
             <NavLink
@@ -57,7 +57,7 @@ const NavBar = () => {
               className={styles.NavLink}
               activeClassName={styles.Active}
             >
-              <i class="fa-solid fa-phone"></i>Contact Us
+              <i className="fa-solid fa-phone"></i>Contact Us
             </NavLink>
           </Nav>
         </Navbar.Collapse>
