@@ -95,6 +95,15 @@ The colors selected for "The Foraging Link" were chosen to align with colors fou
 - Site Background
   - Background color: #f8f8f8 (a light, but gentle on the eyes)
 
+### Components and Functionality
+**NavBar**. Conditional display of navigation elements based on whether a user was signed in or signed out.
+Intention is to engage with potentiial users, ecouraging them to join. So, the site content is open to the public, but the ability to engage with the site content is restrictesd to users.
+
+  - **Signed out**, displays `Home`, `Courses`, `Sign in`, `Sign up`
+  
+  - **Signed in**, displays `Home`, `Courses`, `Profile` and `Sign out`
+
+
 ## Form Validation and Defensive Design
 Whilst the Sign-up and Sign-in forms were parallel to Code Institute's `Moments` walkthrough project, the expected behaviour of a returned message informing the user that the field couldn't be left empty didn't happen.
 
@@ -109,4 +118,6 @@ The first solution considered was to set an error state with conditional logic t
 
 Favicon created using: [Favicon.io](https://favicon.io/favicon-generator/)
 
-Font [Awesome](https://fontawesome.com/icons) for the Icons in the navigation
+[Font Awesome](https://fontawesome.com/icons) for the Icons in the navigation
+
+[Picsart](https://picsart.com/) for creating the logo

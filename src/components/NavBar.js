@@ -16,7 +16,7 @@ const NavBar = () => {
         activeClassName={styles.Active}
       >
         <i class="fa-regular fa-user"></i>
-        Profile:({currentUser?.username})
+        Profile:{currentUser?.username}
       </NavLink>
 
       <NavLink
@@ -52,7 +52,7 @@ const NavBar = () => {
       <Container>
         <NavLink to="/">
           <Navbar.Brand>
-            <img src={logo} alt="logo" height="45" />
+            <img src={logo} alt="logo" height="60" />
           </Navbar.Brand>
         </NavLink>
 

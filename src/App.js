@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
+
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 
@@ -37,9 +38,11 @@ function App() {
             <Switch>
               <Route exact path="/" render={() => <h1>Home Page</h1>} />
               <Route exact path="/courses" render={() => <h1>Courses</h1>} />
+              <Route exact path="/profile" render={() => <h1>Profile</h1>} />
               <Route exact path="/signin" render={() => <SignInForm />} />
               <Route exact path="/signup" render={() => <SignUpForm />} />
               <Route exact path="/contact" render={() => <h1>Contact Us</h1>} />
+
               <Route render={() => <p>Page not found!</p>} />
             </Switch>
           </Container>
