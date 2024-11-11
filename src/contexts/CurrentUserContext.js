@@ -52,9 +52,12 @@ export const CurrentUserProvider = ({ children }) => {
       (response) => response,
       async (err) => {
         if (err.response?.status === 401) {
+          console.log("Attempting token refresh due to 401 error...");
           try {
             await axios.post("/dj-rest-auth/token/refresh/");
+            console.log("Token refreshed successfully.");
           } catch (err) {
+            console.log("Token refresh failed:", err);
             setCurrentUser((prevCurrentUser) => {
               if (prevCurrentUser) {
                 history.push("/signin");

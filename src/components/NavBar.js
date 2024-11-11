@@ -4,27 +4,24 @@ import logo from "../assets/logo.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
+import Avatar from "./Avatar";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
 
+  console.log("Current User Object:", currentUser);
+  console.log("Profile Image URL:", currentUser?.profile_image);
+
   const loggedInIcons = (
     <>
       <NavLink
-        to="/profile"
         className={styles.NavLink}
-        activeClassName={styles.Active}
+        to={`/profiles/${currentUser?.profile_id}`}
       >
-        <i class="fa-regular fa-user"></i>
-        Profile:{currentUser?.username}
+        <Avatar src={currentUser?.profile_image} text="Profile" height={50} />
       </NavLink>
-
-      <NavLink
-        className={styles.NavLink}
-        activeClassName={styles.Active}
-        to="/signin"
-      >
-        <i class="fa-solid fa-right-from-bracket"></i> Sign out
+      <NavLink className={styles.NavLink} to="/">
+        <i className="fa-solid fa-right-from-bracket"></i> Sign out
       </NavLink>
     </>
   );
@@ -52,7 +49,7 @@ const NavBar = () => {
       <Container>
         <NavLink to="/">
           <Navbar.Brand>
-            <img src={logo} alt="logo" height="60" />
+            <img src={logo} alt="logo" height="55" />
           </Navbar.Brand>
         </NavLink>
 
