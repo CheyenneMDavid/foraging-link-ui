@@ -39,13 +39,38 @@ The Foraging Link is the front-end React-based user interface that interacts wit
 | Profiles             | user  | read user's profiles details             | engage with my fellow users                   | `list()` via `ProfileList()`, `retrieve()` via `ProfileDetail()`    | Profile list page (other users), Profile detail page|
 | Profiles             | owner | update and delete my profile             | update my info or delete my account           | `ProfileDetail()`                                                   | My Profile page, Update button, Delete Profile Button, Update Profile Page, Submit Update Button |
 
+## Features
+### Components
+#### Global Components
+- `NavBar` shows navigation options based on the user's status (signed in or signed out).
+- `Avatar` displays the user’s profile picture.
+- `Footer` contains the socialmedia links at the bottom of the screen.
+
+#### Post Components
+- `PostList` shows a list of all blog posts.
+- `Post` displays a single post with the title, image, content, author, and published date.
+
+- `CommentsSection` is the main container for all comments related to a specific post. It uses the `Comment` component to show first-level comments on a post and any second-level nested replies to other comments.
+
+#### Course and Course Registration Components
+- `Sidebar` displays the first three/closest dates for upcoming foraging courses.
+
+
+
+
+
+
 
 ## Planning
-![Applications and Permissions Diagram](https://res.cloudinary.com/cheymd/image/upload/v1730408545/foraging_link/readme_images/apps_and_permissions_dlwuut.png)
+Diagram showing the structure of the the application through it's **applications and the permissions** that facilitate it's use.
+
+![Applications and Permissions Diagram](https://res.cloudinary.com/cheymd/image/upload/v1731508996/foraging_link/readme_images/apps_and_permissions_dazayh.png)
 
 
 ### Wireframes
 All desktop wireframes are based on a screen size of 1920 x 1080, with the main view limited to 1200px wide. All mobile wireframes are based on the Samsung Galaxy S20 screen size of 360 x 800.
+
+The colors used in the wwireframes are not representational of the sites colors.  They are simply alternating colors to show division.
 
 **Homepage Wireframe - Desktop view** (also serves as the homepage/landing page)
 
