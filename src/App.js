@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
-          <Route exact path="/" render={() => <h1>Home Page</h1>} />
+          <Route exact path="/" render={() => <HomePage />} />
           <Route exact path="/courses" render={() => <h1>Courses</h1>} />
           <Route exact path="/profile" render={() => <h1>Profile</h1>} />
           <Route exact path="/signin" render={() => <SignInForm />} />

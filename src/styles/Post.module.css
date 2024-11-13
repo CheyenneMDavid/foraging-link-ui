@@ -1,0 +1,18 @@
+/* Stylesheet for all Post page's and components */
+
+/* HomePage.js */
+.TempColor1 {
+  background-color: red;
+}
+
+/* PostList.js */
+.TempColor2 {
+  background-color: orange;
+}
+
+/* Post.js */
+.TempColor3 {
+  background-color: yellow;
+}
+
+/* Comments */
