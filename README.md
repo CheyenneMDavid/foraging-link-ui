@@ -49,30 +49,30 @@ All desktop wireframes are based on a screen size of 1920 x 1080, with the main 
 
 **Homepage Wireframe - Desktop view** (also serves as the homepage/landing page)
 
-![Desktop Homepage](https://res.cloudinary.com/cheymd/image/upload/v1730322562/foraging_link/readme_images/desktop_posts_list_zmjl5y.png)
+![Desktop Homepage](https://res.cloudinary.com/cheymd/image/upload/v1731488079/foraging_link/readme_images/desktop_homepage_and_post_list_ahmz0c.png)
 
 
 **Post Detail - Wireframe - Desktop view**
 
-![Desktop Post Detail](https://res.cloudinary.com/cheymd/image/upload/v1730322561/foraging_link/readme_images/desktop_post_detail_rxqvn9.png)
+![Desktop Post Detail](https://res.cloudinary.com/cheymd/image/upload/v1731488211/foraging_link/readme_images/desktop_post_detail_irfqvk.png)
 
 **Comments - Expanded - Wireframe - Desktop view** Comments display only if there are any to show.
 The pen and trash icons, representing edit and delete actions, appear conditionally in each comment box, visible only if the comment belongs to the currently signed-in user.
 
-![Desktop Expanded Comments](https://res.cloudinary.com/cheymd/image/upload/v1730322561/foraging_link/readme_images/desktop_post_detail_comments_section_v99a7m.png)
+![Desktop Expanded Comments](https://res.cloudinary.com/cheymd/image/upload/v1731488210/foraging_link/readme_images/desktop_post_detail_expanded_comments_kvjrje.png)
 
 **Homepage Wireframe - Mobile view**
 
-![Mobile Homepage](https://res.cloudinary.com/cheymd/image/upload/v1730322562/foraging_link/readme_images/mobile_post_list_xum0ne.png)
+![Mobile Homepage](https://res.cloudinary.com/cheymd/image/upload/v1731488209/foraging_link/readme_images/mobile_homepage_and_post_list_qbtj7t.png)
 
 **Post Detail - Wireframe - Mobile view**
 
-![Mobile Post Detail](https://res.cloudinary.com/cheymd/image/upload/v1730322562/foraging_link/readme_images/mobile_post_detail_l7jw4b.png)
+![Mobile Post Detail](https://res.cloudinary.com/cheymd/image/upload/v1731488209/foraging_link/readme_images/mobile_post_detail_g12mha.png)
 
 **Comments - Expanded - Wireframe - Mobile view**
 The pen and trash icons in the comment box, indictating edit and delete are conditionally displayed, depending on whether the comment belongs to the currently signed-in user.
 
-![Mobile Expanded Comments](https://res.cloudinary.com/cheymd/image/upload/v1730322562/foraging_link/readme_images/mobile_post_detail_comments_section_fj7nwu.png)
+![Mobile Expanded Comments](https://res.cloudinary.com/cheymd/image/upload/v1731488212/foraging_link/readme_images/mobile_post_detail_expanded_comments_fqif0x.png)
 
 ## Design Choices
 ### Colors
