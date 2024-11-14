@@ -40,20 +40,29 @@ The Foraging Link is the front-end React-based user interface that interacts wit
 | Profiles             | owner | update and delete my profile             | update my info or delete my account           | `ProfileDetail()`                                                   | My Profile page, Update button, Delete Profile Button, Update Profile Page, Submit Update Button |
 
 ## Features
+### Pages
+- **`HomePage.js`** (in `pages/`) Serves as the main landing page, displaying `PostsList`, `HeroBanner`, and `Sidebar` with upcoming course dates.
+  
+  Its purpose is to provide an entry point for users with key content and clear navigation options.
+
+- **`PostPage.js`** (in `pages/`) Provides the detailed view of a single post.
+
 ### Components
+
 #### Global Components
-- `NavBar` shows navigation options based on the user's status (signed in or signed out).
-- `Avatar` displays the user’s profile picture.
-- `Footer` contains the socialmedia links at the bottom of the screen.
+- **`NavBar`** shows navigation options based on the user's status (signed in or signed out).
+- **`Avatar`** displays the user’s profile picture.
+- **`Footer`** contains social media links at the bottom of the screen.
 
 #### Post Components
-- `PostList` shows a list of all blog posts.
-- `Post` displays a single post with the title, image, content, author, and published date.
+- **`PostsList`** shows a list of all blog posts.
+- **`Post`** displays a single post with the title, image, content, author, and published date.
 
-- `CommentsSection` is the main container for all comments related to a specific post. It uses the `Comment` component to show first-level comments on a post and any second-level nested replies to other comments.
+- **`CommentsSection`** is the main container for all comments related to a specific post. It uses the `Comment` component to show first-level comments on a post and any second-level nested replies to other comments.
 
 #### Course and Course Registration Components
-- `Sidebar` displays the first three/closest dates for upcoming foraging courses.
+- **`Sidebar`** displays the first three/closest dates for upcoming foraging courses.
+
 
 
 
