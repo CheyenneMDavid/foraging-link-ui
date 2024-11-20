@@ -1,19 +1,22 @@
-import React from "react";
-import styles from "../styles/Avatar.module.css";
+import React from 'react';
+import styles from '../styles/Avatar.module.css';
 
-const Avatar = ({ src, height = 50, text }) => {
+// Displays a user's avatar with styling applied dynamically, allowing avatars to be styled
+// differently based on where they are used.
+
+function Avatar({ src, alt = 'avatar', text, height = 40, width = 40 }) {
   return (
     <span>
       <img
-        className={styles.Avatar}
         src={src}
-        height={height}
-        width={height}
-        alt="avatar"
+        alt={alt}
+        className={styles.Avatar}
+        style={{ height: `${height}px`, width: `${width}px` }}
       />
-      {text}
+
+      {text && <span className={styles.AvatarText}>{text}</span>}
     </span>
   );
-};
+}
 
 export default Avatar;
