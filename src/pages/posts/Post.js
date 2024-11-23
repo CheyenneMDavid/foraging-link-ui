@@ -2,12 +2,12 @@
 // is the detail page for a post, and a component that creates a list of posts with
 // limited information
 
-import React from 'react';
-import { Card, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import styles from '../../styles/Post.module.css';
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import Avatar from '../../components/Avatar';
+import React from "react";
+import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import styles from "../../styles/Post.module.css";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import Avatar from "../../components/Avatar";
 
 function Post(props) {
   const {
@@ -31,7 +31,6 @@ function Post(props) {
     likes_count,
     like_id,
     comments_count,
-    postPage,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -55,24 +54,36 @@ function Post(props) {
 
         <Card.Body>
           {main_plant_environment && (
-            <Card.Text id="main-plant-description">{main_plant_environment}</Card.Text>
+            <Card.Text id="main-plant-description">
+              {main_plant_environment}
+            </Card.Text>
           )}
           {culinary_uses && <Card.Text>{culinary_uses}</Card.Text>}
           {medicinal_uses && <Card.Text>{medicinal_uses}</Card.Text>}
-          {history_and_folklore && <Card.Text>{history_and_folklore}</Card.Text>}
-          {main_plant_parts_used && <Card.Text>{main_plant_parts_used}</Card.Text>}
+          {history_and_folklore && (
+            <Card.Text>{history_and_folklore}</Card.Text>
+          )}
+          {main_plant_parts_used && (
+            <Card.Text>{main_plant_parts_used}</Card.Text>
+          )}
           {main_plant_warnings && <Card.Text>{main_plant_warnings}</Card.Text>}
         </Card.Body>
       </section>
 
       {/* Confusable Plant Section */}
       <section aria-label="Confusable Plant Section">
-        {confusable_plant_name && <h3 className="text-center">{confusable_plant_name}</h3>}
+        {confusable_plant_name && (
+          <h3 className="text-center">{confusable_plant_name}</h3>
+        )}
         <Card.Body>
           {confusable_plant_information && (
-            <Card.Text id="confusable-plant-description">{confusable_plant_information}</Card.Text>
+            <Card.Text id="confusable-plant-description">
+              {confusable_plant_information}
+            </Card.Text>
           )}
-          {confusable_plant_warnings && <Card.Text>{confusable_plant_warnings}</Card.Text>}
+          {confusable_plant_warnings && (
+            <Card.Text>{confusable_plant_warnings}</Card.Text>
+          )}
           {confusable_plant_image && (
             <Card.Img
               src={confusable_plant_image}
@@ -113,7 +124,10 @@ function Post(props) {
                   <i className={`far fa-heart ${styles.HeartOutline}`} />
                 </span>
               ) : (
-                <OverlayTrigger placement="top" overlay={<Tooltip>Log in to like posts!</Tooltip>}>
+                <OverlayTrigger
+                  placement="top"
+                  overlay={<Tooltip>Log in to like posts!</Tooltip>}
+                >
                   <i className="far fa-heart" />
                 </OverlayTrigger>
               )}
