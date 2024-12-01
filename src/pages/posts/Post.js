@@ -9,7 +9,10 @@ import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Avatar from "../../components/Avatar";
 
+import { axiosRes } from "../../api/axiosDefaults";
+
 function Post(props) {
+  // Destructures the props to extract all the data required for rendering the posts.
   const {
     id,
     owner,
@@ -31,16 +34,57 @@ function Post(props) {
     likes_count,
     like_id,
     comments_count,
+    setPosts, // Function to update the state of posts, passed as a prop from PostPage.js
   } = props;
 
+  // Checks if the currently logged-in user to determine if they can interact with the post.
   const currentUser = useCurrentUser();
+
+  // Checks if the currently logged in user is the owner of the post
   const is_owner = currentUser?.username === owner;
+
+  // Function for liking a post
+  const handleLike = async () => {
+    try {
+      const { data } = await axiosRes.post("/likes/", {
+        plant_in_focus_post: id,
+      });
+      setPosts((prevPosts) => ({
+        ...prevPosts,
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? { ...post, likes_count: post.likes_count + 1, like_id: data.id }
+            : post;
+        }),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // Function for unliking a post
+  const handleUnlike = async () => {
+    try {
+      await axiosRes.delete(`/likes/${like_id}/`);
+      setPosts((prevPosts) => ({
+        ...prevPosts,
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? { ...post, likes_count: post.likes_count - 1, like_id: null }
+            : post;
+        }),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   // Conditional rendering of the main plant's name.  If it doesn't exist, this avoids a
   // empty space on the screen.
   return (
     <Card className={styles.Post}>
       {/* Main Plant Section */}
+
       <section aria-label="Main Plant Section">
         {main_plant_name && <h2 className="text-center">{main_plant_name}</h2>}
 
@@ -71,19 +115,23 @@ function Post(props) {
       </section>
 
       {/* Confusable Plant Section */}
+
       <section aria-label="Confusable Plant Section">
         {confusable_plant_name && (
           <h3 className="text-center">{confusable_plant_name}</h3>
         )}
+
         <Card.Body>
           {confusable_plant_information && (
             <Card.Text id="confusable-plant-description">
               {confusable_plant_information}
             </Card.Text>
           )}
+
           {confusable_plant_warnings && (
             <Card.Text>{confusable_plant_warnings}</Card.Text>
           )}
+
           {confusable_plant_image && (
             <Card.Img
               src={confusable_plant_image}
@@ -116,11 +164,11 @@ function Post(props) {
                   <i className="far fa-heart" />
                 </OverlayTrigger>
               ) : like_id ? (
-                <span onClick={() => {}}>
+                <span onClick={handleUnlike}>
                   <i className={`fas fa-heart ${styles.Heart}`} />
                 </span>
               ) : currentUser ? (
-                <span onClick={() => {}}>
+                <span onClick={handleLike}>
                   <i className={`far fa-heart ${styles.HeartOutline}`} />
                 </span>
               ) : (
@@ -132,7 +180,7 @@ function Post(props) {
                 </OverlayTrigger>
               )}
               {likes_count}
-              <Link to={`/posts/${id}`}>
+              <Link to={`plants_blog/posts/${id}`}>
                 <i className="far fa-comments" />
               </Link>
               {comments_count}

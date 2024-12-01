@@ -10,9 +10,14 @@ import { axiosReq } from "../../api/axiosDefaults";
 import Post from "./Post";
 
 function PostPage() {
+  // Extracts the ID of the post from the URL parameters using useParams.
   const { id } = useParams();
+
+  // Defines the "post" state, which stores the data for a single post.
+  // The "setPost" function is used to update the "post" state when needed.
   const [post, setPost] = useState({ results: [] });
 
+  // Fetches data for a single post according to it's id.
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -33,6 +38,7 @@ function PostPage() {
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <p>Popular profiles for mobile</p>
+        {/* setPost is changed to setPosts and passed as a prop into Post.js */}
         <Post {...post.results[0]} setPosts={setPost} />
         <Container className={appStyles.Content}>Comments</Container>
       </Col>
