@@ -1,18 +1,44 @@
-/* Stylesheet for all Post page's and components */
-
-/* HomePage.js */
-.TempColor1 {
-  background-color: red;
+/* CSS from the walkthrough file called "Post.module.css" */
+.Post {
+  background-color: #ffffff;
+  border: 1px solid #dadadf;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  text-align: center;
 }
 
-/* PostList.js */
-.TempColor2 {
-  background-color: orange;
+h2,
+h3 {
+  text-decoration: underline;
 }
 
-/* Post.js */
-.TempColor3 {
-  background-color: yellow;
+.Post figure,
+h5 {
+  margin: 0 0;
 }
 
-/* Comments */
+.Heart {
+  color: #f85032;
+}
+
+.Heart:hover {
+  color: #2142b2;
+}
+
+.HeartOutline:hover {
+  color: #f85032;
+}
+
+.AuthorAvatar {
+  height: 40px;
+  width: 10px;
+  border-radius: 50%;
+}
+
+.PostBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
