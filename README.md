@@ -85,8 +85,10 @@ another's comments, managing user profiles, and registering for courses.
 #### Post Components
 
 - **`PostsList`**: Displays a list of all blog posts for users to browse.
+  
 - **`Post`**: Displays a single post with details such as title, image, content, author, and
   published date.
+
 - **`PostPage`**: Fetches and displays the full details of a specific post, including its comments.
 
 #### Comments Section Components
@@ -197,6 +199,11 @@ users.
 - **Signed out**, displays `Home`, `Courses`, `Sign in`, `Sign up`
 
 - **Signed in**, displays `Home`, `Courses`, `Profile` and `Sign out`
+  
+- **Post Listings Display**  
+  The posts in the listings are presented in a condensed format to provide a quick overview. The images are styled to take up 100% of the width but only 30% of the viewport height `30vh`, ensuring consistent and proportional scaling, accompanied with a short text excerpt taken from the "Culinary Uses" field, to give users a glimpse of the content without overwhelming the interface.
+
+  Although each post displays a heart icon and a speech bubble with their corresponding counts (if available), the icons are not interactive in the post listings. Unlike in the detail pages, where clicking these icons updates the counts, the icons in the listings are purely decorative. This design choice was made because the hover effect on the icons suggested interactivity, which could mislead users. A color change on hover without any resulting action would have conveyed a sense of incompleteness, so this behavior was removed for the post listings and saved for the detail page for a post which the entire post in the listed content is a link for.
 
 ### Form Validation and Defensive Design
 
@@ -224,12 +231,23 @@ This was resolved by:
 1. Correcting the URL paths in the backend application's `urls.py` files.
 2. Aligning the Axios request in the frontend to match the corrected backend paths.
 
+Fixing **Like and Unlike** Logic
+Initially following the logic for liking and unliking posts was modeled after the walkthrough project. But when liking and unliking it, instead of displaying a number or a zero, or have an absence of a number due to being zero, NaN would be displayed. Upon refreshing the page, it would return to it's expected behaviour.
+The likes_count value wasn't being initialized properly when it was undefined or null.
+
+To resolve this, the logic to handle edge cases:
+
+- For liking a post, likes_count is initialized to 0 if
+  it'sundefined, ensuring it increments correctly.
+
+- For unliking a post, likes_count defaults to a 1 before
+  decrementing, ensuring it never becomes NaN. Also, by setting it to 1 before decrementing, it doesn't run the risk of becomeing a negative number.
+
 ---
 
 ## Credits
 
-Favicon created using: [Favicon.io](https://favicon.io/favicon-generator/)
-
-[Font Awesome](https://fontawesome.com/icons) for the Icons in the navigation
-
-[Picsart](https://picsart.com/) for creating the logo
+- **[Favicon.io](https://favicon.io/favicon-generator/)** : Used to generate the favicon.  
+- **[Font Awesome](https://fontawesome.com/icons)** : Icons used in the navigation.  
+- **[Picsart](https://picsart.com/)** : Tool used to create the logo.  
+- **[Symbl.cc](https://symbl.cc/)** : Resource for Unicode characters.

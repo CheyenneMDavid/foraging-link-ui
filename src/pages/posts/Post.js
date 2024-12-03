@@ -43,7 +43,8 @@ function Post(props) {
   // Checks if the currently logged in user is the owner of the post
   const is_owner = currentUser?.username === owner;
 
-  // Function for liking a post
+  // Function for liking a post. Defaults likes_count to 0 if it's undefined or null.
+
   const handleLike = async () => {
     try {
       const { data } = await axiosRes.post("/likes/", {
@@ -51,18 +52,23 @@ function Post(props) {
       });
       setPosts((prevPosts) => ({
         ...prevPosts,
-        results: prevPosts.results.map((post) => {
-          return post.id === id
-            ? { ...post, likes_count: post.likes_count + 1, like_id: data.id }
-            : post;
-        }),
+        results: prevPosts.results.map((post) =>
+          post.id === id
+            ? {
+                ...post,
+                likes_count: (post.likes_count || 0) + 1,
+                like_id: data.id,
+              }
+            : post
+        ),
       }));
     } catch (err) {
       console.log(err);
     }
   };
 
-  // Function for unliking a post
+  // Function for unliking a post. Sets a valid default before subtracting, safegaurding against
+  // becoming a negative number.
   const handleUnlike = async () => {
     try {
       await axiosRes.delete(`/likes/${like_id}/`);
@@ -70,7 +76,11 @@ function Post(props) {
         ...prevPosts,
         results: prevPosts.results.map((post) => {
           return post.id === id
-            ? { ...post, likes_count: post.likes_count - 1, like_id: null }
+            ? {
+                ...post,
+                likes_count: (post.likes_count || 1) - 1,
+                like_id: null,
+              }
             : post;
         }),
       }));
@@ -79,12 +89,11 @@ function Post(props) {
     }
   };
 
-  // Conditional rendering of the main plant's name.  If it doesn't exist, this avoids a
-  // empty space on the screen.
+  // Function for unliking a post. Ensures likes_count has a valid default of 1
+  // before subtracting to prevent negative values.
   return (
     <Card className={styles.Post}>
       {/* Main Plant Section */}
-
       <section aria-label="Main Plant Section">
         {main_plant_name && <h2 className="text-center">{main_plant_name}</h2>}
 
@@ -115,7 +124,6 @@ function Post(props) {
       </section>
 
       {/* Confusable Plant Section */}
-
       <section aria-label="Confusable Plant Section">
         {confusable_plant_name && (
           <h3 className="text-center">{confusable_plant_name}</h3>

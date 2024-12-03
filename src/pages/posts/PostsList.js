@@ -5,23 +5,24 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-import Post from "./Post";
 import Asset from "../../components/Asset";
-
 import appStyles from "../../App.module.css";
 import styles from "../../styles/PostsList.module.css";
+
 import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
 import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
-
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { Link } from "react-router-dom";
 
 function PostsList({ message, filter = "" }) {
   const [posts, setPosts] = useState({ results: [] });
+
   const [hasLoaded, setHasLoaded] = useState(false);
+
   const { pathname } = useLocation();
 
   const [query, setQuery] = useState("");
@@ -50,12 +51,13 @@ function PostsList({ message, filter = "" }) {
       clearTimeout(timer);
     };
   }, [filter, query, pathname, currentUser]);
-
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        {/* <PopularProfiles mobile /> */}
+        <p>PopularProfiles mobile</p>
+
         <i className={`fas fa-search ${styles.SearchIcon}`} />
+
         <Form
           className={styles.SearchBar}
           onSubmit={(event) => event.preventDefault()}
@@ -73,23 +75,68 @@ function PostsList({ message, filter = "" }) {
           <>
             {posts.results.length ? (
               <InfiniteScroll
-                children={posts.results.map((post) => (
-                  <Post key={post.id} {...post} setPosts={setPosts} />
-                ))}
                 dataLength={posts.results.length}
                 loader={<Asset spinner />}
                 hasMore={!!posts.next}
                 next={() => fetchMoreData(posts, setPosts)}
-              />
+              >
+                {posts.results.map((post) => (
+                  <Link
+                    to={`/posts/${post.id}`}
+                    key={post.id}
+                    className={styles.PostLink}
+                  >
+                    <div className={styles.PostItem}>
+                      <h2>{post.main_plant_name}</h2>
+
+                      <img
+                        src={post.main_plant_image}
+                        alt={post.main_plant_name}
+                        style={{
+                          width: "100%",
+                          height: "30vh",
+                          objectFit: "cover",
+                        }}
+                      />
+
+                      <p>
+                        {post.culinary_uses?.split(" ").slice(0, 20).join(" ")}
+                        ...
+                      </p>
+
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          marginBottom: "10px",
+                          borderBottom: "2px solid #57151e",
+                        }}
+                      >
+                        <span>{post.owner}</span>
+
+                        <div style={{ display: "flex", gap: "15px" }}>
+                          <span>
+                            <span style={{ marginRight: "5px" }}>❤️</span>
+                            {post.likes_count}
+                          </span>
+                          <span>
+                            <span style={{ marginRight: "5px" }}>🗨</span>
+                            {post.comments_count}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </InfiniteScroll>
             ) : (
-              // Displays no-results.jpg when there are no posts
               <Container className={appStyles.Content}>
                 <Asset src={NoResults} message={message} />
               </Container>
             )}
           </>
         ) : (
-          // Displays the spinner whilst loading.
           <Container className={appStyles.Content}>
             <Asset spinner />
           </Container>
