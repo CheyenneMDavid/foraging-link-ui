@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
+
 import Container from "react-bootstrap/Container";
 
 import Asset from "../../components/Asset";
@@ -52,97 +51,95 @@ function PostsList({ message, filter = "" }) {
     };
   }, [filter, query, pathname, currentUser]);
   return (
-    <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>PopularProfiles mobile</p>
+    <>
+      <p>PopularProfiles mobile</p>
 
-        <i className={`fas fa-search ${styles.SearchIcon}`} />
+      <i className={`fas fa-search ${styles.SearchIcon}`} />
 
-        <Form
-          className={styles.SearchBar}
-          onSubmit={(event) => event.preventDefault()}
-        >
-          <Form.Control
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            type="text"
-            className="mr-sm-2"
-            placeholder="Search posts"
-          />
-        </Form>
+      <Form
+        className={styles.SearchBar}
+        onSubmit={(event) => event.preventDefault()}
+      >
+        <Form.Control
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          type="text"
+          className="mr-sm-2"
+          placeholder="Search posts"
+        />
+      </Form>
 
-        {hasLoaded ? (
-          <>
-            {posts.results.length ? (
-              <InfiniteScroll
-                dataLength={posts.results.length}
-                loader={<Asset spinner />}
-                hasMore={!!posts.next}
-                next={() => fetchMoreData(posts, setPosts)}
-              >
-                {posts.results.map((post) => (
-                  <Link
-                    to={`/posts/${post.id}`}
-                    key={post.id}
-                    className={styles.PostLink}
-                  >
-                    <div className={styles.PostItem}>
-                      <h2>{post.main_plant_name}</h2>
+      {hasLoaded ? (
+        <>
+          {posts.results.length ? (
+            <InfiniteScroll
+              dataLength={posts.results.length}
+              loader={<Asset spinner />}
+              hasMore={!!posts.next}
+              next={() => fetchMoreData(posts, setPosts)}
+            >
+              {posts.results.map((post) => (
+                <Link
+                  to={`/posts/${post.id}`}
+                  key={post.id}
+                  className={styles.PostLink}
+                >
+                  <div className={styles.PostItem}>
+                    <h2>{post.main_plant_name}</h2>
 
-                      <img
-                        src={post.main_plant_image}
-                        alt={post.main_plant_name}
-                        style={{
-                          width: "100%",
-                          height: "30vh",
-                          objectFit: "cover",
-                        }}
-                      />
+                    <img
+                      src={post.main_plant_image}
+                      alt={post.main_plant_name}
+                      style={{
+                        width: "100%",
+                        height: "30vh",
+                        objectFit: "cover",
+                      }}
+                    />
 
-                      <p>
-                        {post.culinary_uses?.split(" ").slice(0, 20).join(" ")}
-                        ...
-                      </p>
+                    <p>
+                      {post.culinary_uses?.split(" ").slice(0, 20).join(" ")}
+                      ...
+                    </p>
 
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                          marginBottom: "10px",
-                          borderBottom: "2px solid #57151e",
-                        }}
-                      >
-                        <span>{post.owner}</span>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        marginBottom: "10px",
+                        borderBottom: "2px solid #57151e",
+                      }}
+                    >
+                      <span>{post.owner}</span>
 
-                        <div style={{ display: "flex", gap: "15px" }}>
-                          <span>
-                            <span style={{ marginRight: "5px" }}>❤️</span>
-                            {post.likes_count}
-                          </span>
-                          <span>
-                            <span style={{ marginRight: "5px" }}>🗨</span>
-                            {post.comments_count}
-                          </span>
-                        </div>
+                      <div style={{ display: "flex", gap: "15px" }}>
+                        <span>
+                          <span style={{ marginRight: "5px" }}>❤️</span>
+                          {post.likes_count}
+                        </span>
+                        <span>
+                          <span style={{ marginRight: "5px" }}>🗨</span>
+                          {post.comments_count}
+                        </span>
                       </div>
                     </div>
-                  </Link>
-                ))}
-              </InfiniteScroll>
-            ) : (
-              <Container className={appStyles.Content}>
-                <Asset src={NoResults} message={message} />
-              </Container>
-            )}
-          </>
-        ) : (
-          <Container className={appStyles.Content}>
-            <Asset spinner />
-          </Container>
-        )}
-      </Col>
-    </Row>
+                  </div>
+                </Link>
+              ))}
+            </InfiniteScroll>
+          ) : (
+            <Container className={appStyles.Content}>
+              <Asset src={NoResults} message={message} />
+            </Container>
+          )}
+        </>
+      ) : (
+        <Container className={appStyles.Content}>
+          <Asset spinner />
+        </Container>
+      )}
+    </>
   );
 }
 
