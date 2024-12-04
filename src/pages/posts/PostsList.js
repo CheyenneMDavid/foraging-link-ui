@@ -16,6 +16,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
+import PopularProfiles from "../profiles/PopularProfiles";
 
 function PostsList({ message, filter = "" }) {
   const [posts, setPosts] = useState({ results: [] });
@@ -50,12 +51,11 @@ function PostsList({ message, filter = "" }) {
       clearTimeout(timer);
     };
   }, [filter, query, pathname, currentUser]);
+
   return (
     <>
-      <p>PopularProfiles mobile</p>
-
+      <PopularProfiles mobile />
       <i className={`fas fa-search ${styles.SearchIcon}`} />
-
       <Form
         className={styles.SearchBar}
         onSubmit={(event) => event.preventDefault()}
@@ -114,10 +114,14 @@ function PostsList({ message, filter = "" }) {
                       <span>{post.owner}</span>
 
                       <div style={{ display: "flex", gap: "15px" }}>
-                        <span>
-                          <span style={{ marginRight: "5px" }}>❤️</span>
-                          {post.likes_count}
-                        </span>
+                        <span style={{ marginRight: "5px" }}>❤️</span>
+
+                        {/* Conditional rendering of an actual number for likes_count being greater */}
+                        {/* than 0. Otherwise it only displays the heart emoji which is used to link */}
+                        {/* to the detail page, along with the image and text for the post. */}
+                        {post.likes_count > 0 && (
+                          <span>{post.likes_count}</span>
+                        )}
                         <span>
                           <span style={{ marginRight: "5px" }}>🗨</span>
                           {post.comments_count}

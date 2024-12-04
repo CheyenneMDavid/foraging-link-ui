@@ -187,7 +187,10 @@ function Post(props) {
                   <i className="far fa-heart" />
                 </OverlayTrigger>
               )}
-              {likes_count}
+
+              {/* Conditional rendering of an actual number for likes_count being greater than 0.  Otherwise it only displays a greyed out Font Awesome heart, which a signed in user can interact with.*/}
+              {likes_count > 0 && <span>{likes_count}</span>}
+
               <Link to={`plants_blog/posts/${id}`}>
                 <i className="far fa-comments" />
               </Link>
