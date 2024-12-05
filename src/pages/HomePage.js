@@ -7,7 +7,8 @@ import Row from "react-bootstrap/Row";
 
 import PostsList from "./posts/PostsList";
 
-import PopularProfiles from "./profiles/PopularProfiles";
+// import PopularProfiles from "./profiles/PopularProfiles";
+import Sidebar from "../components/Sidebar";
 
 function HomePage() {
   return (
@@ -19,14 +20,8 @@ function HomePage() {
 
       {/* Sidebar Container for Courses and Popular Profiles */}
       <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
-        {/* Upcoming Courses */}
-        <div className="mb-4">
-          <p>Upcoming Courses</p>
-        </div>
-
-        {/* Popular Profiles */}
         <div>
-          <PopularProfiles />
+          <Sidebar />
         </div>
       </Col>
     </Row>
