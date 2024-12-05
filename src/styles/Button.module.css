@@ -47,11 +47,11 @@
   color: #ffffff;
 }
 
-.Black,
-.BlackOutline:hover {
-  background-color: #242a3d;
+.Green,
+.GreenOutline:hover {
+  background-color: green;
   color: white;
-  background-color: #242a3d;
+  background-color: green;
   color: aliceblue;
 }
 
