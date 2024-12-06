@@ -7,6 +7,7 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import HomePage from "./pages/HomePage";
 import PostPage from "./pages/posts/PostPage";
+import ProfilePage from "./pages/profiles/ProfilePage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/posts/:id" render={() => <PostPage />} />
+          <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
 
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
