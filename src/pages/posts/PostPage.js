@@ -43,7 +43,7 @@ function PostPage() {
         {/* setPost is changed to setPosts and passed as a prop into Post.js */}
         <Post {...post.results[0]} setPosts={setPost} />
         <Container className={appStyles.Content}>
-          <CommentSection />
+          <CommentSection postId={id} />
         </Container>
       </Col>
     </Row>
