@@ -9,6 +9,8 @@ import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Post from "./Post";
 
+import CommentSection from "../comments/CommentSection";
+
 function PostPage() {
   // Extracts the ID of the post from the URL parameters using useParams.
   const { id } = useParams();
@@ -40,7 +42,9 @@ function PostPage() {
         <p>Popular profiles for mobile</p>
         {/* setPost is changed to setPosts and passed as a prop into Post.js */}
         <Post {...post.results[0]} setPosts={setPost} />
-        <Container className={appStyles.Content}>Comments</Container>
+        <Container className={appStyles.Content}>
+          <CommentSection />
+        </Container>
       </Col>
     </Row>
   );
