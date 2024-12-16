@@ -6,17 +6,25 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { CurrentUserProvider } from "./contexts/CurrentUserContext";
 import { ProfileDataProvider } from "./contexts/ProfileDataContext";
+import { AuthProvider } from "./contexts/AuthContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
+      {/* Provides the current user's state and functionality throughout the app */}
       <CurrentUserProvider>
-        <ProfileDataProvider>
-          <App />
-        </ProfileDataProvider>
+        {/* Provides authentication-related state and logic, 
+            such as managing tokens or login status throughout the app */}
+        <AuthProvider>
+          {/* Provides profile data, including popular profiles and related updates throughout the app */}
+          <ProfileDataProvider>
+            <App />
+          </ProfileDataProvider>
+        </AuthProvider>
       </CurrentUserProvider>
     </Router>
   </React.StrictMode>,
+
   document.getElementById("root")
 );
 
