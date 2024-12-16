@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 
-import Form from 'react-bootstrap/Form';
-import Alert from 'react-bootstrap/Alert';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Image from 'react-bootstrap/Image';
-import Container from 'react-bootstrap/Container';
+import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Image from "react-bootstrap/Image";
+import Container from "react-bootstrap/Container";
 
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory } from "react-router-dom";
 
-import styles from '../../styles/SignInUpForm.module.css';
-import btnStyles from '../../styles/Button.module.css';
-import appStyles from '../../App.module.css';
+import styles from "../../styles/SignInUpForm.module.css";
+import btnStyles from "../../styles/Button.module.css";
+import appStyles from "../../App.module.css";
 
-import { useSetCurrentUser } from '../../contexts/CurrentUserContext';
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
 
   const [signInData, setSignInData] = useState({
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   });
   const { username, password } = signInData;
 
@@ -32,7 +32,7 @@ function SignInForm() {
 
   // Swapped handleChange and handleSubmit order. No impact to functioning
   // of code, but it makes for an easier read to follow because it makes more
-  // sense that a change would take place before it's submission
+  // sense that a change would take place before the handleSubmit.
   const handleChange = (event) => {
     setSignInData({
       ...signInData,
@@ -43,9 +43,9 @@ function SignInForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await axios.post('/dj-rest-auth/login/', signInData);
+      const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
-      history.push('/');
+      history.push("/");
     } catch (err) {
       setErrors(err.response?.data);
     }
@@ -107,13 +107,14 @@ function SignInForm() {
         </Container>
         <Container className={`mt-3 ${appStyles.Content}`}>
           <Link className={styles.Link} to="/signup">
-            Don't have an account?
-            {' '}
-            <span>Sign up now!</span>
+            Don't have an account? <span>Sign up now!</span>
           </Link>
         </Container>
       </Col>
-      <Col md={6} className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}>
+      <Col
+        md={6}
+        className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}
+      >
         <Image
           className={`${appStyles.FillerImage}`}
           src="https://res.cloudinary.com/cheymd/image/upload/v1730664157/foraging_link/site_design/hero_xkaiyj.jpg"
