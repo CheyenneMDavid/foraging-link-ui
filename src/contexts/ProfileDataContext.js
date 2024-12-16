@@ -18,17 +18,26 @@ export const ProfileDataProvider = ({ children }) => {
   useEffect(() => {
     const handleMount = async () => {
       try {
+        // Fetches the profiles data ordered by the followers_count.
         const { data } = await axiosReq.get(
           "/profiles/?ordering=followers_count"
         );
+        // Logs API response for debugging, with better context about the data received.
+        console.log(
+          "ProfileDataContext - Popular Profiles API Response:",
+          data
+        );
+        // Updates the profileData state, preserving the previous state and adding popular profiles.
         setProfileData((prevState) => ({
           ...prevState,
           popularProfiles: data,
         }));
       } catch (err) {
-        console.log(err);
+        // Logs an error messages with context about where the error was.
+        console.log("ProfileDataContext - Fetch Error:", err);
       }
     };
+    // Calls handleMount function.
     handleMount();
   }, [currentUser]);
 
