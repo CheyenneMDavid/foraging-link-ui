@@ -111,7 +111,7 @@ function PostsList({ message, filter = "" }) {
                         borderBottom: "2px solid #57151e",
                       }}
                     >
-                      <span>{post.owner}</span>
+                      <span>{post.created_at}</span>
 
                       <div style={{ display: "flex", gap: "15px" }}>
                         <span style={{ marginRight: "5px" }}>❤️</span>
