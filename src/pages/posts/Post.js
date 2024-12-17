@@ -7,7 +7,6 @@ import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import Avatar from "../../components/Avatar";
 
 import { axiosRes } from "../../api/axiosDefaults";
 
@@ -16,9 +15,7 @@ function Post(props) {
   const {
     id,
     owner,
-    profile_id,
-    profile_image,
-    updated_at,
+    created_at,
     main_plant_name,
     main_plant_environment,
     culinary_uses,
@@ -153,16 +150,7 @@ function Post(props) {
       <section aria-label="User and Author Interaction Section">
         <Card.Body>
           <div className={styles.PostBar}>
-            <Link to={`/profiles/${profile_id}`}>
-              <Avatar
-                className={styles.PostAvatar}
-                src={profile_image}
-                text={owner}
-                height={30}
-                width={30}
-              />
-            </Link>
-            <span>{updated_at}</span>
+            <span>{created_at}</span>
             <div>
               {is_owner ? (
                 <OverlayTrigger
