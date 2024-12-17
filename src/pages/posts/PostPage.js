@@ -10,6 +10,8 @@ import { axiosReq } from "../../api/axiosDefaults";
 import Post from "./Post";
 
 import CommentSection from "../comments/CommentSection";
+import PopularProfiles from "../profiles/PopularProfiles";
+import Sidebar from "../../components/Sidebar";
 
 function PostPage() {
   // Extracts the ID of the post from the URL parameters using useParams.
@@ -39,12 +41,19 @@ function PostPage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>Popular profiles for mobile</p>
+        <PopularProfiles mobile />
         {/* setPost is changed to setPosts and passed as a prop into Post.js */}
         <Post {...post.results[0]} setPosts={setPost} />
         <Container className={appStyles.Content}>
           <CommentSection postId={id} />
         </Container>
+      </Col>
+
+      {/* Sidebar Container for Courses and Popular Profiles */}
+      <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
+        <div>
+          <Sidebar mobile />
+        </div>
       </Col>
     </Row>
   );
