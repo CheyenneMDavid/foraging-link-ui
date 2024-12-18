@@ -1,18 +1,27 @@
 .CommentContainer {
   display: flex;
-  align-items: flex-start;
   gap: 10px; /* Space between the Avatar/Name and content */
-  padding: 10px;
+  background-color: white;
 }
 
 /* Stacks the avatar and owner vertically, making most of space. */
-.CommentAvatar {
+.CommentHead {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-right: 10px;
+}
+
+.OwnerName {
+  margin-top: 5px;
+  font-weight: bold;
 }
 
 .CommentBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
   padding: 5px;
-  border-bottom: 1px solid rgba(83, 36, 2, 0.3);
+  font-size: 0.9rem;
 }
