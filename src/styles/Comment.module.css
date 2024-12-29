@@ -1,7 +1,6 @@
 .CommentContainer {
   display: flex;
   gap: 10px; /* Space between the Avatar/Name and content */
-  background-color: white;
 }
 
 /* Stacks the avatar and owner vertically, making most of space. */
@@ -24,4 +23,8 @@
   margin-top: 10px;
   padding: 5px;
   font-size: 0.9rem;
+}
+
+.CreationDate {
+  color: #ffffff;
 }

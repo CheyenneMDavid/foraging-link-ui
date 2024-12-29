@@ -5,12 +5,20 @@
   color: #ffffff;
 }
 
+body {
+  background-color: #181818;
+}
+
 .Main {
   padding-top: 100px;
 }
 
-.Content {
+div {
   background-color: #0d0d0d;
+}
+
+.Content {
+  background-color: black;
   padding: 10px;
   border-radius: 2px;
 }
@@ -26,6 +34,7 @@
   max-width: 100%;
   object-fit: contain;
 }
+
 * {
   box-sizing: border-box;
 }

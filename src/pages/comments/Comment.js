@@ -41,7 +41,7 @@ function Comment(props) {
 
         {/* User Interaction section */}
         <div className={styles.CommentBar}>
-          <span>{created_at}</span>
+          <span className={styles.CreationDate}>{created_at}</span>
           <i className="far fa-heart"></i>
           {likes_count > 0 && <span>{likes_count}</span>}
 

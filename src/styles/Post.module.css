@@ -11,6 +11,10 @@ h3 {
   text-decoration: underline;
 }
 
+.CreationDate {
+  color: #ffffff;
+}
+
 .Post figure,
 h5 {
   margin: 0 0;
@@ -26,10 +30,6 @@ h5 {
 
 .HeartOutline:hover {
   color: #f85032;
-}
-
-.CreationDate {
-  color: #ffffff;
 }
 
 .AuthorAvatar {

@@ -108,7 +108,7 @@ function PostsList({ message, filter = "" }) {
                         justifyContent: "space-between",
                         alignItems: "center",
                         marginBottom: "10px",
-                        borderBottom: "2px solid #57151e",
+                        borderBottom: "2px solid #57351e",
                       }}
                     >
                       <span>{post.created_at}</span>

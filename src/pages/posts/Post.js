@@ -1,11 +1,15 @@
 // Purpose of Post.js is to fetch all data for a post so it can be used in PostPage.js which
 // is the detail page for a post, and a component that creates a list of posts with
 // limited information
+// Purpose of Post.js is to fetch all data for a post so it can be used in PostPage.js which
+// is the detail page for a post, and a component that creates a list of posts with
+// limited information
 
 import React from "react";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "../../styles/Post.module.css";
+
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 import { axiosRes } from "../../api/axiosDefaults";
