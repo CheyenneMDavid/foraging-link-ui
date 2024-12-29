@@ -1,8 +1,7 @@
 /* CSS from the walkthrough file called "Post.module.css" */
 .Post {
-  background-color: #ffffff;
-  border: 1px solid #dadadf;
-  border-radius: 2px;
+  background-color: #0d0d0d;
+
   margin-bottom: 16px;
   text-align: center;
 }
@@ -27,6 +26,10 @@ h5 {
 
 .HeartOutline:hover {
   color: #f85032;
+}
+
+.CreationDate {
+  color: #ffffff;
 }
 
 .AuthorAvatar {

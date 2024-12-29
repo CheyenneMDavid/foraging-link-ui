@@ -150,7 +150,7 @@ function Post(props) {
       <section aria-label="User and Author Interaction Section">
         <Card.Body>
           <div className={styles.PostBar}>
-            <span>{created_at}</span>
+            <span className={styles.CreationDate}>{created_at}</span>
             <div>
               {is_owner ? (
                 <OverlayTrigger
