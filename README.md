@@ -25,6 +25,10 @@ another's comments, managing user profiles, and registering for courses.
       - [Future Planned Features](#future-planned-features)
   - [Planning](#planning)
     - [Wireframes](#wireframes)
+      - [Component Planning](#component-planning)
+        - [Comments Section](#comments-section)
+- [Development Notes (Temporary use of H1 for ease of finding notes quickly.)](#development-notes-temporary-use-of-h1-for-ease-of-finding-notes-quickly)
+  - [List of Reusable Components](#list-of-reusable-components)
   - [Design Choices](#design-choices)
     - [Colors](#colors)
     - [Components and Functionality](#components-and-functionality)
@@ -162,6 +166,49 @@ indictating edit and delete are conditionally displayed, depending on whether th
 the currently signed-in user.
 
 ![Mobile Expanded Comments](https://res.cloudinary.com/cheymd/image/upload/v1731488212/foraging_link/readme_images/mobile_post_detail_expanded_comments_fqif0x.png)
+
+___
+
+#### Component Planning
+
+The component planning aims to break down the application into manageable parts, focusing on reusable components to maintain consistency and modularity.
+
+##### Comments Section
+
+The comments section is by far the most complex part of the application, due to the number of functionalities and conditional displays involved. To simplify and manage this complexity, I decided to break the functionality into individual reusable components which can then also be used by Posts.
+___
+___
+___
+
+# Development Notes (Temporary use of H1 for ease of finding notes quickly.)
+
+**Note**: This section is only being used as a notes section to self for planning out functionality, implementation and reasoning as components are broken down into their shared usage.
+
+## List of Reusable Components
+
+1. **Likes Component**:
+   - **Function**: Toggles likes and displays the like count.
+   - Conditionally displayed, baseed on being signed in.
+  
+2. **Comment Button Component**:
+   - **Function**: Opens comments form.
+   - Conditionally displayed, based on being signed in.
+  
+3. **Edit Button Component**:
+   - **Function**: Opens an editing form.
+   - Conditionally displayed, based on being signed in.
+   - Conditionally displayed, based on Currently signed in user being the Author of the comment.
+
+4. **Delete Button Component**:
+   - **Function**: Deletes comments, or replies with a confirmation.
+   - Conditionally displayed, based on being signed in.
+   - Conditionally displayed, based on Currently signed in user being the Author of the comment.
+  
+**Note**: H1 heading above is temporary and will be removed or changed before the final version.
+
+___
+___
+___
 
 ## Design Choices
 
