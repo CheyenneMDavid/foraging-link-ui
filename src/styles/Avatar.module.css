@@ -4,7 +4,7 @@
   border-radius: 50%;
   border: 1px solid black;
   object-fit: cover;
-  margin: 5px;
+  margin: 0px 5px;
 }
 
 .AvatarText {

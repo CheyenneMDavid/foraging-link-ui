@@ -111,7 +111,9 @@ function PostsList({ message, filter = "" }) {
                         borderBottom: "2px solid #57351e",
                       }}
                     >
-                      <span>{post.created_at}</span>
+                      <span className={styles.CreationDate}>
+                        {post.created_at}
+                      </span>
 
                       <div style={{ display: "flex", gap: "15px" }}>
                         <span style={{ marginRight: "5px" }}>❤️</span>
