@@ -1,17 +1,13 @@
-// Purpose of Post.js is to fetch all data for a post so it can be used in PostPage.js which
-// is the detail page for a post, and a component that creates a list of posts with
-// limited information
-// Purpose of Post.js is to fetch all data for a post so it can be used in PostPage.js which
-// is the detail page for a post, and a component that creates a list of posts with
-// limited information
+// Purpose of Post.js is to render a single post's data using props passed to it.
+// It can be used in PostPage.js for a detailed view of a post or in components
+// like PostList.js to display posts in a list page which is the Homepage.
 
 import React from "react";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-
-import { axiosRes } from "../../api/axiosDefaults";
+import LikeAndUnlike from "../../components/LikeAndUnlike";
 
 function Post(props) {
   // Destructures the props to extract all the data required for rendering the posts.
@@ -40,7 +36,7 @@ function Post(props) {
   // Checks if the currently logged-in user to determine if they can interact with the post.
   const currentUser = useCurrentUser();
 
-  // Checks if the currently logged in user is the owner of the post
+  // Checks if the currently logged-in user is the owner of the post.
   const is_owner = currentUser?.username === owner;
 
   return (
@@ -111,16 +107,24 @@ function Post(props) {
               {is_owner ? (
                 <OverlayTrigger
                   placement="top"
-                  overlay={<Tooltip>You can't like your own post!</Tooltip>}
+                  overlay={<Tooltip>You can't like your own post! </Tooltip>}
                 >
-                  {/* <LikeAndUnlike /> */}
+                  <span className="text-muted">Cannot like your own post</span>
                 </OverlayTrigger>
+              ) : currentUser ? (
+                <LikeAndUnlike
+                  id={id}
+                  like_id={like_id}
+                  likes_count={likes_count}
+                  setItems={setPosts}
+                  itemType="plant_in_focus_post"
+                />
               ) : (
                 <OverlayTrigger
                   placement="top"
                   overlay={<Tooltip>Log in to like posts!</Tooltip>}
                 >
-                  {/* <LikeAndUnlike /> */}
+                  <span className="text-muted">Log in to like</span>
                 </OverlayTrigger>
               )}
 

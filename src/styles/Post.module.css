@@ -28,8 +28,18 @@ h5 {
   color: #2142b2;
 }
 
+.HeartOutline {
+  color: #aaa;
+}
+
 .HeartOutline:hover {
   color: #f85032;
+}
+
+.LikeContainer {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .AuthorAvatar {
