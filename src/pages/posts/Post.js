@@ -9,7 +9,6 @@ import React from "react";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "../../styles/Post.module.css";
-
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 import { axiosRes } from "../../api/axiosDefaults";
@@ -44,54 +43,6 @@ function Post(props) {
   // Checks if the currently logged in user is the owner of the post
   const is_owner = currentUser?.username === owner;
 
-  // Function for liking a post. Defaults likes_count to 0 if it's undefined or null.
-
-  const handleLike = async () => {
-    try {
-      const { data } = await axiosRes.post("/likes/", {
-        plant_in_focus_post: id,
-      });
-      setPosts((prevPosts) => ({
-        ...prevPosts,
-        results: prevPosts.results.map((post) =>
-          post.id === id
-            ? {
-                ...post,
-                likes_count: (post.likes_count || 0) + 1,
-                like_id: data.id,
-              }
-            : post
-        ),
-      }));
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  // Function for unliking a post. Sets a valid default before subtracting, safegaurding against
-  // becoming a negative number.
-  const handleUnlike = async () => {
-    try {
-      await axiosRes.delete(`/likes/${like_id}/`);
-      setPosts((prevPosts) => ({
-        ...prevPosts,
-        results: prevPosts.results.map((post) => {
-          return post.id === id
-            ? {
-                ...post,
-                likes_count: (post.likes_count || 1) - 1,
-                like_id: null,
-              }
-            : post;
-        }),
-      }));
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  // Function for unliking a post. Ensures likes_count has a valid default of 1
-  // before subtracting to prevent negative values.
   return (
     <Card className={styles.Post}>
       {/* Main Plant Section */}
@@ -151,6 +102,7 @@ function Post(props) {
         </Card.Body>
       </section>
 
+      {/* User and Author Interaction Section */}
       <section aria-label="User and Author Interaction Section">
         <Card.Body>
           <div className={styles.PostBar}>
@@ -161,28 +113,18 @@ function Post(props) {
                   placement="top"
                   overlay={<Tooltip>You can't like your own post!</Tooltip>}
                 >
-                  <i className="far fa-heart" />
+                  {/* <LikeAndUnlike /> */}
                 </OverlayTrigger>
-              ) : like_id ? (
-                <span onClick={handleUnlike}>
-                  <i className={`fas fa-heart ${styles.Heart}`} />
-                </span>
-              ) : currentUser ? (
-                <span onClick={handleLike}>
-                  <i className={`far fa-heart ${styles.HeartOutline}`} />
-                </span>
               ) : (
                 <OverlayTrigger
                   placement="top"
                   overlay={<Tooltip>Log in to like posts!</Tooltip>}
                 >
-                  <i className="far fa-heart" />
+                  {/* <LikeAndUnlike /> */}
                 </OverlayTrigger>
               )}
 
-              {/* Conditional rendering of an actual number for likes_count being greater than 0.  Otherwise it only displays a greyed out Font Awesome heart, which a signed in user can interact with.*/}
-              {likes_count > 0 && <span>{likes_count}</span>}
-
+              {/* Link to post detail page with comments count */}
               <Link to={`plants_blog/posts/${id}`}>
                 <i className="far fa-comments" />
               </Link>
