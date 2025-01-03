@@ -1,13 +1,16 @@
-import React from 'react';
-import { Navbar, Container, Nav } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
-import axios from 'axios';
-import logo from '../assets/logo.png';
-import styles from '../styles/NavBar.module.css';
-import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext';
-import Avatar from './Avatar';
+import React from "react";
+import { Navbar, Container, Nav } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+import axios from "axios";
+import logo from "../assets/logo.png";
+import styles from "../styles/NavBar.module.css";
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../contexts/CurrentUserContext";
+import Avatar from "./Avatar";
 
-import useClickOutsideToggle from '../hooks/src/hooks/useClickOutsideToggle';
+import useClickOutsideToggle from "../hooks/src/hooks/useClickOutsideToggle";
 
 // Navigation bar component, displays different navigation icons based on the user's
 // authentication status.
@@ -21,7 +24,7 @@ function NavBar() {
   // Handles logging out
   const handleSignOut = async () => {
     try {
-      await axios.post('dj-rest-auth/logout/');
+      await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
     } catch (err) {
       console.log(err);
@@ -37,13 +40,22 @@ function NavBar() {
         to={`/profiles/${currentUser?.profile_id}`}
         // Dynamic labeling displays actual user's name if it's available, otherwise it falls
         // back on a description of "Profile of User"
-        aria-label={`Profile of ${owner || 'user'}`}
+        aria-label={`Profile of ${owner || "user"}`}
       >
-        <Avatar src={currentUser?.profile_image} text={owner} className={styles.NavAvatar} />
+        <Avatar
+          src={currentUser?.profile_image}
+          text={owner}
+          className={styles.NavAvatar}
+        />
       </NavLink>
 
       {/* Sign Out */}
-      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut} aria-label="Sign out">
+      <NavLink
+        className={styles.NavLink}
+        to="/"
+        onClick={handleSignOut}
+        aria-label="Sign out"
+      >
         <i className="fa-solid fa-right-from-bracket" /> Sign out
       </NavLink>
     </>
@@ -72,7 +84,12 @@ function NavBar() {
   );
 
   return (
-    <Navbar expanded={expanded} className={styles.NavBar} expand="md" fixed="top">
+    <Navbar
+      expanded={expanded}
+      className={styles.NavBar}
+      expand="md"
+      fixed="top"
+    >
       <Container>
         <NavLink to="/">
           <Navbar.Brand>
@@ -80,6 +97,7 @@ function NavBar() {
           </Navbar.Brand>
         </NavLink>
         <Navbar.Toggle
+          className={styles.NavbarToggle}
           ref={ref}
           onClick={() => setExpanded(!expanded)}
           aria-controls="basic-navbar-nav"

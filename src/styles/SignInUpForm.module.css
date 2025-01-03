@@ -3,9 +3,9 @@
 }
 .Input {
   background: #ffffff;
-  border: 1px solid #f0f1f9;
+  border: 3px solid #856404;
   box-sizing: border-box;
-  border-radius: 2px;
+  border-radius: 100px;
   color: #7177a1;
   text-align: center;
   padding: 10px;
@@ -14,12 +14,12 @@
 .Header {
   font-style: normal;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 1em;
   line-height: 19px;
   text-align: center;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #532402;
+  color: #856404;
 }
 
 .SignIn .Link {
@@ -30,7 +30,7 @@
 }
 
 span {
-  color: #212529;
+  color: whitesmoke;
 }
 
 .Container {

@@ -64,7 +64,8 @@ function PostsList({ message, filter = "" }) {
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           type="text"
-          className="mr-sm-2"
+          // className="mr-sm-2"
+          className={styles.SearchBar}
           placeholder="Search posts"
         />
       </Form>
@@ -108,14 +109,14 @@ function PostsList({ message, filter = "" }) {
                         justifyContent: "space-between",
                         alignItems: "center",
                         marginBottom: "10px",
-                        borderBottom: "2px solid #57351e",
+                        borderBottom: "2px solid #856404",
                       }}
                     >
                       <span className={styles.CreationDate}>
                         {post.created_at}
                       </span>
 
-                      <div style={{ display: "flex", gap: "15px" }}>
+                      <div style={{ display: "flex", gap: "5px" }}>
                         <span style={{ marginRight: "5px" }}>❤️</span>
 
                         {/* Conditional rendering of an actual number for likes_count being greater */}

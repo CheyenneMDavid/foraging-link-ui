@@ -2,7 +2,7 @@
 
 .NavBar {
   background-color: #0d0d0d;
-  border-bottom: 1px solid #57351e;
+  border-bottom: 1px solid #856404;
   margin: 0;
   padding: 0;
 }
@@ -14,19 +14,20 @@
 .NavLink,
 .NavLink i,
 .NavLink a {
-  color: #57351e !important;
+  color: #856404 !important;
   text-decoration: none !important;
 }
 
 .NavLink:hover i {
-  color: #619158 !important;
+  color: #ffa500 !important;
 }
 
 .Active i {
-  color: #619158 !important;
+  color: #4caf50 !important;
 }
 
 .NavbarToggle {
-  border: 1px solid #000000 !important;
-  background-color: #532402;
+  border: 1px solid white !important;
+  background-color: #512c0f;
+  margin-right: 1rem;
 }

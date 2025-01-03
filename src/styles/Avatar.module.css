@@ -2,18 +2,17 @@
 
 .Avatar {
   border-radius: 50%;
-  border: 1px solid black;
+  border: 2px solid white;
   object-fit: cover;
   margin: 0px 5px;
 }
 
 .AvatarText {
   font-size: 0.9;
-  color: #57351e;
+  color: whitesmoke;
 }
 
 .AvatarContainer {
-  border: 1px solid black;
   border-radius: 50%;
   display: inline-block;
 }

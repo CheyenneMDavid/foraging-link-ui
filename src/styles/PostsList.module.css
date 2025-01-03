@@ -1,8 +1,9 @@
 .SearchBar input {
+  max-width: ;
   border-radius: 20px;
   color: #242a3d;
   padding-left: 40px;
-  margin-bottom: 16px;
+  margin-bottom: 0px 10px 16px 10px;
 }
 
 .SearchIcon {
@@ -18,5 +19,5 @@
 }
 
 .CreationDate {
-  color: #ffffff;
+  color: whitesmoke;
 }

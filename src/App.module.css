@@ -2,11 +2,8 @@
   font-family: "DM Sans", sans-serif;
   background-color: #181818;
   min-height: 100vh;
-  color: #ffffff;
-}
-
-body {
-  background-color: #181818;
+  color: whitesmoke;
+  margin: 10px;
 }
 
 .Main {
@@ -18,7 +15,6 @@ div {
 }
 
 .Content {
-  background-color: black;
   padding: 10px;
   border-radius: 2px;
 }
@@ -33,6 +29,7 @@ div {
   max-height: 40vh;
   max-width: 100%;
   object-fit: contain;
+  border-color: #512c0f;
 }
 
 * {
@@ -40,7 +37,7 @@ div {
 }
 
 a {
-  color: #555555;
+  color: whitesmoke;
   transition: color ease-in-out 0.3s;
 }
 
