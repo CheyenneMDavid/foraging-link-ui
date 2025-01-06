@@ -115,21 +115,16 @@ function PostsList({ message, filter = "" }) {
                       <span className={styles.CreationDate}>
                         {post.created_at}
                       </span>
-
-                      <div style={{ display: "flex", gap: "5px" }}>
-                        <span style={{ marginRight: "5px" }}>❤️</span>
-
-                        {/* Conditional rendering of an actual number for likes_count being greater */}
-                        {/* than 0. Otherwise it only displays the heart emoji which is used to link */}
-                        {/* to the detail page, along with the image and text for the post. */}
+                      <span>
+                        <i className="far fa-heart" />
                         {post.likes_count > 0 && (
                           <span>{post.likes_count}</span>
                         )}
-                        <span>
-                          <span style={{ marginRight: "5px" }}>🗨</span>
-                          {post.comments_count}
-                        </span>
-                      </div>
+                        <i className="far fa-comments" />
+                        {post.comments_count > 0 && (
+                          <span>{post.comments_count}</span>
+                        )}
+                      </span>
                     </div>
                   </div>
                 </Link>
