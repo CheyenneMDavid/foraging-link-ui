@@ -33,7 +33,7 @@ function Post(props) {
     setPosts, // Function to update the state of posts, passed as a prop from PostPage.js
   } = props;
 
-  // Checks if the currently logged-in user to determine if they can interact with the post.
+  // Gets the currently logged-in user's details.
   const currentUser = useCurrentUser();
 
   // Checks if the currently logged-in user is the owner of the post.
@@ -43,8 +43,10 @@ function Post(props) {
     <Card className={styles.Post}>
       {/* Main Plant Section */}
       <section aria-label="Main Plant Section">
+        {/* Displays the main plant name as a heading */}
         {main_plant_name && <h2 className="text-center">{main_plant_name}</h2>}
 
+        {/* Link to the post detail page with the main plant image */}
         <Link to={`/posts/${id}`}>
           <Card.Img
             src={main_plant_image}
@@ -54,6 +56,7 @@ function Post(props) {
         </Link>
 
         <Card.Body>
+          {/* Displays various main plant details if they exist */}
           {main_plant_environment && (
             <Card.Text id="main-plant-description">
               {main_plant_environment}
@@ -73,6 +76,7 @@ function Post(props) {
 
       {/* Confusable Plant Section */}
       <section aria-label="Confusable Plant Section">
+        {/* Displays confusable plant details if they exist */}
         {confusable_plant_name && (
           <h3 className="text-center">{confusable_plant_name}</h3>
         )}
@@ -83,11 +87,9 @@ function Post(props) {
               {confusable_plant_information}
             </Card.Text>
           )}
-
           {confusable_plant_warnings && (
             <Card.Text>{confusable_plant_warnings}</Card.Text>
           )}
-
           {confusable_plant_image && (
             <Card.Img
               src={confusable_plant_image}
@@ -102,16 +104,28 @@ function Post(props) {
       <section aria-label="User and Author Interaction Section">
         <Card.Body>
           <div className={styles.PostBar}>
+            {/* Displays the creation date of the post */}
             <span className={styles.CreationDate}>{created_at}</span>
+
             <div>
+              {/* Checks if the user is the owner of the post */}
               {is_owner ? (
                 <OverlayTrigger
                   placement="top"
-                  overlay={<Tooltip>You can't like your own post! </Tooltip>}
+                  overlay={<Tooltip>You can't like your own post!</Tooltip>}
                 >
-                  <span className="text-muted">Cannot like your own post</span>
+                  {/* Isolating the likes icon to enable Tooltip to be used on it. */}
+                  <i className="far fa-heart" />
                 </OverlayTrigger>
-              ) : currentUser ? (
+              ) : !currentUser ? (
+                <OverlayTrigger
+                  placement="top"
+                  overlay={<Tooltip>Log in to like posts!</Tooltip>}
+                >
+                  {/* Isolating the likes icon to enable Tooltip to be used on it. */}
+                  <i className="far fa-heart" />
+                </OverlayTrigger>
+              ) : (
                 <LikeAndUnlike
                   id={id}
                   like_id={like_id}
@@ -119,20 +133,14 @@ function Post(props) {
                   setItems={setPosts}
                   itemType="plant_in_focus_post"
                 />
-              ) : (
-                <OverlayTrigger
-                  placement="top"
-                  overlay={<Tooltip>Log in to like posts!</Tooltip>}
-                >
-                  <span className="text-muted">Log in to like</span>
-                </OverlayTrigger>
               )}
-
-              {/* Link to post detail page with comments count */}
-              <Link to={`plants_blog/posts/${id}`}>
+              {/* likes_count outside conditional logic that isolates the likes icon in order for Tooltip to be applied to it. And conditional logic to display the likes count so that "0" is never shown.  Only when there is a number other than zero, does it show. */}
+              {likes_count > 0 && <span>{likes_count}</span>}
+              {/* Comments icon with conditional logic to display count, only when it's greater than zero */}
+              <span>
                 <i className="far fa-comments" />
-              </Link>
-              {comments_count}
+                {comments_count > 0 && <span>{comments_count}</span>}
+              </span>
             </div>
           </div>
         </Card.Body>
