@@ -4,6 +4,7 @@
 import React from "react";
 import { axiosRes } from "../api/axiosDefaults";
 import styles from "../styles/Post.module.css";
+import { useCurrentUser } from "../contexts/CurrentUserContext";
 
 function LikeAndUnlike({ id, like_id, likes_count, setItems, itemType }) {
   const handleLike = async () => {
@@ -49,21 +50,22 @@ function LikeAndUnlike({ id, like_id, likes_count, setItems, itemType }) {
     }
   };
 
+  // Gets the currently logged in user's details.
+  const currentUser = useCurrentUser();
+
   return (
     <div>
       {like_id ? (
         <span onClick={handleUnlike}>
-          {" "}
           <i className={`fas fa-heart ${styles.Heart}`} />
         </span>
-      ) : (
+      ) : currentUser ? (
         <span onClick={handleLike}>
           <i className={`far fa-heart ${styles.HeartOutline}`} />
         </span>
+      ) : (
+        <i className="far fa-heart" />
       )}
-      {/* Conditional rendering of an actual number for likes_count being greater than 0. */}
-      {/* Otherwise it only displays a greyed out Font Awesome heart, which a signed in user */}
-      {/* can interact with. */}
       {likes_count > 0 && <span>{likes_count}</span>}
     </div>
   );
