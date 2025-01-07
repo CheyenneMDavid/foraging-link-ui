@@ -7,7 +7,7 @@ import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import LikeAndUnlike from "../../components/LikeAndUnlike";
+import LikeUnlike from "../../components/LikeUnlike";
 
 function Post(props) {
   // Destructures the props to extract all the data required for rendering the posts.
@@ -126,7 +126,7 @@ function Post(props) {
                   <i className="far fa-heart" />
                 </OverlayTrigger>
               ) : (
-                <LikeAndUnlike
+                <LikeUnlike
                   id={id}
                   like_id={like_id}
                   likes_count={likes_count}
@@ -135,6 +135,7 @@ function Post(props) {
                 />
               )}
               {/* likes_count outside conditional logic that isolates the likes icon in order for Tooltip to be applied to it. And conditional logic to display the likes count so that "0" is never shown.  Only when there is a number other than zero, does it show. */}
+
               {likes_count > 0 && <span>{likes_count}</span>}
               {/* Comments icon with conditional logic to display count, only when it's greater than zero */}
               <span>
