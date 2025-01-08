@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { axiosReq } from "../../api/axiosDefaults";
 import Comment from "./Comment"; // Importing of component that will render individual comments
 
-import styles from "../../styles/Comment.module.css";
+import styles from "../../styles/CommentSection.module.css";
 
 function CommentSection({ postId }) {
   // State to store the fetched comments.
