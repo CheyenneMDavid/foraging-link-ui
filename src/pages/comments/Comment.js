@@ -1,8 +1,10 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import styles from "../../styles/Comment.module.css";
+import LikeUnlike from "../../components/LikeUnlike";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function Comment(props) {
   const {
@@ -12,16 +14,22 @@ function Comment(props) {
     created_at,
     content,
     likes_count,
-    isReply,
+    id,
+    like_id,
+    setComments,
   } = props;
 
+  // Gets the currently logged-in user's details
+  const currentUser = useCurrentUser();
+
+  // Checks if the logged-in user is the owner of the comment
+  const is_owner = currentUser?.username === owner;
+
   return (
-    // Conditionally applies styles based on whether the comment is a top-level comment or a
-    // reply with a parent.
-    <Card className={isReply ? styles.Reply : styles.Comment}>
+    <Card className={styles.Comment}>
       <Card.Body>
         <div className={styles.CommentContainer}>
-          {/* Avatar and Username stacks to left, making most of space */}
+          {/* Avatar and username section */}
           <div className={styles.CommentHead}>
             <Link to={`/profiles/${profile_id}`}>
               <Avatar
@@ -30,24 +38,43 @@ function Comment(props) {
                 alt={`${owner}'s avatar`}
               />
             </Link>
-            <strong className={styles.OwnerName}>{owner}</strong>
+            <strong className={styles.CommentAuthor}>{owner}</strong>
           </div>
 
-          {/* Comment Content to the right of the stacked Avatar and username */}
+          {/* Comment content */}
           <div className={styles.CommentContent}>
             <Card.Text>{content}</Card.Text>
           </div>
         </div>
 
-        {/* User Interaction section */}
+        {/* User interaction section */}
         <div className={styles.CommentBar}>
           <span className={styles.CreationDate}>{created_at}</span>
-          <i className="far fa-heart"></i>
-          {likes_count > 0 && <span>{likes_count}</span>}
 
-          {/* Condisional display of edit and trash dependant on currently logged in user being the owner of comment */}
-          <p>Edit Button</p>
-          <p>Trash Can</p>
+          {/* Likes section */}
+          <div className={styles.LikesSection}>
+            {is_owner ? (
+              // Tooltip for owners explaining why they can't like their own comment
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>You can't like your own comment!</Tooltip>}
+              >
+                <span className={styles.LikeItem}>
+                  <i className="far fa-heart" />
+                  {likes_count > 0 && <span>{likes_count}</span>}
+                </span>
+              </OverlayTrigger>
+            ) : (
+              // Like and Unlike functionality for other users
+              <LikeUnlike
+                id={id}
+                like_id={like_id}
+                likes_count={likes_count}
+                setItems={setComments}
+                itemType="comment"
+              />
+            )}
+          </div>
         </div>
       </Card.Body>
     </Card>
