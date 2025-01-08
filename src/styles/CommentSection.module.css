@@ -1,0 +1,12 @@
+/* Stylesheet for .CommentSection.js  */
+
+.CommentSection {
+  margin-top: 5px; /* Add spacing above the comments section */
+  padding: 10px; /* Optional padding for better spacing */
+}
+
+.Reply {
+  margin-top: 5px;
+  margin-left: 100px;
+  padding-left: 10px;
+}

@@ -1,0 +1,37 @@
+/* Stylesheet for the Like and Unlike fonts and counts */
+
+/* Space between the heart icon and the count */
+.LikesSection {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Space between the icon and count */
+.LikeItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.Heart {
+  color: #f85032;
+}
+
+.Heart:hover {
+  color: #2142b2;
+}
+
+.HeartOutline {
+  color: #aaa;
+}
+
+.HeartOutline:hover {
+  color: #f85032;
+}
+
+.LikeContainer {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}

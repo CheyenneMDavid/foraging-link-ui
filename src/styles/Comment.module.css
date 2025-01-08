@@ -1,6 +1,9 @@
+/* Stylesheet for Comment.js */
+
+/* Space between the Avatar/Name and content */
 .CommentContainer {
   display: flex;
-  gap: 10px; /* Space between the Avatar/Name and content */
+  gap: 10px;
 }
 
 /* Stacks the avatar and owner vertically, making most of space. */
@@ -11,9 +14,14 @@
   margin-right: 10px;
 }
 
-.OwnerName {
+.CommentAuthor {
   margin-top: 5px;
   font-weight: bold;
+}
+
+.Comment {
+  border-top: 1px solid #856404;
+  background-color: transparent;
 }
 
 .CommentBar {

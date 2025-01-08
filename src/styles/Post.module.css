@@ -1,9 +1,9 @@
 /* CSS from the walkthrough file called "Post.module.css" */
 .Post {
   background-color: #0d0d0d;
-
-  margin-bottom: 16px;
+  margin-bottom: 5px;
   text-align: center;
+  padding: 10px;
 }
 
 h2,
@@ -18,34 +18,6 @@ h3 {
 .Post figure,
 h5 {
   margin: 0 0;
-}
-
-.Heart {
-  color: #f85032;
-}
-
-.Heart:hover {
-  color: #2142b2;
-}
-
-.HeartOutline {
-  color: #aaa;
-}
-
-.HeartOutline:hover {
-  color: #f85032;
-}
-
-.LikeContainer {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.AuthorAvatar {
-  height: 40px;
-  width: 10px;
-  border-radius: 50%;
 }
 
 .PostBar {
