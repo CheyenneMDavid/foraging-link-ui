@@ -3,7 +3,7 @@
 
 import React from "react";
 import { axiosRes } from "../api/axiosDefaults";
-import styles from "../styles/Post.module.css";
+import styles from "../styles/LikeUnlike.module.css";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 
 function LikeAndUnlike({ id, like_id, likes_count, setItems, itemType }) {
@@ -13,6 +13,10 @@ function LikeAndUnlike({ id, like_id, likes_count, setItems, itemType }) {
         [itemType]: id, // Dynamically uses the field name passed via props, avoiding hardcoding
         // its purpose, making it usable in Posts and also Comments.
       });
+
+      console.log("Previous Items (Before Like): ", setItems);
+      console.log("Updated Item ID: ", id);
+
       setItems((prevItems) => ({
         ...prevItems,
         results: prevItems.results.map((item) =>
@@ -33,6 +37,10 @@ function LikeAndUnlike({ id, like_id, likes_count, setItems, itemType }) {
   const handleUnlike = async () => {
     try {
       await axiosRes.delete(`/likes/${like_id}/`);
+
+      console.log("Previous Items (Before Unlike): ", setItems);
+      console.log("Updated Item ID: ", id);
+
       setItems((prevItems) => ({
         ...prevItems,
         results: prevItems.results.map((item) =>
