@@ -33,6 +33,8 @@ function Post(props) {
     setPosts, // Function to update the state of posts, passed as a prop from PostPage.js
   } = props;
 
+  console.log({ likes_count, id });
+
   // Gets the currently logged-in user's details.
   const currentUser = useCurrentUser();
 
@@ -135,8 +137,7 @@ function Post(props) {
                 />
               )}
               {/* likes_count outside conditional logic that isolates the likes icon in order for Tooltip to be applied to it. And conditional logic to display the likes count so that "0" is never shown.  Only when there is a number other than zero, does it show. */}
-
-              {likes_count > 0 && <span>{likes_count}</span>}
+              <span>{likes_count > 0 && <span>{likes_count}</span>}</span>
               {/* Comments icon with conditional logic to display count, only when it's greater than zero */}
               <span>
                 <i className="far fa-comments" />
