@@ -45,11 +45,6 @@ function PostPage() {
         {/* Renders the Post component with the fetched post data */}
         <Post {...currentPost} setPosts={setPost} />
 
-        {/* Displays likes count if available */}
-        {currentPost && currentPost.likes_count > 0 && (
-          <div>{currentPost.likes_count} likes</div>
-        )}
-
         {/* Comments Section */}
         <Container className={appStyles.Content}>
           <CommentSection postId={id} />
