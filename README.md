@@ -34,7 +34,8 @@ another's comments, managing user profiles, and registering for courses.
     - [Components and Functionality](#components-and-functionality)
     - [Form Validation and Defensive Design](#form-validation-and-defensive-design)
   - [Development Challenges \& Solutions](#development-challenges--solutions)
-    - [Issue Resolution](#issue-resolution)
+    - [Naming Conflicts](#naming-conflicts)
+    - [Refactoring Post.js and PostsList.js](#refactoring-postjs-and-postslistjs)
   - [Credits](#credits)
 
 ## User Stories
@@ -267,7 +268,7 @@ without extra code, making it simple and efficient.
 
 ## Development Challenges & Solutions
 
-### Issue Resolution
+### Naming Conflicts
 
 When first creating the `PostPage`, I had difficulty fetching data, unable to get it to display the
 returned JSON data in the devtools console. The issue was tracked to a mismatch in naming between
@@ -289,6 +290,14 @@ To resolve this, the logic to handle edge cases:
 
 - For unliking a post, likes_count defaults to a 1 before
   decrementing, ensuring it never becomes NaN. Also, by setting it to 1 before decrementing, it doesn't run the risk of becomeing a negative number.
+
+### Refactoring Post.js and PostsList.js
+
+Initially, Post.js was created as a reusable component. However, during development it was not properly imported and utilized within PostsList.js and PostPage.js as intended. This oversight led to duplicated logic and inconsistencies in the display of post details between the list and detailed views.
+
+To address this, Post.js was integrated into both components, enabling more consistency in styling and behavior across the different views.
+
+To enable the list page for posts to display the posts in a condensed manner, conditional logic was added via the "isListPage" prop and was used to format the image display and create truncated text in the list page.
 
 ---
 
