@@ -1,6 +1,7 @@
 // Purpose of Post.js is to render a single post's data using props passed to it.
-// It can be used in PostPage.js for a detailed view of a post or in components
-// like PostList.js to display posts in a list page which is the Homepage.
+// It is used in PostPage.js to display the details of a single post
+// and in PostsList.js to display posts in a list on the homepage.
+// "isListPage" is used to check where the image is being displayed and applies styling accordingly
 
 import React from "react";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
@@ -10,7 +11,6 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import LikeUnlike from "../../components/LikeUnlike";
 
 function Post(props) {
-  // Destructures the props to extract all the data required for rendering the posts.
   const {
     id,
     owner,
@@ -27,13 +27,12 @@ function Post(props) {
     confusable_plant_information,
     confusable_plant_warnings,
     confusable_plant_image,
-    likes_count,
+    likes_count = 0, // Ensures a default value for likes_count
     like_id,
-    comments_count,
-    setPosts, // Function to update the state of posts, passed as a prop from PostPage.js
+    comments_count = 0, // Ensures a default value for comments_count
+    setPosts,
+    isListPage, // Used to check if the post is being rendered on the list page.
   } = props;
-
-  console.log({ likes_count, id });
 
   // Gets the currently logged-in user's details.
   const currentUser = useCurrentUser();
@@ -41,82 +40,84 @@ function Post(props) {
   // Checks if the currently logged-in user is the owner of the post.
   const is_owner = currentUser?.username === owner;
 
+  // Truncated text for the list page only
+  const truncatedText = culinary_uses
+    ? culinary_uses.split(" ").slice(0, 30).join(" ") + "..."
+    : "";
+
   return (
     <Card className={styles.Post}>
       {/* Main Plant Section */}
       <section aria-label="Main Plant Section">
-        {/* Displays the main plant name as a heading */}
         {main_plant_name && <h2 className="text-center">{main_plant_name}</h2>}
-
-        {/* Link to the post detail page with the main plant image */}
         <Link to={`/posts/${id}`}>
           <Card.Img
             src={main_plant_image}
             alt={main_plant_name}
             aria-describedby="main-plant-description"
+            className={isListPage ? styles.PostImage : undefined} // Applies style conditionally
           />
         </Link>
-
         <Card.Body>
-          {/* Displays various main plant details if they exist */}
-          {main_plant_environment && (
-            <Card.Text id="main-plant-description">
-              {main_plant_environment}
-            </Card.Text>
+          {isListPage ? ( // Render truncated text in list page
+            <Card.Text>{truncatedText}</Card.Text>
+          ) : (
+            <>
+              {/* Render full details in detail page */}
+              {main_plant_environment && (
+                <Card.Text>{main_plant_environment}</Card.Text>
+              )}
+              {culinary_uses && <Card.Text>{culinary_uses}</Card.Text>}
+              {medicinal_uses && <Card.Text>{medicinal_uses}</Card.Text>}
+              {history_and_folklore && (
+                <Card.Text>{history_and_folklore}</Card.Text>
+              )}
+              {main_plant_parts_used && (
+                <Card.Text>{main_plant_parts_used}</Card.Text>
+              )}
+              {main_plant_warnings && (
+                <Card.Text>{main_plant_warnings}</Card.Text>
+              )}
+            </>
           )}
-          {culinary_uses && <Card.Text>{culinary_uses}</Card.Text>}
-          {medicinal_uses && <Card.Text>{medicinal_uses}</Card.Text>}
-          {history_and_folklore && (
-            <Card.Text>{history_and_folklore}</Card.Text>
-          )}
-          {main_plant_parts_used && (
-            <Card.Text>{main_plant_parts_used}</Card.Text>
-          )}
-          {main_plant_warnings && <Card.Text>{main_plant_warnings}</Card.Text>}
         </Card.Body>
       </section>
 
       {/* Confusable Plant Section */}
-      <section aria-label="Confusable Plant Section">
-        {/* Displays confusable plant details if they exist */}
-        {confusable_plant_name && (
-          <h3 className="text-center">{confusable_plant_name}</h3>
-        )}
-
-        <Card.Body>
-          {confusable_plant_information && (
-            <Card.Text id="confusable-plant-description">
-              {confusable_plant_information}
-            </Card.Text>
+      {!isListPage && ( // Exclude confusable plant section from list page
+        <section aria-label="Confusable Plant Section">
+          {confusable_plant_name && (
+            <h3 className="text-center">{confusable_plant_name}</h3>
           )}
-          {confusable_plant_warnings && (
-            <Card.Text>{confusable_plant_warnings}</Card.Text>
-          )}
-          {confusable_plant_image && (
-            <Card.Img
-              src={confusable_plant_image}
-              alt={confusable_plant_name}
-              aria-describedby="confusable-plant-description"
-            />
-          )}
-        </Card.Body>
-      </section>
+          <Card.Body>
+            {confusable_plant_information && (
+              <Card.Text>{confusable_plant_information}</Card.Text>
+            )}
+            {confusable_plant_warnings && (
+              <Card.Text>{confusable_plant_warnings}</Card.Text>
+            )}
+            {confusable_plant_image && (
+              <Card.Img
+                src={confusable_plant_image}
+                alt={confusable_plant_name}
+                aria-describedby="confusable-plant-description"
+              />
+            )}
+          </Card.Body>
+        </section>
+      )}
 
       {/* User and Author Interaction Section */}
       <section aria-label="User and Author Interaction Section">
         <Card.Body>
           <div className={styles.PostBar}>
-            {/* Displays the creation date of the post */}
             <span className={styles.CreationDate}>{created_at}</span>
-
             <div>
-              {/* Checks if the user is the owner of the post */}
               {is_owner ? (
                 <OverlayTrigger
                   placement="top"
                   overlay={<Tooltip>You can't like your own post!</Tooltip>}
                 >
-                  {/* Isolating the likes icon to enable Tooltip to be used on it. */}
                   <i className="far fa-heart" />
                 </OverlayTrigger>
               ) : !currentUser ? (
@@ -124,7 +125,6 @@ function Post(props) {
                   placement="top"
                   overlay={<Tooltip>Log in to like posts!</Tooltip>}
                 >
-                  {/* Isolating the likes icon to enable Tooltip to be used on it. */}
                   <i className="far fa-heart" />
                 </OverlayTrigger>
               ) : (
@@ -136,9 +136,7 @@ function Post(props) {
                   itemType="plant_in_focus_post"
                 />
               )}
-              {/* likes_count outside conditional logic that isolates the likes icon in order for Tooltip to be applied to it. And conditional logic to display the likes count so that "0" is never shown.  Only when there is a number other than zero, does it show. */}
               <span>{likes_count > 0 && <span>{likes_count}</span>}</span>
-              {/* Comments icon with conditional logic to display count, only when it's greater than zero */}
               <span>
                 <i className="far fa-comments" />
                 {comments_count > 0 && <span>{comments_count}</span>}
