@@ -1,9 +1,16 @@
-/* CSS from the walkthrough file called "Post.module.css" */
+/* Stylessheet for Post.js, some styling elements borrowed from the Walkthrough project "Moments" with Code Institute */
+
 .Post {
   background-color: #0d0d0d;
   margin-bottom: 5px;
   text-align: center;
   padding: 10px;
+}
+
+.PostImage {
+  width: 100%;
+  height: 30vh;
+  object-fit: cover;
 }
 
 h2,
