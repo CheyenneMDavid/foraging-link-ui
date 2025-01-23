@@ -1,7 +1,8 @@
-// This LikeAndUnlike.js file handles liking and unliking for posts and comments.
-// Originally part of Post.js, it was refactored into a reusable component which uses "itemType"
-// dynamically handling a post or a comment.
-// It keeps the likes_count accurate by fetching and updating data, to and from the backend.
+// LikeAndUnlike is a reusable component that uses the variable "itemType" to manage the likes for
+// both the Posts and Comments. It fetches the initial number of likes just the once and updates
+// the backend with like/unlike actions as they are made. Instead of repeatedly fetching
+// likes_count from the backend, it uses "Optimistic Updates" to provide immediate feedback
+// in the UI, ensuring that the likes_count shown to the user is correct.
 
 import React from "react";
 import { axiosRes } from "../api/axiosDefaults";
@@ -9,69 +10,106 @@ import styles from "../styles/LikeUnlike.module.css";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 
 function LikeAndUnlike({ id, like_id, setItems, itemType }) {
-  // Retrieves the current user's details.
+  // Retrieves the currently logged-in user's details
   const currentUser = useCurrentUser();
 
-  // Handles liking a post or a comment
+  // handleLike function that manages liking of an item, updating the backend and ensures
+  // that the front and back are in sync.
   const handleLike = async () => {
     try {
-      // Creates the like for an item
-      await axiosRes.post("/likes/", { [itemType]: id });
+      // Updates the likes_count and like_id locally to provide immediate feedback in the UI
+      setItems((prevItems) => ({
+        // Spreads the previous state to preserve all existing properties and values
+        ...prevItems,
+        // Iterates over the results array to update the specific item matching the id
+        results: prevItems.results.map(
+          (item) =>
+            // Checks if the current item's id matches the target id
+            item.id === id
+              ? {
+                  ...item,
+                  likes_count: item.likes_count + 1,
+                  like_id: "temp_like_id",
+                }
+              : item // If the id doesn't match, the item remains unchanged.
+        ),
+      }));
 
-      // Fetches the most updated data, ensuring an accurate count
-      const { data: updatedPost } = await axiosRes.get(
-        `/plants_blog/posts/${id}/`
-      );
+      // Sends a request to the backend to create the like
+      const { data } = await axiosRes.post("/likes/", { [itemType]: id });
 
-      // Updates the parent's state with the re-fetched data.
+      // Replaces the temporary like_id with the real one received from the backend
       setItems((prevItems) => ({
         ...prevItems,
         results: prevItems.results.map((item) =>
-          item.id === id ? updatedPost : item
+          item.id === id ? { ...item, like_id: data.id } : item
         ),
       }));
     } catch (err) {
-      console.log(err);
+      console.error(err);
+      // If the request to create a like fails to update the database, the front end reverts the
+      // likes_count displayed in the UI to ensure it remains consistent with the backend.
+      setItems((prevItems) => ({
+        ...prevItems,
+        results: prevItems.results.map((item) =>
+          item.id === id
+            ? { ...item, likes_count: item.likes_count - 1, like_id: null }
+            : item
+        ),
+      }));
     }
   };
 
-  // Handles unliking a post or comment.
+  // handleUnlike function that's responsible for managing the unliking of and item, updating
+  // the backend and ensuring that the front and back are in sync.
   const handleUnlike = async () => {
     try {
-      // Removes the like on an item
+      // Updates likes_count and like_id locally to provide immediate feedback in the UI.
+      setItems((prevItems) => ({
+        // Spread the previous state to preserve all existing properties and values
+        ...prevItems,
+        // Iterates over the results array to update the specific item matching the given id
+        results: prevItems.results.map(
+          (item) =>
+            // Checks if the current item's id matches the target id
+            item.id === id
+              ? { ...item, likes_count: item.likes_count - 1, like_id: null }
+              : item // If the id doesn't match, the item remains unchanged.
+        ),
+      }));
+
+      // Sends a request to the backend to delete a like
       await axiosRes.delete(`/likes/${like_id}/`);
-
-      // Fetches the most updated data, ensuring an accurate count
-      const { data: updatedPost } = await axiosRes.get(
-        `/plants_blog/posts/${id}/`
-      );
-
-      // Updates the parent's state with the re-fetched data
+    } catch (err) {
+      console.error(err);
+      // If the request to delete a like fails to update the database, the front end reverts the
+      // likes_count displayed in the UI to ensure it remains consistent with the backend.
       setItems((prevItems) => ({
         ...prevItems,
         results: prevItems.results.map((item) =>
-          item.id === id ? updatedPost : item
+          item.id === id
+            ? { ...item, likes_count: item.likes_count + 1, like_id }
+            : item
         ),
       }));
-    } catch (err) {
-      console.log(err);
     }
   };
 
   return (
     <div>
       {like_id ? (
-        // Displays a solid heart icon for liked items and allows unliking.
+        // If the item is already liked, a filled in heart is displayed.
         <span onClick={handleUnlike}>
           <i className={`fas fa-heart ${styles.Heart}`} />
         </span>
       ) : currentUser ? (
-        // Displays an outlined heart icon for unliked items and allows liking.
+        // If the item is not yet liked and the user is logged in, an outlined heart is displayed
+        // and liking is allowed.
         <span onClick={handleLike}>
           <i className={`far fa-heart ${styles.HeartOutline}`} />
         </span>
       ) : (
-        // Displays a static outlined heart icon for users who are not logged in.
+        // If the user is not logged in, display a static outline heart icon
         <i className="far fa-heart" />
       )}
     </div>
