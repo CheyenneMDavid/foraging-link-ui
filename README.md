@@ -29,6 +29,7 @@ another's comments, managing user profiles, and registering for courses.
         - [Comments Section](#comments-section)
 - [Development Notes (Temporary use of H1 for ease of finding notes quickly.)](#development-notes-temporary-use-of-h1-for-ease-of-finding-notes-quickly)
   - [List of Reusable Components](#list-of-reusable-components)
+    - [LikeAndUnlike Component](#likeandunlike-component)
   - [Design Choices](#design-choices)
     - [Colors](#colors)
     - [Components and Functionality](#components-and-functionality)
@@ -118,6 +119,9 @@ another's comments, managing user profiles, and registering for courses.
   editing and deleting features for admins, limited to posts they authored. This allows for quick
   edits without needing to access the backend for minor tasks.
 
+- Displays the total number of likes (`likes_count`) for each post.
+- When a user likes or unlikes a post, the `likes_count` dynamically updates without requiring a page refresh. This is achieved through state updates in the `PostPage` component, which interact with the backend API.
+
 #### Future Planned Features
 
 - Introduce a **moderator** tier of users with permissions greater than regular authenticated users.
@@ -145,7 +149,6 @@ alternating colors to show division.
 ![Desktop Homepage](https://res.cloudinary.com/cheymd/image/upload/v1731488079/foraging_link/readme_images/desktop_homepage_and_post_list_ahmz0c.png)
 
 **Post Detail - Wireframe - Desktop view**
-
 ![Desktop Post Detail](https://res.cloudinary.com/cheymd/image/upload/v1731488211/foraging_link/readme_images/desktop_post_detail_irfqvk.png)
 
 **Comments - Expanded - Wireframe - Desktop view** Comments display only if there are any to show.
@@ -187,20 +190,24 @@ ___
 
 ## List of Reusable Components
 
-1. **Likes Component**:
-   - **Function**: Toggles likes and displays the like count.
-   - Conditionally displayed, baseed on being signed in.
-  
+### LikeAndUnlike Component
+
+1. **LikeUnlike Component**
+
+   The LikeUnlike component is utilized in both posts and comments. It dynamically updates the likes_count in the UI using "Optimistic Updates", provides immediate feedback by modifying the count locally before confirming changes with the backend.
+   It conditionally renders according to the user authentication: a filled heart for liked items, an outlined heart for unliked items, and a static heart if the user isn't logged in.
+
 2. **Comment Button Component**:
-   - **Function**: Opens comments form.
-   - Conditionally displayed, based on being signed in.
+
+- **Function**: Opens comments form.
+- Conditionally displayed, based on being signed in.
   
-3. **Edit Button Component**:
+4. **Edit Button Component**:
    - **Function**: Opens an editing form.
    - Conditionally displayed, based on being signed in.
    - Conditionally displayed, based on Currently signed in user being the Author of the comment.
 
-4. **Delete Button Component**:
+5. **Delete Button Component**:
    - **Function**: Deletes comments, or replies with a confirmation.
    - Conditionally displayed, based on being signed in.
    - Conditionally displayed, based on Currently signed in user being the Author of the comment.
