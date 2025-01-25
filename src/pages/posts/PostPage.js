@@ -52,7 +52,7 @@ function PostPage() {
 
         {/* Container for the comments section */}
         <Container className={appStyles.Content}>
-          <CommentSection postid={id} />
+          <CommentSection postId={id} />
         </Container>
       </Col>
 
