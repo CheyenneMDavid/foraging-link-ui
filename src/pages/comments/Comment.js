@@ -5,6 +5,7 @@ import Avatar from "../../components/Avatar";
 import styles from "../../styles/Comment.module.css";
 import LikeUnlike from "../../components/LikeUnlike";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { MoreDropdown } from "../../components/MoreDropdown";
 
 function Comment(props) {
   const {
@@ -45,6 +46,7 @@ function Comment(props) {
           <div className={styles.CommentContent}>
             <Card.Text>{content}</Card.Text>
           </div>
+          {is_owner && <MoreDropdown />}
         </div>
 
         {/* User interaction section */}
