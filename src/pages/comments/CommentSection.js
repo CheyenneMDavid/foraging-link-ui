@@ -62,6 +62,10 @@ function CommentSection({ postId }) {
 
   return (
     <div className={styles.CommentSection}>
+      {/* Rendering comments first to encourage users to read what they are commenting on */}
+      {comments.length > 0 ? renderComments() : <p>No comments yet.</p>}
+
+      {/* Rendering CommentCreateForm after comments */}
       {currentUser ? (
         <CommentCreateForm
           profile_id={currentUser.profile_id}
@@ -70,7 +74,6 @@ function CommentSection({ postId }) {
           setComments={setComments}
         />
       ) : null}
-      {comments.length > 0 ? renderComments() : <p>No comments yet.</p>}
     </div>
   );
 }
