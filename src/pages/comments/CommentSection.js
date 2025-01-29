@@ -1,6 +1,4 @@
-// This file is mostly coppied/ borrowed from the Moments walkthrough project with Code Institute
-// The CommentSection component handlies the comments for posts and handlies the nested replies.
-// It contains the CommentCreateForm and allows logged in users to create new comments.
+// CommentSection.js - Responsible for fetching and rendering comments.
 
 import React, { useEffect, useState } from "react";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -12,34 +10,37 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 function CommentSection({ postId }) {
   console.log("Post ID in the CommentSection:", postId);
 
-  // State to store the fetched comments.
-  const [comments, setComments] = useState([]);
+  // State to store fetched comments
+  const [comments, setComments] = useState({ results: [] });
+
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
 
-  // Fetch comments for the given post ID on component mount or when postId changes
+  // Fetch comments for the given post ID on component mount or when postId changes.
   useEffect(() => {
     const handleMount = async () => {
       try {
-        // Request to API, fetching comments that are filtered by the post's ID
+        // Axios request to API, fetch comments, filtered by the post's ID
         const { data } = await axiosReq.get(
           `/comments/?plant_in_focus_post=${postId}`
         );
         console.log("Fetched comments:", data);
+
         // Updates the state with the fetched comments.
-        setComments(data.results);
+        setComments({ results: data.results });
       } catch (err) {
-        // Logs the error if the request to fetch comments fails
+        // Logs an error if request to fetch the comments fails
         console.log("Error fetching comments:", err);
       }
     };
-    // Calls the handleMount function to fetch comments
+
+    // Calls th handleMount function to fetch comments
     handleMount();
   }, [postId]);
 
-  // Function to recursively render comments and their replies.
+  // Function rendering comments and their replies, recursively.
   const renderComments = (parentId = null) => {
-    return comments
+    return comments.results
       .filter((comment) => comment.replying_comment === parentId)
       .map((comment) => {
         console.log(
@@ -64,8 +65,12 @@ function CommentSection({ postId }) {
 
   return (
     <div className={styles.CommentSection}>
-      {/* Rendering comments first to encourage users to read what they are commenting on */}
-      {comments.length > 0 ? renderComments() : <p>No comments yet.</p>}
+      {/* Conditional rendering of comments - if they exist */}
+      {comments.results?.length > 0 ? (
+        renderComments()
+      ) : (
+        <p>No comments yet.</p>
+      )}
 
       {/* Rendering CommentCreateForm after comments */}
       {currentUser ? (

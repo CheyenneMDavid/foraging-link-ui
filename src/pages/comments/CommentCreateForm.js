@@ -7,14 +7,12 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
 import styles from "../../styles/CommentCreateEditForm.module.css";
+import buttonStyles from "../../styles/Button.module.css";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 
-// Main function for the creation of Component.
 function CommentCreateForm(props) {
-  // Detructuring the props that are passed from the parent Component.
-  const { post, setPost, setComments, profileImage, profile_id } = props;
-
+  const { post, setComments, profileImage, profile_id } = props;
   const [content, setContent] = useState("");
 
   const handleChange = (event) => {
@@ -26,38 +24,31 @@ function CommentCreateForm(props) {
     try {
       console.log({
         content,
-        // Ensures the post ID is an integer
-        plants_in_focus_post: parseInt(post),
+        plant_in_focus_post: parseInt(post),
       });
 
       // Makes a POST request to create a new comment
       const { data } = await axiosRes.post("/comments/", {
         content,
-        plants_in_focus_post: parseInt(post), // Ensures the post ID is an integer
+        // Ensures the post ID is an integer
+        plant_in_focus_post: parseInt(post),
       });
 
+      console.log("Comment posted:", data);
+
+      // Updates comments.
       setComments((prevComments) => ({
-        ...prevComments,
         // Adds the new comment to the results array
         results: [data, ...prevComments.results],
       }));
 
-      // Updates the post state to increase the comments count
-      setPost((prevPost) => ({
-        results: [
-          {
-            ...prevPost.results[0],
-            comments_count: prevPost.results[0].comments_count + 1,
-          },
-        ],
-      }));
-
       // Clears the input field after a successful submission
       setContent("");
+
+      console.log("CommentSection updated!");
     } catch (err) {
-      console.log("Error response:", err.response);
-      console.log("Error data:", err.response?.data);
-      console.log("Error status:", err.response?.status);
+      // Logs ALL errors to console for debugging
+      console.log("All errors:", err);
     }
   };
 
@@ -78,13 +69,14 @@ function CommentCreateForm(props) {
           />
         </InputGroup>
       </Form.Group>
+
       {/* form's submit button */}
       <button
-        className={`${styles.Button} btn d-block ml-auto`}
+        className={`${buttonStyles.Button} btn d-block ml-auto`}
         disabled={!content.trim()}
         type="submit"
       >
-        post
+        Post Comment
       </button>
     </Form>
   );
