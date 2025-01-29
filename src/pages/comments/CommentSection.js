@@ -10,6 +10,8 @@ import CommentCreateForm from "../comments/CommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function CommentSection({ postId }) {
+  console.log("Post ID in the CommentSection:", postId);
+
   // State to store the fetched comments.
   const [comments, setComments] = useState([]);
   const currentUser = useCurrentUser();
