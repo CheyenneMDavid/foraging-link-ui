@@ -1,6 +1,6 @@
-// This CommentCreateForm Component handles the creation of comments for a specific post.
+// Component to handle the creation of comments for a specific post.
 
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Form from "react-bootstrap/Form";
@@ -21,21 +21,28 @@ function CommentCreateForm(props) {
     setContent(event.target.value);
   };
 
-  // handleSubmit fot the submission of the forms.
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      // Makes a post request to create a new comment.
-      const { data } = await axiosRes.post("/comments/", {
-        content, // conntent of the comment
-        post,
+      console.log({
+        content,
+        // Ensures the post ID is an integer
+        plants_in_focus_post: parseInt(post),
       });
+
+      // Makes a POST request to create a new comment
+      const { data } = await axiosRes.post("/comments/", {
+        content,
+        plants_in_focus_post: parseInt(post), // Ensures the post ID is an integer
+      });
+
       setComments((prevComments) => ({
         ...prevComments,
-        // Adds the new comment to the results array.
+        // Adds the new comment to the results array
         results: [data, ...prevComments.results],
       }));
-      // Updates the post state to increase the comments count.
+
+      // Updates the post state to increase the comments count
       setPost((prevPost) => ({
         results: [
           {
@@ -44,10 +51,13 @@ function CommentCreateForm(props) {
           },
         ],
       }));
-      // sets the value to clear the input field after a successful submission
+
+      // Clears the input field after a successful submission
       setContent("");
     } catch (err) {
-      console.log(err);
+      console.log("Error response:", err.response);
+      console.log("Error data:", err.response?.data);
+      console.log("Error status:", err.response?.status);
     }
   };
 
