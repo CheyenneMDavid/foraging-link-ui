@@ -36,3 +36,11 @@
 .CreationDate {
   color: whitesmoke;
 }
+
+.RepliesContainer {
+  background-color: red;
+}
+
+.Reply {
+  color: red;
+}

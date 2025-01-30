@@ -1,4 +1,7 @@
-import React from "react";
+// CommentSection.js - Responsible for fetching and rendering comments.
+// It imports the ReplyCreateForm component which enables users to reply to comments already made.
+
+import React, { useState } from "react";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
@@ -6,6 +9,7 @@ import styles from "../../styles/Comment.module.css";
 import LikeUnlike from "../../components/LikeUnlike";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { MoreDropdown } from "../../components/MoreDropdown";
+import ReplyCreateForm from "./ReplyCreateForm";
 
 function Comment(props) {
   const {
@@ -25,6 +29,9 @@ function Comment(props) {
 
   // Checks if the logged-in user is the owner of the comment
   const is_owner = currentUser?.username === owner;
+
+  // State for replies.
+  const [replyComments, setReplyComments] = useState({ results: [] });
 
   return (
     <Card className={styles.Comment}>
@@ -77,7 +84,41 @@ function Comment(props) {
               />
             )}
           </div>
+          {/* Component for adding replies to comments */}
+          <ReplyCreateForm
+            profile_id={currentUser.profile_id}
+            profileImage={profile_image}
+            replying_comment={id}
+            setReplyComments={setReplyComments}
+          />
         </div>
+
+        {replyComments.results.length > 0 && (
+          <div className={styles.RepliesContainer}>
+            {replyComments.results.map((reply) => (
+              <Card key={reply.id} className={styles.Reply}>
+                <Card.Body>
+                  <div className={styles.CommentContainer}>
+                    <Link to={`/profiles/${reply.profile_id}`}>
+                      <Avatar
+                        src={reply.profile_image}
+                        height={30}
+                        alt={`${reply.owner}'s avatar`}
+                      />
+                    </Link>
+                    <strong className={styles.CommentAuthor}>
+                      {reply.owner}
+                    </strong>
+                  </div>
+                  <Card.Text>{reply.content}</Card.Text>
+                  <span className={styles.CreationDate}>
+                    {reply.created_at}
+                  </span>
+                </Card.Body>
+              </Card>
+            ))}
+          </div>
+        )}
       </Card.Body>
     </Card>
   );
