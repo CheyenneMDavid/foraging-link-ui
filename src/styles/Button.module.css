@@ -4,17 +4,25 @@
   background-color: #856404;
   border-radius: 100px;
   border-width: 2px;
-  border-color: transparent;
+  border-color: whitesmoke;
   padding: 4px 10px;
-  margin-left: 2px;
+  margin-left: auto;
   margin-right: 2px;
   min-width: 75px;
+  color: whitesmoke;
+  box-shadow: none !important;
+  outline: none !important;
+  border-style: solid;
+}
+
+.AlignRight {
+  margin-left: auto;
+  display: block;
 }
 
 .Button:hover {
   background-color: orange;
-  border-width: 2px;
-  border-color: green;
+  border-color: whitesmoke;
   color: black;
   cursor: pointer;
 }
@@ -22,11 +30,12 @@
 .Button:active,
 .Button:hover:active {
   border-width: 2px;
+  border-color: whitesmoke;
   background-color: #619158 !important;
 }
 
 .Button:focus {
-  border-width: 2px;
+  border-color: whitesmoke;
   background-color: orange;
   color: black;
 }
@@ -39,4 +48,5 @@
 .Black,
 .BlackOutline:hover {
   border-width: 2px;
+  border-color: whitesmoke;
 }

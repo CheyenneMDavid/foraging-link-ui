@@ -65,14 +65,7 @@ function CommentSection({ postId }) {
 
   return (
     <div className={styles.CommentSection}>
-      {/* Conditional rendering of comments - if they exist */}
-      {comments.results?.length > 0 ? (
-        renderComments()
-      ) : (
-        <p>No comments yet.</p>
-      )}
-
-      {/* Rendering CommentCreateForm after comments */}
+      {/* Comment input box should be first */}
       {currentUser ? (
         <CommentCreateForm
           profile_id={currentUser.profile_id}
@@ -81,6 +74,13 @@ function CommentSection({ postId }) {
           setComments={setComments}
         />
       ) : null}
+
+      {/* Then render existing comments */}
+      {comments.results?.length > 0 ? (
+        renderComments()
+      ) : (
+        <p>No comments yet.</p>
+      )}
     </div>
   );
 }

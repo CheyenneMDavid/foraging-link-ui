@@ -30,9 +30,6 @@ function SignInForm() {
 
   const history = useHistory();
 
-  // Swapped handleChange and handleSubmit order. No impact to functioning
-  // of code, but it makes for an easier read to follow because it makes more
-  // sense that a change would take place before the handleSubmit.
   const handleChange = (event) => {
     setSignInData({
       ...signInData,
@@ -93,7 +90,7 @@ function SignInForm() {
               </Alert>
             ))}
             <Button
-              className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Natural}`}
+              className={`${btnStyles.Button} ${btnStyles.Wide}`}
               type="submit"
             >
               Sign in
