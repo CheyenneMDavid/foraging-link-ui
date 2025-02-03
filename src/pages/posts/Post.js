@@ -138,7 +138,7 @@ function Post(props) {
               )}
               <span>{likes_count > 0 && <span>{likes_count}</span>}</span>
               <span>
-                <i className="far fa-comments" />
+                <i className="far fa-comments no-hover" />
                 {comments_count > 0 && <span>{comments_count}</span>}
               </span>
             </div>
