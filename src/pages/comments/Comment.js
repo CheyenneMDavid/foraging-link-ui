@@ -6,6 +6,7 @@ import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import styles from "../../styles/Comment.module.css";
+import btnStyles from "../../styles/Button.module.css";
 import LikeUnlike from "../../components/LikeUnlike";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { MoreDropdown } from "../../components/MoreDropdown";
@@ -24,14 +25,10 @@ function Comment(props) {
     setComments,
   } = props;
 
-  // Gets the currently logged-in user's details
   const currentUser = useCurrentUser();
-
-  // Checks if the logged-in user is the owner of the comment
   const is_owner = currentUser?.username === owner;
-
-  // State for replies.
   const [replyComments, setReplyComments] = useState({ results: [] });
+  const [showReplyForm, setShowReplyForm] = useState(false);
 
   return (
     <Card className={styles.Comment}>
@@ -63,7 +60,6 @@ function Comment(props) {
           {/* Likes section */}
           <div className={styles.LikesSection}>
             {is_owner ? (
-              // Tooltip for owners explaining why they can't like their own comment
               <OverlayTrigger
                 placement="top"
                 overlay={<Tooltip>You can't like your own comment!</Tooltip>}
@@ -74,7 +70,6 @@ function Comment(props) {
                 </span>
               </OverlayTrigger>
             ) : (
-              // Like and Unlike functionality for other users
               <LikeUnlike
                 id={id}
                 like_id={like_id}
@@ -84,15 +79,27 @@ function Comment(props) {
               />
             )}
           </div>
-          {/* Component for adding replies to comments */}
+
+          {/* Reply Button to Toggle Reply Form */}
+          <button
+            className={`${btnStyles.Button}`}
+            onClick={() => setShowReplyForm(!showReplyForm)}
+          >
+            {showReplyForm ? "Cancel" : "Reply"}
+          </button>
+        </div>
+
+        {/* Show Reply Form Only When Toggled */}
+        {showReplyForm && (
           <ReplyCreateForm
             profile_id={currentUser.profile_id}
             profileImage={profile_image}
             replying_comment={id}
             setReplyComments={setReplyComments}
           />
-        </div>
+        )}
 
+        {/* Replies Section */}
         {replyComments.results.length > 0 && (
           <div className={styles.RepliesContainer}>
             {replyComments.results.map((reply) => (
