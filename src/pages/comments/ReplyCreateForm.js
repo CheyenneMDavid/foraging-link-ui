@@ -1,9 +1,6 @@
-// Component to handle the creation of replies for a specific comment.
-// It has the same structure as CommentCreateForm but it's a separate component that manages
-// replies independently. WHilst reusing CommentCreateForm may have been keeping in-line with
-// DRY principles, it would have introduced unnecessary complexity whilst trying to managing
-// the nested replies. This separated form ensures that replies are handled smoothly whilst
-// avoiding unintended recursive imports or logic loops.
+// ReplyCreateForm.js - Handles the creation of replies to comments.
+// While it shares a similar structure with CommentCreateForm, managing replies separately
+// avoids unnecessary complexity and recursive logic issues.
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
@@ -50,21 +47,21 @@ function ReplyCreateForm(props) {
       console.log("Reply posted:", data);
 
       if (typeof setReplyComments !== "function") {
-        console.log("Error: setReplyComments is not a function");
+        console.log("Error: setReplyComments is not a function.");
         return;
       }
 
-      // Updates replies state and ensures the prevReplyComents are managed correctly.
+      // Updates replies state while preserving existing replies.
       setReplyComments((prevReplyComments) => ({
         results: [data, ...(prevReplyComments?.results || [])], // Fix applied here
       }));
 
-      // Clears the input field after a successful submission
+      // Clears the input field after a successful submission.
       setReplyContent("");
 
       console.log("Reply section updated!");
     } catch (err) {
-      // Logs ALL errors to console for debugging
+      // Logs all errors for debugging.
       console.log("All errors:", err);
     }
   };
@@ -87,9 +84,9 @@ function ReplyCreateForm(props) {
         </InputGroup>
       </Form.Group>
 
-      {/* form's submit button */}
+      {/* Submits button for the reply form */}
       <button
-        className={`${buttonStyles.Button} btn d-block ml-auto`}
+        className={`${buttonStyles.Button} AlignRight`}
         disabled={!replyContent.trim()}
         type="submit"
       >
