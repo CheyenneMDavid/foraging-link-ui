@@ -10,38 +10,38 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 function CommentSection({ postId }) {
   console.log("Post ID in the CommentSection:", postId);
 
-  // State to store fetched comments
+  // State to store comments, initialized as an object with an empty results array
   const [comments, setComments] = useState({ results: [] });
 
+  // Retrieve the current user's profile image if they are loged in
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
 
-  // Fetch comments for the given post ID on component mount or when postId changes.
   useEffect(() => {
     const handleMount = async () => {
       try {
-        // Axios request to API, fetch comments, filtered by the post's ID
+        // Fetch comments for the given post ID
         const { data } = await axiosReq.get(
           `/comments/?plant_in_focus_post=${postId}`
         );
+
         console.log("Fetched comments:", data);
 
-        // Updates the state with the fetched comments.
+        // Update state with the fetched comments
         setComments({ results: data.results });
       } catch (err) {
-        // Logs an error if request to fetch the comments fails
         console.log("Error fetching comments:", err);
       }
     };
 
-    // Calls th handleMount function to fetch comments
+    // Call handleMount when the component mounts or postId changes
     handleMount();
   }, [postId]);
 
-  // Function rendering comments and their replies, recursively.
+  // Render comments and their replies recursively
   const renderComments = (parentId = null) => {
     return comments.results
-      .filter((comment) => comment.replying_comment === parentId)
+      .filter((comment) => comment.replying_comment === parentId) // Filter comments based on parent ID
       .map((comment) => {
         console.log(
           "Comment ID:",
@@ -49,6 +49,7 @@ function CommentSection({ postId }) {
           "Replying Comment:",
           comment.replying_comment
         );
+
         return (
           <div
             key={comment.id}
@@ -56,7 +57,14 @@ function CommentSection({ postId }) {
               comment.replying_comment === null ? styles.Comment : styles.Reply
             }
           >
-            <Comment {...comment} isReply={!!comment.replying_comment} />
+            {/* Render a single comment component */}
+            <Comment
+              {...comment}
+              isReply={!!comment.replying_comment}
+              setComments={setComments}
+            />
+
+            {/* Recursively render replies to this comment */}
             {renderComments(comment.id)}
           </div>
         );
@@ -65,7 +73,7 @@ function CommentSection({ postId }) {
 
   return (
     <div className={styles.CommentSection}>
-      {/* Comment input box should be first */}
+      {/* Render the comment input form if the user's logged in. */}
       {currentUser ? (
         <CommentCreateForm
           profile_id={currentUser.profile_id}
@@ -75,7 +83,7 @@ function CommentSection({ postId }) {
         />
       ) : null}
 
-      {/* Then render existing comments */}
+      {/* Render comments if available, otherwise show placeholder text */}
       {comments.results?.length > 0 ? (
         renderComments()
       ) : (
