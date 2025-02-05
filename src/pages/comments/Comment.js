@@ -1,5 +1,4 @@
-// CommentSection.js - Responsible for fetching and rendering comments.
-// It imports the ReplyCreateForm component which enables users to reply to comments already made.
+// Comment.js - Renders individual comments with user interactions like likes, replies, and more options.
 
 import React, { useState } from "react";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
@@ -27,14 +26,13 @@ function Comment(props) {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
-  const [replyComments, setReplyComments] = useState({ results: [] });
   const [showReplyForm, setShowReplyForm] = useState(false);
 
   return (
     <Card className={styles.Comment}>
       <Card.Body>
         <div className={styles.CommentContainer}>
-          {/* Avatar and username section */}
+          {/* Display user's avatar with a link to their profile */}
           <div className={styles.CommentHead}>
             <Link to={`/profiles/${profile_id}`}>
               <Avatar
@@ -46,18 +44,20 @@ function Comment(props) {
             <strong className={styles.CommentAuthor}>{owner}</strong>
           </div>
 
-          {/* Comment content */}
+          {/* Display the comment's text content */}
           <div className={styles.CommentContent}>
             <Card.Text>{content}</Card.Text>
           </div>
+
+          {/* Show edit/delete options if the comment belongs to the current user */}
           {is_owner && <MoreDropdown />}
         </div>
 
-        {/* User interaction section */}
+        {/* Display the comment's creation date and user interaction options */}
         <div className={styles.CommentBar}>
           <span className={styles.CreationDate}>{created_at}</span>
 
-          {/* Likes section */}
+          {/* Likes section - disables likes for the comment owner */}
           <div className={styles.LikesSection}>
             {is_owner ? (
               <OverlayTrigger
@@ -70,6 +70,7 @@ function Comment(props) {
                 </span>
               </OverlayTrigger>
             ) : (
+              // Ability to Like and Unlike for users who don't own the comment.
               <LikeUnlike
                 id={id}
                 like_id={like_id}
@@ -80,7 +81,7 @@ function Comment(props) {
             )}
           </div>
 
-          {/* Reply Button to Toggle Reply Form */}
+          {/* Button to toggle the reply form on/off */}
           <button
             className={`${btnStyles.Button}`}
             onClick={() => setShowReplyForm(!showReplyForm)}
@@ -89,42 +90,14 @@ function Comment(props) {
           </button>
         </div>
 
-        {/* Show Reply Form Only When Toggled */}
+        {/* Show reply form only when toggled on */}
         {showReplyForm && (
           <ReplyCreateForm
             profile_id={currentUser.profile_id}
             profileImage={profile_image}
             replying_comment={id}
-            setReplyComments={setReplyComments}
+            setComments={setComments}
           />
-        )}
-
-        {/* Replies Section */}
-        {replyComments.results.length > 0 && (
-          <div className={styles.RepliesContainer}>
-            {replyComments.results.map((reply) => (
-              <Card key={reply.id} className={styles.Reply}>
-                <Card.Body>
-                  <div className={styles.CommentContainer}>
-                    <Link to={`/profiles/${reply.profile_id}`}>
-                      <Avatar
-                        src={reply.profile_image}
-                        height={30}
-                        alt={`${reply.owner}'s avatar`}
-                      />
-                    </Link>
-                    <strong className={styles.CommentAuthor}>
-                      {reply.owner}
-                    </strong>
-                  </div>
-                  <Card.Text>{reply.content}</Card.Text>
-                  <span className={styles.CreationDate}>
-                    {reply.created_at}
-                  </span>
-                </Card.Body>
-              </Card>
-            ))}
-          </div>
         )}
       </Card.Body>
     </Card>
