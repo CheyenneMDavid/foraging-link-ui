@@ -27,7 +27,7 @@ another's comments, managing user profiles, and registering for courses.
     - [Wireframes](#wireframes)
       - [Component Planning](#component-planning)
         - [Comments Section](#comments-section)
-- [Development Notes (Temporary use of H1 for ease of finding notes quickly.)](#development-notes-temporary-use-of-h1-for-ease-of-finding-notes-quickly)
+  - [Development Notes](#development-notes)
   - [List of Reusable Components](#list-of-reusable-components)
     - [LikeAndUnlike Component](#likeandunlike-component)
   - [Design Choices](#design-choices)
@@ -37,6 +37,8 @@ another's comments, managing user profiles, and registering for courses.
   - [Development Challenges \& Solutions](#development-challenges--solutions)
     - [Naming Conflicts](#naming-conflicts)
     - [Refactoring Post.js and PostsList.js](#refactoring-postjs-and-postslistjs)
+    - [Handling Comments and Replies](#handling-comments-and-replies)
+      - [**Additional Fixes to Ensure Replies Display Correctly:**](#additional-fixes-to-ensure-replies-display-correctly)
   - [Credits](#credits)
 
 ## User Stories
@@ -157,11 +159,11 @@ box, visible only if the comment belongs to the currently signed-in user.
 
 ![Desktop Expanded Comments](https://res.cloudinary.com/cheymd/image/upload/v1731488210/foraging_link/readme_images/desktop_post_detail_expanded_comments_kvjrje.png)
 
-**Homepage Wireframe - Mobile view**
+**Homepage Wireframe - Mobile view**:
 
 ![Mobile Homepage](https://res.cloudinary.com/cheymd/image/upload/v1731488209/foraging_link/readme_images/mobile_homepage_and_post_list_qbtj7t.png)
 
-**Post Detail - Wireframe - Mobile view**
+**Post Detail - Wireframe - Mobile view**:
 
 ![Mobile Post Detail](https://res.cloudinary.com/cheymd/image/upload/v1731488209/foraging_link/readme_images/mobile_post_detail_g12mha.png)
 
@@ -171,8 +173,6 @@ the currently signed-in user.
 
 ![Mobile Expanded Comments](https://res.cloudinary.com/cheymd/image/upload/v1731488212/foraging_link/readme_images/mobile_post_detail_expanded_comments_fqif0x.png)
 
-___
-
 #### Component Planning
 
 The component planning aims to break down the application into manageable parts, focusing on reusable components to maintain consistency and modularity.
@@ -180,11 +180,8 @@ The component planning aims to break down the application into manageable parts,
 ##### Comments Section
 
 The comments section is by far the most complex part of the application, due to the number of functionalities and conditional displays involved. To simplify and manage this complexity, I decided to break the functionality into individual reusable components which can then also be used by Posts.
-___
-___
-___
 
-# Development Notes (Temporary use of H1 for ease of finding notes quickly.)
+## Development Notes
 
 **Note**: This section is only being used as a notes section to self for planning out functionality, implementation and reasoning as components are broken down into their shared usage.
 
@@ -197,26 +194,14 @@ ___
    The LikeUnlike component is utilized in both posts and comments. It dynamically updates the likes_count in the UI using "Optimistic Updates", provides immediate feedback by modifying the count locally before confirming changes with the backend.
    It conditionally renders according to the user authentication: a filled heart for liked items, an outlined heart for unliked items, and a static heart if the user isn't logged in.
 
-2. **Comment Button Component**:
-
-- **Function**: Opens comments form.
-- Conditionally displayed, based on being signed in.
+2. **Comments**
+    - Comment Section which follows the associated posts and contains the comments with comment input boxes.
+    - Individual comments have a toggle-reply button which then opens a reply input box with a 'Post Reply' button.
   
-4. **Edit Button Component**:
-   - **Function**: Opens an editing form.
-   - Conditionally displayed, based on being signed in.
-   - Conditionally displayed, based on Currently signed in user being the Author of the comment.
-
-5. **Delete Button Component**:
-   - **Function**: Deletes comments, or replies with a confirmation.
-   - Conditionally displayed, based on being signed in.
-   - Conditionally displayed, based on Currently signed in user being the Author of the comment.
+3. **Three Dots - More DropDown**
+   - Provides Edit and Delete functions for the author of a comment.
   
 **Note**: H1 heading above is temporary and will be removed or changed before the final version.
-
-___
-___
-___
 
 ## Design Choices
 
@@ -228,21 +213,23 @@ on the eye, but also a rewarding depth
 - Navigation icon/links
 
   - Default color: #532402 (brown)
-  - Color on hover: #619158 (green)
+  - Icon color on hover: #ffa500 (orange)
   - Current page: #619158 (green)
+
+- Text #f5f5f5 (Whitesmoke)
 
 - Buttons
 
-  - Default color #532402 (brown)
-  - Color on hover #619158 (green)
-  - Opacity on hover: 0.8
+  - Default color #856404 (gold)
+  - Color on hover #ffa500 (orange)
+  - Border #ffffff (White)
 
 - Lines and Borders
 
-  - #532402 (brown)
+  - #856404 (gold)
 
 - Site Background
-  - Background color: #f8f8f8 (a light, but gentle on the eyes)
+  - Background color: #0d0d0d (dark grey / almost black) chosen in contrast to the vivid colors that plants offer
 
 ### Components and Functionality
 
@@ -305,6 +292,23 @@ Initially, Post.js was created as a reusable component. However, during developm
 To address this, Post.js was integrated into both components, enabling more consistency in styling and behavior across the different views.
 
 To enable the list page for posts to display the posts in a condensed manner, conditional logic was added via the "isListPage" prop and was used to format the image display and create truncated text in the list page.
+
+### Handling Comments and Replies
+
+The app allows users to comment on posts and reply to existing comments. To manage this functionality efficiently:  
+
+- **`CommentCreateForm`** is a reusable component used for posting top-level comments on posts.  
+- **`ReplyCreateForm`** was created separately because reusing `CommentCreateForm` inside comments led to import conflicts and structural issues.  
+- **`ReplyCreateForm`** is imported into `Comment.js` specifically for handling replies to existing comments.  
+
+#### **Additional Fixes to Ensure Replies Display Correctly:**  
+
+- Fixed retrieval logic so replies are properly linked to parent comments.  
+- Updated **CommentsSection** and **Comment** components to correctly handle and display nested replies.  
+- Ensured **likes_count** and **replies_count** are correctly passed and rendered to track comment interactions.  
+- Debugged API calls and adjusted how state updates to prevent missing or duplicated replies.  
+
+This structure **avoids circular imports, improves retrieval accuracy, and ensures a functional commenting system.**
 
 ---
 
