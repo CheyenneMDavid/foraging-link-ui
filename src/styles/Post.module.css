@@ -34,3 +34,22 @@ h5 {
   margin-top: 5px;
   font-size: 0.9rem;
 }
+
+.LikeCommentWrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.LikeSection,
+.CommentSection {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.LikesCount,
+.CommentsCount {
+  font-size: 14px;
+  color: #ffffff;
+}

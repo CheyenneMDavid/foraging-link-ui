@@ -71,13 +71,16 @@ function Comment(props) {
               </OverlayTrigger>
             ) : (
               // Ability to Like and Unlike for users who don't own the comment.
-              <LikeUnlike
-                id={id}
-                like_id={like_id}
-                likes_count={likes_count}
-                setItems={setComments}
-                itemType="comment"
-              />
+              <div className={styles.LikeWrapper}>
+                <LikeUnlike
+                  id={id}
+                  like_id={like_id}
+                  likes_count={likes_count}
+                  setItems={setComments}
+                  itemType="comment"
+                />
+                <span className={styles.LikesCount}>{likes_count}</span>
+              </div>
             )}
           </div>
 

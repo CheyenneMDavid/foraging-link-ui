@@ -112,35 +112,37 @@ function Post(props) {
         <Card.Body>
           <div className={styles.PostBar}>
             <span className={styles.CreationDate}>{created_at}</span>
-            <div>
-              {is_owner ? (
-                <OverlayTrigger
-                  placement="top"
-                  overlay={<Tooltip>You can't like your own post!</Tooltip>}
-                >
-                  <i className="far fa-heart" />
-                </OverlayTrigger>
-              ) : !currentUser ? (
-                <OverlayTrigger
-                  placement="top"
-                  overlay={<Tooltip>Log in to like posts!</Tooltip>}
-                >
-                  <i className="far fa-heart" />
-                </OverlayTrigger>
-              ) : (
-                <LikeUnlike
-                  id={id}
-                  like_id={like_id}
-                  likes_count={likes_count}
-                  setItems={setPosts}
-                  itemType="plant_in_focus_post"
-                />
-              )}
-              <span>{likes_count > 0 && <span>{likes_count}</span>}</span>
-              <span>
+            <div className={styles.LikeCommentWrapper}>
+              <div className={styles.LikeSection}>
+                {is_owner ? (
+                  <OverlayTrigger
+                    placement="top"
+                    overlay={<Tooltip>You can't like your own post!</Tooltip>}
+                  >
+                    <i className="far fa-heart" />
+                  </OverlayTrigger>
+                ) : !currentUser ? (
+                  <OverlayTrigger
+                    placement="top"
+                    overlay={<Tooltip>Log in to like posts!</Tooltip>}
+                  >
+                    <i className="far fa-heart" />
+                  </OverlayTrigger>
+                ) : (
+                  <LikeUnlike
+                    id={id}
+                    like_id={like_id}
+                    likes_count={likes_count}
+                    setItems={setPosts}
+                    itemType="plant_in_focus_post"
+                  />
+                )}
+                <span className={styles.LikesCount}>{likes_count}</span>
+              </div>
+              <div className={styles.CommentSection}>
                 <i className="far fa-comments no-hover" />
-                {comments_count > 0 && <span>{comments_count}</span>}
-              </span>
+                <span className={styles.CommentsCount}>{comments_count}</span>
+              </div>
             </div>
           </div>
         </Card.Body>

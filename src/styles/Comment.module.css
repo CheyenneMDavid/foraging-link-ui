@@ -36,3 +36,20 @@
 .CreationDate {
   color: whitesmoke;
 }
+
+.LikesSection {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Adjust spacing between heart and count */
+}
+
+.LikeWrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.LikesCount {
+  font-size: 14px;
+  color: #ffffff;
+}
