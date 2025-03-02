@@ -1,20 +1,25 @@
-// PostPage.js - Responsible for fetching and displaying a single post. It imports the
-// CommentSection which manages comments and Sidebar which displays PopularProfiles and
-// up-coming courses.
+// PostPage.js - Responsible for fetching and displaying a single post.
+// It imports UpComing Courses and CommentSection.
+// CommentSection is thenconditionally displayed based on user authentication.
 
 import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import appStyles from "../../App.module.css";
+import styles from "../../styles/Post.module.css";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useAuth } from "../../contexts/AuthContext";
 import Post from "./Post";
 import CommentSection from "../comments/CommentSection";
 import Sidebar from "../../components/Sidebar";
+import { Link } from "react-router-dom";
 
 function PostPage() {
   const { id } = useParams();
+
+  const { isLoggedIn } = useAuth();
 
   // State to manage post data
   const [post, setPost] = useState({ results: [] });
@@ -50,23 +55,42 @@ function PostPage() {
   console.log("Current Post:", currentPost);
 
   return (
-    <Row className="h-100">
-      {/* Main content area */}
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
-        {/* Render the post details */}
-        <Post {...currentPost} setPosts={setPost} />
+    <>
+      <Row className="h-100">
+        {/* Main content area */}
+        <Col className="py-2 p-0 p-lg-2" lg={8}>
+          {/* Render the post details */}
+          <Post {...currentPost} setPosts={setPost} />
 
-        {/* Comments component managing all aspects of comments */}
-        <Container className={appStyles.Content}>
-          <CommentSection postId={id} />
-        </Container>
-      </Col>
+          {/* Conditional rendering for comments */}
+          {!isLoggedIn ? (
+            <>
+              <span>
+                <Link className={styles.Link} to="/signin">
+                  {" "}
+                  Sign-in{" "}
+                </Link>{" "}
+                or
+                <Link className={styles.Link} to="/signup">
+                  {" "}
+                  Sign-up{" "}
+                </Link>{" "}
+                to join the discussions!
+              </span>
+            </>
+          ) : (
+            <Container className={appStyles.Content}>
+              <CommentSection postId={id} />
+            </Container>
+          )}
+        </Col>
 
-      {/* Sidebar content (visible only on large screens) */}
-      <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
-        <Sidebar mobile />
-      </Col>
-    </Row>
+        {/* Sidebar content (visible only on large screens) */}
+        <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
+          <Sidebar mobile />
+        </Col>
+      </Row>
+    </>
   );
 }
 
