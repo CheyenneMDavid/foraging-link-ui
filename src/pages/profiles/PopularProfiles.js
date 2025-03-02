@@ -1,9 +1,12 @@
 import React from "react";
 import appStyles from "../../App.module.css";
+import styles from "../../styles/ProfilePage.module.css";
+
 import { Container } from "react-bootstrap";
 import Profile from "./Profile";
 import { useProfileData } from "../../contexts/ProfileDataContext";
 import { useAuth } from "../../contexts/AuthContext";
+import { Link } from "react-router-dom";
 
 const PopularProfiles = ({ mobile }) => {
   const { popularProfiles } = useProfileData();
@@ -16,7 +19,17 @@ const PopularProfiles = ({ mobile }) => {
       }`}
     >
       {!isLoggedIn ? (
-        <p>Please Sign in to view popular profiles.</p>
+        <span>
+          <Link className={styles.Link} to="/signin">
+            {" "}
+            Sign-in
+          </Link>{" "}
+          or
+          <Link className={styles.Link} to="/signup">
+            {" "}
+            Sign-up to join in with the community!
+          </Link>
+        </span>
       ) : (
         <>
           <p>Most Followed Profiles</p>
