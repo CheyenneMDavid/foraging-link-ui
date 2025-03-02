@@ -44,3 +44,12 @@ span {
 .SignUpCol {
   height: 375px;
 }
+
+.Link {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.Link:hover {
+  color: whitesmoke;
+}
