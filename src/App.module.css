@@ -3,7 +3,7 @@
   background-color: #181818;
   min-height: 100vh;
   color: whitesmoke;
-  margin: 10px;
+  /* margin: 10px; */
 }
 
 .Main {
@@ -12,12 +12,20 @@
 
 div {
   background-color: #0d0d0d;
+  /* background-color: red; */
 }
 
 .Content {
   padding: 10px;
   border-radius: 2px;
 }
+
+.Sidebar {
+  /* background-color: red; */
+  border-left: 2px solid #333;
+  padding: 10px;
+}
+
 
 .FillerImage {
   object-fit: cover;

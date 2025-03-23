@@ -2,7 +2,7 @@
 // profiles of other users.
 
 import React from "react";
-// import UpcomingCourses from "../courses/UpcomingCourses";
+import UpcomingCourses from "../pages/courses/UpcomingCourses";
 import PopularProfiles from "../pages/profiles/PopularProfiles";
 import { Container } from "react-bootstrap";
 import appStyles from "../App.module.css";
@@ -12,8 +12,11 @@ const Sidebar = ({ mobile }) => {
     <Container
       className={`${mobile ? appStyles.MobileSidebar : appStyles.Sidebar}`}
     >
-      {!mobile && <p>Upcoming Courses</p>}
+      {!mobile && <p></p>}
+
       <PopularProfiles />
+      <hr />
+      <UpcomingCourses />
     </Container>
   );
 };
