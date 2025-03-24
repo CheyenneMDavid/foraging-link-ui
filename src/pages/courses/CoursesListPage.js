@@ -12,7 +12,7 @@ const CoursesListPage = () => {
     const fetchCourses = async () => {
       try {
         // Sends a GET request to the full-list endpoint.
-        const { data } = await axiosReq.get("/courses/full-list/");
+        const { data } = await axiosReq.get("/courses/");
 
         // Store the returned course data.
         setCourses(data.results);
