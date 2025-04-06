@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Form from "react-bootstrap/Form";
+
 import Container from "react-bootstrap/Container";
 import Asset from "../../components/Asset";
 import appStyles from "../../App.module.css";
-import styles from "../../styles/PostsList.module.css";
+
 import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import NoResults from "../../assets/no-results.png";
@@ -13,15 +13,14 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import PopularProfiles from "../profiles/PopularProfiles";
 import Post from "./Post";
 
-function PostsList({ message, filter = "" }) {
+function PostsList({ message, filter = "", query }) {
   // State for storing posts data and loading status
   const [posts, setPosts] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
 
   // Gets the current URL location to trigger re-fetching of posts for navigation
   const { pathname } = useLocation();
-  // State for search query input
-  const [query, setQuery] = useState("");
+
   // Get the currently logged-in user
   const currentUser = useCurrentUser();
 
@@ -53,21 +52,6 @@ function PostsList({ message, filter = "" }) {
     <>
       {/* Display for popular profiles when in mobile view */}
       <PopularProfiles mobile />
-
-      {/* Searchbar */}
-      <i className={`fas fa-search ${styles.SearchIcon}`} />
-      <Form
-        className={styles.SearchBar}
-        onSubmit={(event) => event.preventDefault()}
-      >
-        <Form.Control
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          type="text"
-          className={styles.SearchBar}
-          placeholder="Search posts"
-        />
-      </Form>
 
       {hasLoaded ? (
         <>

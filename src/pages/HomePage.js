@@ -10,12 +10,15 @@ import PostsList from "./posts/PostsList";
 // import PopularProfiles from "./profiles/PopularProfiles";
 import Sidebar from "../components/Sidebar";
 
-function HomePage() {
+function HomePage({ query }) {
   return (
     <Row className="h-100">
       {/* Main Content */}
       <Col lg={8} className="py-2 p-0 p-lg-2">
-        <PostsList message="No results found. Adjust the search keyword." />
+        <PostsList
+          message="No results found. Adjust the search keyword."
+          query={query}
+        />
       </Col>
 
       {/* Sidebar Container for Courses and Popular Profiles */}

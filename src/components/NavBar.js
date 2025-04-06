@@ -12,9 +12,11 @@ import Avatar from "./Avatar";
 
 import useClickOutsideToggle from "../hooks/src/hooks/useClickOutsideToggle";
 
+import SearchBar from "./SearchBar";
+
 // Navigation bar component, displays different navigation icons based on the user's
 // authentication status.
-function NavBar() {
+function NavBar({ setQuery }) {
   const currentUser = useCurrentUser();
   const owner = currentUser?.username;
 
@@ -91,11 +93,17 @@ function NavBar() {
       fixed="top"
     >
       <Container>
+        {/* {Logo} */}
         <NavLink to="/">
           <Navbar.Brand>
             <img src={logo} alt="logo" height="55" />
           </Navbar.Brand>
         </NavLink>
+
+        {/* SearchBar added to the right of the logo */}
+
+        <SearchBar setQuery={setQuery} />
+
         <Navbar.Toggle
           className={styles.NavbarToggle}
           ref={ref}
