@@ -29,5 +29,19 @@
 .NavbarToggle {
   border: 1px solid white !important;
   background-color: #512c0f;
-  margin-right: 1rem;
+  margin: 0rem 1rem 0.5rem 0.5rem;
+}
+
+.NavContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.LogoAndSearch {
+  display: flex;
+  align-items: center;
+  margin: 0rem 1rem 0.5rem 0.5rem;
+  flex-shrink: 1;
 }

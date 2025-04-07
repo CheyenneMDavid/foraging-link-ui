@@ -1,7 +1,8 @@
-// SearchBar.js
-// THIS IS A TEMPORARY WORKINGS FOR USING THE SEARCHBAR AS A REUSABLE COMPONENT.
+// SearchBar is a reusable component that ban be called into different places.
+
 import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
+
 import styles from "../styles/SearchBar.module.css";
 
 const SearchBar = ({ setQuery }) => {

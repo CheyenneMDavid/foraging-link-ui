@@ -92,18 +92,18 @@ function NavBar({ setQuery }) {
       expand="md"
       fixed="top"
     >
-      <Container>
-        {/* {Logo} */}
-        <NavLink to="/">
-          <Navbar.Brand>
-            <img src={logo} alt="logo" height="55" />
-          </Navbar.Brand>
-        </NavLink>
+      <Container className={styles.NavContainer}>
+        {/* SearchBar removed from PostsList and added to the right of the logo, making it accessible from all screens. */}
+        <div className={styles.LogoAndSearch}>
+          <NavLink to="/">
+            <Navbar.Brand>
+              <img src={logo} alt="logo" height="55" />
+            </Navbar.Brand>
+          </NavLink>
 
-        {/* SearchBar added to the right of the logo */}
-
-        <SearchBar setQuery={setQuery} />
-
+          {/* SearchBar moved from PostsList and added to the right of the logo, making it accessible from all the pages. */}
+          <SearchBar setQuery={setQuery} />
+        </div>
         <Navbar.Toggle
           className={styles.NavbarToggle}
           ref={ref}
