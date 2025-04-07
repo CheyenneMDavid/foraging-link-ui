@@ -24,7 +24,7 @@ function UpcomingCourses() {
     fetchCourses();
   }, []);
 
-  // Renders the
+  // Renders the three up comming courses in component which is call into the sidebar
   return (
     <div>
       <h3>Upcoming Courses</h3>
@@ -32,8 +32,12 @@ function UpcomingCourses() {
         {courses.map((course) => (
           <li key={course.id}>
             <h5 className={styles.CourseTitle}>{course.title}</h5>
+
             {/* Formats the course date into a more readable format */}
             <p>{new Date(course.date).toLocaleDateString()}</p>
+
+            {/* Fetches and displays number of available spaces from the back end. */}
+            <p>{course.available_spaces} spaces left</p>
             <hr />
           </li>
         ))}
