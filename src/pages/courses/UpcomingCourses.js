@@ -1,4 +1,6 @@
 // Component to display the 3 most immediate upcoming courses, used in the sidebar
+
+import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { axiosReq } from "../../api/axiosDefaults";
 
@@ -24,20 +26,18 @@ function UpcomingCourses() {
     fetchCourses();
   }, []);
 
-  // Renders the three up comming courses in component which is call into the sidebar
+  // Displays a list of upcoming courses. The entire block is clickable and takes user to the detail page for the course.
   return (
     <div>
       <h3>Upcoming Courses</h3>
       <ul>
         {courses.map((course) => (
           <li key={course.id}>
-            <h5 className={styles.CourseTitle}>{course.title}</h5>
-
-            {/* Formats the course date into a more readable format */}
-            <p>{new Date(course.date).toLocaleDateString()}</p>
-
-            {/* Fetches and displays number of available spaces from the back end. */}
-            <p>{course.available_spaces} spaces left</p>
+            <Link to={`/courses/${course.id}`}>
+              <h5 className={styles.CourseTitle}>{course.title}</h5>
+              <p>{new Date(course.date).toLocaleDateString()}</p>
+              <p>{course.available_spaces} spaces left</p>
+            </Link>
             <hr />
           </li>
         ))}

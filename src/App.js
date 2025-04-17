@@ -11,6 +11,7 @@ import HomePage from "./pages/HomePage";
 import PostPage from "./pages/posts/PostPage";
 import ProfilePage from "./pages/profiles/ProfilePage";
 import CoursesListPage from "./pages/courses/CoursesListPage";
+import CoursePage from "./pages/courses/CoursePage";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -21,9 +22,8 @@ function App() {
       <Container className={styles.Main}>
         <Switch>
           <Route exact path="/" render={() => <HomePage query={query} />} />
-
           <Route exact path="/courses" render={() => <CoursesListPage />} />
-
+          <Route exact path="/courses/:id" render={() => <CoursePage />} />
           <Route exact path="/profile" render={() => <h1>Profile</h1>} />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />

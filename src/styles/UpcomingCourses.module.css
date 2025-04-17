@@ -1,17 +1,21 @@
 .CourseTitle {
-  font-size: 1.5rem;
-  
-  color: whitesmoke;
-  margin-bottom: 1rem;
-}
+  font-size: 1.4rem;
 
-h4 {
-    text-decoration: underline;
+  color: whitesmoke;
+  margin: 1rem 0;
 }
 
 hr {
   border: none;
   height: 1px;
   background-color: whitesmoke;
-  
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
 }
