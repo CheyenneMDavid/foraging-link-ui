@@ -1,10 +1,10 @@
 /* Navagation text color always stays brown whilst the icons change to green on hover and indictae current page by being green. */
 
 .NavBar {
-  background-color: #0d0d0d;
-  border-bottom: 1px solid #856404;
+  background-color: #655d43;
+  border-bottom: 1px solid black;
   margin: 0;
-  padding: 0;
+  padding: 0.5rem;
 }
 
 .NavLink {
@@ -14,12 +14,13 @@
 .NavLink,
 .NavLink i,
 .NavLink a {
-  color: #856404 !important;
+  /* color: #856404 !important; */
+  color: #1a1a1a;
   text-decoration: none !important;
 }
 
 .NavLink:hover i {
-  color: #ffa500 !important;
+  color: #4caf50 !important;
 }
 
 .Active i {
@@ -37,11 +38,27 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: nowrap;
+  /* padding: 0 rem; */
+  /* border: #856404 2px solid; */
 }
 
-.LogoAndSearch {
+.Logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  border: white solid 1px;
+  border-radius: 50%;
+}
+
+.Left {
   display: flex;
   align-items: center;
-  margin: 0rem 1rem 0.5rem 0.5rem;
-  flex-shrink: 1;
+  padding: 0 0.5rem;
+  flex-grow: 2;
+}
+
+.Right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
