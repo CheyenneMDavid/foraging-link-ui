@@ -3,6 +3,7 @@
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { axiosReq } from "../../api/axiosDefaults";
+import appStyles from "../../App.module.css";
 
 import styles from "../../styles/UpcomingCourses.module.css";
 
@@ -37,8 +38,8 @@ function UpcomingCourses() {
               <h5 className={styles.CourseTitle}>{course.title}</h5>
               <p>{new Date(course.date).toLocaleDateString()}</p>
               <p>{course.available_spaces} spaces left</p>
+              <hr className={styles.UpcomingHr} />
             </Link>
-            <hr />
           </li>
         ))}
       </ul>
