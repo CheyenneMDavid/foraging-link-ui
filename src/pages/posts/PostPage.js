@@ -1,6 +1,5 @@
 // PostPage.js - Responsible for fetching and displaying a single post.
-// It imports UpComing Courses and CommentSection.
-// CommentSection is thenconditionally displayed based on user authentication.
+// It imports CommentSection and conditionally displays it's content based on user authentication.
 
 import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
