@@ -6,28 +6,32 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
 import PostsList from "./posts/PostsList";
+import HeroBanner from "../components/HeroBanner";
 
 // import PopularProfiles from "./profiles/PopularProfiles";
 import Sidebar from "../components/Sidebar";
 
 function HomePage({ query }) {
   return (
-    <Row className="h-100">
-      {/* Main Content */}
-      <Col lg={8} className="py-2 p-0 p-lg-2">
-        <PostsList
-          message="No results found. Adjust the search keyword."
-          query={query}
-        />
-      </Col>
+    <>
+      {/* Hero image as banner with link to full list of courses */}
+      <HeroBanner />
 
-      {/* Sidebar Container for Courses and Popular Profiles */}
-      <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
-        <div>
+      <Row className="h-100">
+        {/* Main Content */}
+        <Col lg={8}>
+          <PostsList
+            message="No results found. Adjust the search keyword."
+            query={query}
+          />
+        </Col>
+
+        {/* Sidebar Container for Courses and Popular Profiles */}
+        <Col md={4}>
           <Sidebar />
-        </div>
-      </Col>
-    </Row>
+        </Col>
+      </Row>
+    </>
   );
 }
 
