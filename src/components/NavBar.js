@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.jpg";
 import styles from "../styles/NavBar.module.css";
 import {
   useCurrentUser,
@@ -94,16 +94,17 @@ function NavBar({ setQuery }) {
     >
       <Container className={styles.NavContainer}>
         {/* SearchBar removed from PostsList and added to the right of the logo, making it accessible from all screens. */}
-        <div className={styles.LogoAndSearch}>
+        <div className={styles.Left}>
           <NavLink to="/">
             <Navbar.Brand>
-              <img src={logo} alt="logo" height="55" />
+              <img src={logo} alt="logo" className={styles.Logo} />
             </Navbar.Brand>
           </NavLink>
 
           {/* SearchBar moved from PostsList and added to the right of the logo, making it accessible from all the pages. */}
           <SearchBar setQuery={setQuery} />
         </div>
+
         <Navbar.Toggle
           className={styles.NavbarToggle}
           ref={ref}
@@ -112,7 +113,7 @@ function NavBar({ setQuery }) {
           aria-label="Toggle navigation"
         />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto text-left">
+          <Nav className={styles.Right}>
             <NavLink
               exact
               className={styles.NavLink}
