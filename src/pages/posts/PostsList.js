@@ -4,6 +4,8 @@ import Container from "react-bootstrap/Container";
 import Asset from "../../components/Asset";
 import appStyles from "../../App.module.css";
 
+import styles from "../../styles/PostsList.module.css";
+
 import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import NoResults from "../../assets/no-results.png";
@@ -54,7 +56,7 @@ function PostsList({ message, filter = "", query }) {
       <PopularProfiles mobile />
 
       {hasLoaded ? (
-        <>
+        <div className={styles.PostsListContainer}>
           {posts.results.length ? (
             <InfiniteScroll
               dataLength={posts.results.length} // number of posts
@@ -77,7 +79,7 @@ function PostsList({ message, filter = "", query }) {
               <Asset src={NoResults} message={message} />
             </Container>
           )}
-        </>
+        </div>
       ) : (
         // Spinner displayed while data is loading
         <Container className={appStyles.Content}>
