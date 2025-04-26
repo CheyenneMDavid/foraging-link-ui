@@ -1,0 +1,21 @@
+.CourseTitle {
+  font-size: 3rem;
+
+  margin: 2rem 0;
+}
+
+.CourseInfo {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.CourseInfo strong {
+  display: inline-block;
+  width: 140px;
+  font-weight: 600;
+}
+
+.Container {
+  padding: 3rem;
+  margin-top: 5rem;
+}
