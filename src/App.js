@@ -18,21 +18,26 @@ function App() {
 
   return (
     <div className={styles.App}>
-      <NavBar setQuery={setQuery} />
-      <Container className={styles.Main}>
-        <Switch>
-          <Route exact path="/" render={() => <HomePage query={query} />} />
-          <Route exact path="/courses" render={() => <CoursesListPage />} />
-          <Route exact path="/courses/:id" render={() => <CoursePage />} />
-          <Route exact path="/profile" render={() => <h1>Profile</h1>} />
-          <Route exact path="/signin" render={() => <SignInForm />} />
-          <Route exact path="/signup" render={() => <SignUpForm />} />
-          <Route exact path="/posts/:id" render={() => <PostPage />} />
-          <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+      <header>
+        <NavBar setQuery={setQuery} />
+      </header>
 
-          <Route render={() => <p>Page not found!</p>} />
-        </Switch>
-      </Container>
+      <main>
+        <Container className={styles.Main}>
+          <Switch>
+            <Route exact path="/" render={() => <HomePage query={query} />} />
+            <Route exact path="/courses" render={() => <CoursesListPage />} />
+            <Route exact path="/courses/:id" render={() => <CoursePage />} />
+            <Route exact path="/profile" render={() => <h1>Profile</h1>} />
+            <Route exact path="/signin" render={() => <SignInForm />} />
+            <Route exact path="/signup" render={() => <SignUpForm />} />
+            <Route exact path="/posts/:id" render={() => <PostPage />} />
+            <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+
+            <Route render={() => <p>Page not found!</p>} />
+          </Switch>
+        </Container>
+      </main>
     </div>
   );
 }
