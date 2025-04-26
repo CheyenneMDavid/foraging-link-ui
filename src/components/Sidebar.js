@@ -5,13 +5,11 @@ import React from "react";
 import UpcomingCourses from "../pages/courses/UpcomingCourses";
 import PopularProfiles from "../pages/profiles/PopularProfiles";
 import { Container } from "react-bootstrap";
-import appStyles from "../App.module.css";
+import styles from "../styles/SideBar.module.css";
 
 const Sidebar = ({ mobile }) => {
   return (
-    <Container
-      className={`${mobile ? appStyles.MobileSidebar : appStyles.Sidebar}`}
-    >
+    <Container className={`${mobile ? styles.MobileSidebar : styles.Sidebar}`}>
       {!mobile && <p></p>}
 
       <PopularProfiles />
