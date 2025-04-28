@@ -3,7 +3,8 @@
 }
 .Input {
   background: #ffffff;
-  border: 3px solid #856404;
+  /* border: 3px solid #856404; */
+  border: 2px solid #856404;
   box-sizing: border-box;
   border-radius: 100px;
   color: #7177a1;
@@ -19,7 +20,6 @@
   text-align: center;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #856404;
 }
 
 .SignIn .Link {
@@ -30,7 +30,7 @@
 }
 
 span {
-  color: whitesmoke;
+  /* color: whitesmoke; */
 }
 
 .Container {
@@ -45,11 +45,6 @@ span {
   height: 375px;
 }
 
-.Link {
-  color: whitesmoke;
-  text-decoration: none;
-}
-
 .Link:hover {
-  color: whitesmoke;
+  color: orange;
 }

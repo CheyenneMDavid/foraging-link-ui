@@ -1,10 +1,11 @@
 .Button {
   font-size: 0.8rem;
   align-self: center;
+  border: 5px solid #856404;
   background-color: #856404;
   border-radius: 100px;
   border-width: 2px;
-  border-color: whitesmoke;
+
   padding: 4px 10px;
   margin-left: auto;
   margin-right: 2px;
@@ -12,7 +13,6 @@
   color: whitesmoke;
   box-shadow: none !important;
   outline: none !important;
-  border-style: solid;
 }
 
 .AlignRight {
