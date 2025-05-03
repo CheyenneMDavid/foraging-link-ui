@@ -5,7 +5,7 @@ import React from "react";
 import UpcomingCourses from "../pages/courses/UpcomingCourses";
 import PopularProfiles from "../pages/profiles/PopularProfiles";
 import { Container } from "react-bootstrap";
-import styles from "../styles/SideBar.module.css";
+import styles from "../styles/Sidebar.module.css";
 
 const Sidebar = ({ mobile }) => {
   return (

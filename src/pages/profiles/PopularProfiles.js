@@ -1,6 +1,7 @@
 import React from "react";
 import appStyles from "../../App.module.css";
 import styles from "../../styles/ProfilePage.module.css";
+import sidebarStyles from "../../styles/Sidebar.module.css";
 
 import { Container } from "react-bootstrap";
 import Profile from "./Profile";
@@ -15,7 +16,7 @@ const PopularProfiles = ({ mobile }) => {
   return (
     <Container
       className={`${appStyles.Content} ${
-        mobile && "d-lg-none text-center mb-3"
+        mobile ? `${sidebarStyles.Sidebar} d-lg-none text-center mb-3` : ""
       }`}
     >
       {!isLoggedIn ? (
