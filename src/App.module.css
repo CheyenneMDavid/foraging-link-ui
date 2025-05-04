@@ -11,6 +11,11 @@
   padding-top: 6rem;
 }
 
+/* remove the default bootstrap border */
+:global(.card) {
+  border: none;
+}
+
 .FillerImage {
   object-fit: cover;
   height: 100%;

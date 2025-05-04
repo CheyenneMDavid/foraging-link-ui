@@ -147,6 +147,7 @@ function Post(props) {
           </div>
         </Card.Body>
       </section>
+      <hr className={styles.PostSeparation} />
     </Card>
   );
 }
