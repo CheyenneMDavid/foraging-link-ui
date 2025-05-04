@@ -1,20 +1,29 @@
 /* Navagation text color always stays brown whilst the icons change to green on hover and indictae current page by being green. */
 
+.TopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  width: 100%;
+}
+
 .NavBar {
   background-color: #655d43;
   border-bottom: 2px solid black;
-  margin: 0;
+
   padding: 0.5rem;
 }
 
 .NavLink {
   padding: 5px;
+  white-space: nowrap;
 }
 
 .NavLink,
 .NavLink i,
 .NavLink a {
-  /* color: #856404 !important; */
   color: #1a1a1a;
   text-decoration: none !important;
 }
@@ -30,7 +39,8 @@
 .NavbarToggle {
   border: 1px solid white !important;
   background-color: #512c0f;
-  margin: 0rem 1rem 0.5rem 0.5rem;
+  margin: 0;
+  flex-shrink: 0;
 }
 
 .NavContainer {
@@ -38,23 +48,24 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: nowrap;
-  /* padding: 0 rem; */
-  /* border: #856404 2px solid; */
+  padding: 0 1rem;
 }
 
 .Logo {
-  height: 60px;
+  height: 50px;
   width: auto;
   object-fit: contain;
-  border: white solid 1px;
   border-radius: 50%;
 }
 
 .Left {
   display: flex;
   align-items: center;
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-width: 0;
+  gap: 0.5rem;
   padding: 0 0.5rem;
-  flex-grow: 2;
 }
 
 .Right {

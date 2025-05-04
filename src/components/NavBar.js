@@ -93,25 +93,24 @@ function NavBar({ setQuery }) {
       fixed="top"
     >
       <Container className={styles.NavContainer}>
-        {/* SearchBar removed from PostsList and added to the right of the logo, making it accessible from all screens. */}
-        <div className={styles.Left}>
-          <NavLink to="/">
-            <Navbar.Brand>
-              <img src={logo} alt="logo" className={styles.Logo} />
-            </Navbar.Brand>
-          </NavLink>
+        <div className={styles.TopRow}>
+          <div className={styles.Left}>
+            <NavLink to="/">
+              <Navbar.Brand>
+                <img src={logo} alt="logo" className={styles.Logo} />
+              </Navbar.Brand>
+            </NavLink>
+            <SearchBar setQuery={setQuery} />
+          </div>
 
-          {/* SearchBar moved from PostsList and added to the right of the logo, making it accessible from all the pages. */}
-          <SearchBar setQuery={setQuery} />
+          <Navbar.Toggle
+            className={styles.NavbarToggle}
+            ref={ref}
+            onClick={() => setExpanded(!expanded)}
+            aria-controls="basic-navbar-nav"
+            aria-label="Toggle navigation"
+          />
         </div>
-
-        <Navbar.Toggle
-          className={styles.NavbarToggle}
-          ref={ref}
-          onClick={() => setExpanded(!expanded)}
-          aria-controls="basic-navbar-nav"
-          aria-label="Toggle navigation"
-        />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className={styles.Right}>
             <NavLink
