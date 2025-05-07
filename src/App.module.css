@@ -78,3 +78,10 @@ figure {
 *::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* On screens that are 992px or less, sets body text size to 1.2rem */
+@media screen and (max-width: 992px) {
+  body {
+    font-size: 1.2rem;
+  }
+}
