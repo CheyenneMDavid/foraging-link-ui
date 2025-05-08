@@ -18,7 +18,7 @@ import Post from "./Post";
 function PostsList({ message, filter = "", query }) {
   // State for storing posts data and loading status
   const [posts, setPosts] = useState({ results: [] });
-  const [hasLoaded, setHasLoaded] = useState(false);
+  const [pageLoading, setPageLoading] = useState(true);
 
   // Gets the current URL location to trigger re-fetching of posts for navigation
   const { pathname } = useLocation();
@@ -34,13 +34,13 @@ function PostsList({ message, filter = "", query }) {
           `/plants_blog/posts/?${filter}search=${query}`
         );
         setPosts(data); // Updates posts state with api response
-        setHasLoaded(true); // sests data's loaded
+        setPageLoading(false); // sets data's loaded
       } catch (err) {
         console.log(err);
       }
     };
 
-    setHasLoaded(false); // resets the loading status befoire fetching new data
+    setPageLoading(true); // resets the loading status before fetching new data
     const timer = setTimeout(() => {
       fetchPosts();
     }, 1000);
@@ -55,7 +55,7 @@ function PostsList({ message, filter = "", query }) {
       {/* Display for popular profiles when in mobile view */}
       <PopularProfiles mobile />
 
-      {hasLoaded ? (
+      {!pageLoading ? (
         <div className={styles.PostsListContainer}>
           {posts.results.length ? (
             <InfiniteScroll
@@ -84,6 +84,9 @@ function PostsList({ message, filter = "", query }) {
         // Spinner displayed while data is loading
         <Container className={appStyles.Content}>
           <Asset spinner />
+          <p className={styles.LoadingMessage}>
+            Hang on in there, we're just looking for you!
+          </p>
         </Container>
       )}
     </>
