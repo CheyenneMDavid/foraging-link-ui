@@ -1,3 +1,5 @@
+/* Stylesheet for SearchBar */
+
 .SearchBar {
   width: 100%;
   max-width: 300px;
@@ -9,7 +11,7 @@
 
 .SearchBar input {
   padding: 0.5rem 1rem 0.5rem 2.5rem;
-  border: 1px solid white;
+  border: 2px solid black;
   border-radius: 20px;
   color: #242a3d;
 }
@@ -19,6 +21,25 @@
   font-size: 1.5rem;
   padding: 0.5rem;
   color: #242a3d;
+}
+
+.InputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.SpinnerWrapper {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SpinnerPlaceholder {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 @media (max-width: 335px) {
