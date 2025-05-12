@@ -22,10 +22,14 @@ import { Button, Image } from "react-bootstrap";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [profileComments, setProfileComments] = useState({ results: [] });
+
   const currentUser = useCurrentUser();
   const { id } = useParams();
+
   const setProfileData = useSetProfileData();
   const { pageProfile } = useProfileData();
+
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
 
@@ -47,6 +51,24 @@ function ProfilePage() {
     };
     fetchData();
   }, [id, setProfileData]);
+
+  // Fetches all comments made by the profile owner
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const { data } = await axiosReq.get(
+          `/comments/?owner__username=${profile?.owner}`
+        );
+        setProfileComments(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    if (profile?.owner) {
+      fetchComments();
+    }
+  }, [profile?.owner]);
 
   const mainProfile = (
     <>
@@ -112,9 +134,30 @@ function ProfilePage() {
 
   const mainProfilePosts = (
     <>
+      {/* Section for user's comments */}
       <hr />
-      <p className="text-center">Profile owner's posts</p>
+      <p className="text-center">Profile owner's comments</p>
       <hr />
+
+      {profileComments.results.length ? (
+        // Loops through each comment and renders its content with a link to the post
+        profileComments.results.map((comment) => (
+          <div key={comment.id} className="mb-3">
+            {/* Display the comment content */}
+            <p>{comment.content}</p>
+
+            {/* Link to the original post the comment belongs to */}
+            <p>
+              <a href={`/posts/${comment.plant_in_focus_post}`}>
+                See original post
+              </a>
+            </p>
+          </div>
+        ))
+      ) : (
+        // Shown when the user has yet to make a comment.
+        <p className="text-center">This user hasn't commented yet.</p>
+      )}
     </>
   );
 
