@@ -9,11 +9,25 @@
 }
 
 .Link {
+  font-size: 0.8rem;
+  color: whitesmoke;
   text-decoration: none;
 }
 
 .Link:hover {
-  color: whitesmoke;
+  color: blanchedalmond;
+}
+
+.ProfileContainer {
+  background-color: #655d43;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.commentListDivider {
+  margin-right: auto;
+  max-width: 30%;
 }
 
 @media screen and (max-width: 991px) {

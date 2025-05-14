@@ -20,6 +20,8 @@ import {
 } from "../../contexts/ProfileDataContext";
 import { Button, Image } from "react-bootstrap";
 
+import Sidebar from "../../components/Sidebar";
+
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [profileComments, setProfileComments] = useState({ results: [] });
@@ -73,7 +75,7 @@ function ProfilePage() {
   const mainProfile = (
     <>
       <Row noGutters className="px-3 text-center">
-        <Col lg={3} className="text-lg-left">
+        <Col lg={3} className={`text-lg-left ${styles.ProfileInfo}`}>
           <Image
             className={styles.ProfileImage}
             roundedCircle
@@ -145,13 +147,15 @@ function ProfilePage() {
           <div key={comment.id} className="mb-3">
             {/* Display the comment content */}
             <p>{comment.content}</p>
-
-            {/* Link to the original post the comment belongs to */}
-            <p>
+            {/* Link to the original post or comment that this comment belongs to */}
+            <p className={styles.Link}>
               <a href={`/posts/${comment.plant_in_focus_post}`}>
-                See original post
+                {comment.replying_comment !== null
+                  ? ". . . Follow the conversation --->"
+                  : ". . . See original post --->"}
               </a>
             </p>
+            <hr className={styles.commentListDivider} />
           </div>
         ))
       ) : (
@@ -163,21 +167,29 @@ function ProfilePage() {
 
   return (
     <Row>
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <PopularProfiles mobile />
-        <Container className={appStyles.Content}>
-          {hasLoaded ? (
-            <>
-              {mainProfile}
-              {mainProfilePosts}
-            </>
-          ) : (
-            <Asset spinner />
-          )}
+      <Col lg={8} md={12}>
+        <div className="d-md-none">
+          <PopularProfiles mobile />
+        </div>
+
+        <Container
+          className={`${appStyles.Content} ${styles.ProfileContainer}`}
+        >
+          <div className={styles.ProfileWrapper}>
+            {hasLoaded ? (
+              <>
+                {mainProfile}
+                {mainProfilePosts}
+              </>
+            ) : (
+              <Asset spinner />
+            )}
+          </div>
         </Container>
       </Col>
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        <PopularProfiles />
+      {/* Sidebar Container for Courses and Popular Profiles */}
+      <Col lg={4} className="d-none d-lg-block">
+        <Sidebar />
       </Col>
     </Row>
   );
