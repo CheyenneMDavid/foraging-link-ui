@@ -125,7 +125,7 @@ function NavBar({ setQuery }) {
             <NavLink
               className={styles.NavLink}
               activeClassName={styles.Active}
-              to="/courses"
+              to="/courses/full-list"
               aria-label="Courses"
             >
               <i className="fa-solid fa-location-arrow" /> Courses

@@ -15,8 +15,12 @@
 
 .WelcomeTint {
   background-color: rgba(64, 87, 54, 0.6);
-  padding: 1rem;
+  padding: 0.5rem;
   width: 100%;
   margin: 0;
   border-radius: 0;
+}
+
+.BannerText {
+  font-size: 1.2rem;
 }

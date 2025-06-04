@@ -11,6 +11,9 @@ function HeroBanner() {
         <div className={`${appStyles.Content} ${styles.Hero}`}>
           <div className={styles.WelcomeTint}>
             <h1>Welcome to The Foraging Link</h1>
+            <a href="/courses/full-list">
+              <p className={styles.BannerText}>See All Courses</p>
+            </a>
           </div>
         </div>
       </Col>
