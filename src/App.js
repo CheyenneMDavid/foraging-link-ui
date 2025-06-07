@@ -26,7 +26,12 @@ function App() {
         <Container className={styles.Main}>
           <Switch>
             <Route exact path="/" render={() => <HomePage query={query} />} />
-            <Route exact path="/courses" render={() => <CoursesListPage />} />
+
+            <Route
+              exact
+              path="/courses/full-list"
+              render={() => <CoursesListPage />}
+            />
             <Route exact path="/courses/:id" render={() => <CoursePage />} />
             <Route exact path="/profile" render={() => <h1>Profile</h1>} />
             <Route exact path="/signin" render={() => <SignInForm />} />

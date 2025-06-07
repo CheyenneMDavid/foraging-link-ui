@@ -2,6 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import { axiosReq } from "../../api/axiosDefaults";
+import styles from "../../styles/CourseListPage.module.css";
+
+import Course from "./Course";
 
 const CoursesListPage = () => {
   // State to store the list of all courses
@@ -12,7 +15,7 @@ const CoursesListPage = () => {
     const fetchCourses = async () => {
       try {
         // Sends a GET request to the full-list endpoint.
-        const { data } = await axiosReq.get("/courses/");
+        const { data } = await axiosReq.get("/courses/full-list");
 
         // Store the returned course data.
         setCourses(data.results);
@@ -24,18 +27,15 @@ const CoursesListPage = () => {
     fetchCourses();
   }, []);
 
-  // Renders the list of courses.
+  // Renders a list of courses
   return (
-    <div>
+    <div className={styles.CoursesListContainer}>
       <h2>All Courses</h2>
       <ul>
         {courses.map((course) => (
-          <li key={course.id}>
-            {/* Course title */}
-            <h4>{course.title}</h4>
-
-            {/* Course date formatted to local style, dependant on coutry of user */}
-            <p>{new Date(course.date).toLocaleDateString()}</p>
+          <li key={course.id} className={styles.IndividualCourse}>
+            <Course course={course} />
+            <hr />
           </li>
         ))}
       </ul>
