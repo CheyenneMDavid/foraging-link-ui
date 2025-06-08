@@ -124,7 +124,7 @@ function Post(props) {
                 ) : !currentUser ? (
                   <OverlayTrigger
                     placement="top"
-                    overlay={<Tooltip>Log in to like posts!</Tooltip>}
+                    overlay={<Tooltip>Sign in to like posts!</Tooltip>}
                   >
                     <i className="far fa-heart" />
                   </OverlayTrigger>
@@ -139,10 +139,24 @@ function Post(props) {
                 )}
                 <span className={styles.LikesCount}>{likes_count}</span>
               </div>
-              <div className={styles.CommentSection}>
-                <i className="far fa-comments no-hover" />
-                <span className={styles.CommentsCount}>{comments_count}</span>
-              </div>
+              {!currentUser ? (
+                <OverlayTrigger
+                  placement="top"
+                  overlay={<Tooltip>Sign in to join the discussion!</Tooltip>}
+                >
+                  <div className={styles.CommentSection}>
+                    <i className="far fa-comments no-hover" />
+                    <span className={styles.CommentsCount}>
+                      {comments_count}
+                    </span>
+                  </div>
+                </OverlayTrigger>
+              ) : (
+                <div className={styles.CommentSection}>
+                  <i className="far fa-comments no-hover" />
+                  <span className={styles.CommentsCount}>{comments_count}</span>
+                </div>
+              )}
             </div>
           </div>
         </Card.Body>

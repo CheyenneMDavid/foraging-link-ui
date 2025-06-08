@@ -56,10 +56,9 @@ h2 {
 }
 
 .Link {
-  color: whitesmoke;
   text-decoration: none;
 }
 
 .Link:hover {
-  color: whitesmoke;
+  color: orange;
 }
