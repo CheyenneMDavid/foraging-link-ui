@@ -1,6 +1,7 @@
 import React from "react";
 import appStyles from "../../App.module.css";
-import styles from "../../styles/ProfilePage.module.css";
+import styles from "../../styles/PopularProfiles.module.css";
+
 import sidebarStyles from "../../styles/Sidebar.module.css";
 
 import { Container } from "react-bootstrap";
@@ -20,23 +21,16 @@ const PopularProfiles = ({ mobile }) => {
       }`}
     >
       {!isLoggedIn ? (
-        <span>
-          <Link className={styles.Link} to="/signin">
-            {" "}
-            Sign-in
-          </Link>{" "}
-          or
-          <Link className={styles.Link} to="/signup">
-            {" "}
-            Sign-up to join in with the community!
-          </Link>
-        </span>
+        <div className={styles.SignInSignUp}>
+          <Link to="/signin"> Sign-in</Link> or
+          <Link to="/signup"> Sign-up</Link> to join in with the community!
+        </div>
       ) : (
         <>
           <h3>Most Followed Profiles</h3>
           {mobile ? (
             <div className="d-flex justify-content-around">
-              {popularProfiles?.results?.slice(0, 4).map((profile) => (
+              {popularProfiles?.results?.slice(0, 3).map((profile) => (
                 <Profile key={profile.id} profile={profile} mobile />
               ))}
             </div>
