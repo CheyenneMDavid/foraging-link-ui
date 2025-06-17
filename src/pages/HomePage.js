@@ -27,7 +27,7 @@ function HomePage({ query }) {
         </Col>
 
         {/* Sidebar Container for Courses and Popular Profiles */}
-        <Col md={4}>
+        <Col lg={4} className="d-none d-lg-block">
           <Sidebar />
         </Col>
       </Row>
