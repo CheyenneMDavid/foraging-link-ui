@@ -10,11 +10,9 @@ import styles from "../styles/Sidebar.module.css";
 const Sidebar = ({ mobile }) => {
   return (
     <Container className={`${mobile ? styles.MobileSidebar : styles.Sidebar}`}>
-      {!mobile && <p></p>}
-
       <PopularProfiles />
+      {!mobile && <UpcomingCourses />}
       <hr />
-      <UpcomingCourses />
     </Container>
   );
 };
