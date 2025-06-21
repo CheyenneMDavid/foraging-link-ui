@@ -60,24 +60,8 @@ function PostPage() {
         <Col className="py-2 p-0 p-lg-2" lg={8}>
           {/* Render the post details */}
           <Post {...currentPost} setPosts={setPost} />
-
           {/* Conditional rendering for comments */}
-          {!isLoggedIn ? (
-            <>
-              <span>
-                <Link className={styles.Link} to="/signin">
-                  {" "}
-                  Sign-in{" "}
-                </Link>{" "}
-                or
-                <Link className={styles.Link} to="/signup">
-                  {" "}
-                  Sign-up{" "}
-                </Link>{" "}
-                to join the discussions!
-              </span>
-            </>
-          ) : (
+          {isLoggedIn && (
             <Container className={appStyles.Content}>
               <CommentSection postId={id} />
             </Container>
@@ -86,7 +70,7 @@ function PostPage() {
 
         {/* Sidebar content (visible only on large screens) */}
         <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
-          <Sidebar mobile />
+          <Sidebar />
         </Col>
       </Row>
     </>
