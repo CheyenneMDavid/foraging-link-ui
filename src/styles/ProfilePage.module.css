@@ -1,3 +1,5 @@
+/* Styles for profile page, including avatar */
+
 .ProfileImage {
   object-fit: cover;
   height: 120px;
@@ -6,16 +8,6 @@
   padding: 2px;
   border: 2px solid white;
   border-radius: 50%;
-}
-
-.Link {
-  font-size: 0.8rem;
-  color: whitesmoke;
-  text-decoration: none;
-}
-
-.Link:hover {
-  color: blanchedalmond;
 }
 
 .ProfileContainer {

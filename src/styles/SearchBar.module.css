@@ -1,4 +1,4 @@
-/* Stylesheet for SearchBar */
+/* Styles for the search bar and search icon */
 
 .SearchBar {
   width: 100%;
@@ -21,6 +21,11 @@
   font-size: 1.5rem;
   padding: 0.5rem;
   color: #242a3d;
+}
+
+.SearchIcon:hover {
+  color: inherit;
+  cursor: pointer;
 }
 
 .InputWrapper {
