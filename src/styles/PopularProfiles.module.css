@@ -1,0 +1,10 @@
+/* Styles for an individual Profile and the sign-in / sign-up message. */
+
+.SignInSignUp a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.SignInSignUp a:hover {
+  color: whitesmoke;
+}
