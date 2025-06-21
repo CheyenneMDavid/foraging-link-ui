@@ -22,8 +22,10 @@ const PopularProfiles = ({ mobile }) => {
     >
       {!isLoggedIn ? (
         <div className={styles.SignInSignUp}>
+          <hr />
           <Link to="/signin"> Sign-in</Link> or
           <Link to="/signup"> Sign-up</Link> to join in with the community!
+          <hr />
         </div>
       ) : (
         <>
