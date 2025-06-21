@@ -37,8 +37,14 @@ function UpcomingCourses() {
             <Link to={`/courses/${course.id}`}>
               <h5 className={styles.CourseTitle}>{course.title}</h5>
               <p>{new Date(course.date).toLocaleDateString()}</p>
-              <p>{course.available_spaces} spaces left</p>
-              <hr className={styles.UpcomingHr} />
+              <p>
+                <strong>Location:</strong> {course.location}
+              </p>
+              <p>
+                <strong>Available Spaces:</strong> {course.available_spaces}
+              </p>
+
+              <hr />
             </Link>
           </li>
         ))}
