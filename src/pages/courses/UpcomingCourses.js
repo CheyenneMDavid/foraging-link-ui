@@ -3,7 +3,7 @@
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { axiosReq } from "../../api/axiosDefaults";
-import appStyles from "../../App.module.css";
+import "../../App.module.css";
 
 import styles from "../../styles/UpcomingCourses.module.css";
 
@@ -43,9 +43,8 @@ function UpcomingCourses() {
               <p>
                 <strong>Available Spaces:</strong> {course.available_spaces}
               </p>
-
-              <hr />
             </Link>
+            <hr className={styles.CustomHr} />
           </li>
         ))}
       </ul>

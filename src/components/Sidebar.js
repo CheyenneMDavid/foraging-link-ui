@@ -11,8 +11,8 @@ const Sidebar = ({ mobile }) => {
   return (
     <Container className={styles.Sidebar}>
       <PopularProfiles />
+      <hr className={styles.CustomHr} />
       {!mobile && <UpcomingCourses />}
-      <hr />
     </Container>
   );
 };

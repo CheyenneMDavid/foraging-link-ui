@@ -8,12 +8,18 @@
   color: whitesmoke;
 }
 
+H2 {
+  font-size: 3rem;
+  text-align: center;
+  padding: 2rem 3rem;
+}
+
 .IndividualCourse {
-  padding: 5rem;
-  color: red;
+  background-color: #655d43;
+  padding: 1rem 5rem;
+  color: whitesmoke;
 }
 
 ul {
   list-style-type: none;
-  padding-left: 0;
 }

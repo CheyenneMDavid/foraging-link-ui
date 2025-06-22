@@ -11,6 +11,11 @@
   padding-top: 6rem;
 }
 
+hr {
+  border: 1px solid #ccc;
+  width: 50%;
+}
+
 /* remove the default bootstrap border */
 :global(.card) {
   border: none;

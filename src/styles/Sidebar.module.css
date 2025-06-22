@@ -4,4 +4,9 @@
   background-color: #655d43;
   border: black solid 2px;
   border-radius: 5px;
+  padding-top: 1rem;
+}
+
+.CustomHr {
+  width: auto;
 }
