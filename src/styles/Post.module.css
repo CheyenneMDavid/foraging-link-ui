@@ -1,27 +1,33 @@
 /* Stylessheet for Post.js, some styling elements borrowed from the Walkthrough project "Moments" with Code Institute */
 
 .Post {
+  background-color: #655d43;
+  border: black solid 2px;
+  border-radius: 5px;
+  padding-top: 1rem;
+
   margin-bottom: 1rem;
-  margin-left: 0;
+  color: whitesmoke;
   text-align: justify;
-  padding: 0, 30px;
 }
 
 .PostImage {
   width: 100%;
   height: 30vh;
   object-fit: cover;
-  border: black 1px solid;
+  border-top: black 3px solid;
+  border-bottom: black 3px solid;
 }
 
-h2 {
-  /* font-size: 2.5rem; */
+h3 {
   text-align: left;
+  padding-left: 1rem;
   text-decoration: underline;
+  color: whitesmoke;
 }
 
 .CreationDate {
-  color: #1a1a1a;
+  color: whitesmoke;
 }
 
 .PostBar {
@@ -45,14 +51,8 @@ h2 {
 
 .LikesCount,
 .CommentsCount {
-  font-size: 0.875;
-  color: #1a1a1a;
-}
-
-.PostSeparation {
-  width: auto;
-  padding: 1px;
-  background-color: #655d43;
+  font-size: 1.1rem;
+  color: whitesmoke;
 }
 
 .Link {

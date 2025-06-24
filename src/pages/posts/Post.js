@@ -49,7 +49,7 @@ function Post(props) {
     <Card className={styles.Post}>
       {/* Main Plant Section */}
       <section aria-label="Main Plant Section">
-        {main_plant_name && <h2>{main_plant_name}</h2>}
+        {main_plant_name && <h3>{main_plant_name}</h3>}
         <Link to={`/posts/${id}`}>
           <Card.Img
             src={main_plant_image}
@@ -161,7 +161,6 @@ function Post(props) {
           </div>
         </Card.Body>
       </section>
-      <hr className={styles.PostSeparation} />
     </Card>
   );
 }
