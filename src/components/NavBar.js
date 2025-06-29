@@ -123,9 +123,12 @@ function NavBar({ setQuery }) {
               <i className="fas fa-home" /> Home
             </NavLink>
             <NavLink
+              to="/courses/full-list"
               className={styles.NavLink}
               activeClassName={styles.Active}
-              to="/courses/full-list"
+              isActive={(_, location) =>
+                location.pathname.startsWith("/courses")
+              }
               aria-label="Courses"
             >
               <i className="fa-solid fa-location-arrow" /> Courses
