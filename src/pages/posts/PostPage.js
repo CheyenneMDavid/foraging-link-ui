@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import appStyles from "../../App.module.css";
-import styles from "../../styles/Post.module.css";
+import styles from "../../styles/PostPage.module.css";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useAuth } from "../../contexts/AuthContext";
@@ -59,6 +59,11 @@ function PostPage() {
         {/* Main content area */}
         <Col className="py-2 p-0 p-lg-2" lg={8}>
           {/* Render the post details */}
+          <p>
+            <Link className={styles.backLink} to="/">
+              ← Back to Posts
+            </Link>
+          </p>
           <Post {...currentPost} setPosts={setPost} />
           {/* Conditional rendering for comments */}
           {isLoggedIn && (
