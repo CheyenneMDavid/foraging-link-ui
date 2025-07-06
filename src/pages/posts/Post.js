@@ -1,6 +1,6 @@
 // Post.js displays a single post's data.
 // It shows the full post when used in PostPage.js,
-// or only the "culinary_uses" field when used in PostsListPage.js.
+// or only the "culinary_uses" and "main_plant_environment" fields when used in PostsListPage.js.
 // It receives all post data as props and uses the `isListPage` prop
 // to conditionally render content and apply styles.
 
@@ -57,7 +57,12 @@ function Post(props) {
 
         <Card.Body>
           {isListPage ? (
-            culinary_uses && <Card.Text>{culinary_uses}</Card.Text>
+            <>
+              {main_plant_environment && (
+                <Card.Text>{main_plant_environment}</Card.Text>
+              )}
+              {culinary_uses && <Card.Text>{culinary_uses}</Card.Text>}
+            </>
           ) : (
             <>
               {main_plant_environment && (
