@@ -32,12 +32,23 @@ const CoursesListPage = () => {
     <div className={styles.CoursesListContainer}>
       <h2>All Courses</h2>
       <ul>
-        {courses.map((course) => (
-          <li key={course.id} className={styles.IndividualCourse}>
-            <Course course={course} />
-            <hr />
-          </li>
-        ))}
+        {courses.map((course) => {
+          const truncatedDescription = course.description // Checks if the description exists
+            ? course.description.split(" ").slice(0, 20).join(" ") + "..."
+            : "";
+
+          return (
+            <li key={course.id} className={styles.IndividualCourse}>
+              <Course
+                {...course}
+                description={truncatedDescription} // override only this field when in list page.
+                setCourses={setCourses}
+                isListPage={true}
+              />
+              <hr />
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
