@@ -1,3 +1,8 @@
+// PostsListPage.js fetches and displays all the blog posts.
+// It shows a truncated form of "culinary_uses" text for each post in the list.
+// It uses InfiniteScroll to dynamically load additional posts.
+// And passes `isListPage={true}` to Post.js to control the layout and content being rendered.
+
 import React, { useEffect, useState } from "react";
 
 import Container from "react-bootstrap/Container";
@@ -15,7 +20,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import PopularProfiles from "../profiles/PopularProfiles";
 import Post from "./Post";
 
-function PostsList({ message, filter = "", query }) {
+function PostsListPage({ message, filter = "", query }) {
   // State for storing posts data and loading status
   const [posts, setPosts] = useState({ results: [] });
   const [pageLoading, setPageLoading] = useState(true);
@@ -64,15 +69,21 @@ function PostsList({ message, filter = "", query }) {
               hasMore={!!posts.next} //checks if there's more data
               next={() => fetchMoreData(posts, setPosts)} // gets more posts
             >
-              {posts.results.map((post) => (
-                // Eneders posts using the Post component
-                <Post
-                  key={post.id}
-                  {...post} // Passes all posts data as props
-                  setPosts={setPosts} // function to update ther post state
-                  isListPage={true} // Indicates that this is in the list page
-                />
-              ))}
+              {posts.results.map((post) => {
+                const truncatedCulinary = post.culinary_uses // Redefines the culinary_uses prop for display in the list page only.
+                  ? post.culinary_uses.split(" ").slice(0, 30).join(" ") + "..."
+                  : "";
+
+                return (
+                  <Post
+                    key={post.id}
+                    {...post}
+                    culinary_uses={truncatedCulinary} // override only this field when in the list page.
+                    setPosts={setPosts}
+                    isListPage={true}
+                  />
+                );
+              })}
             </InfiniteScroll>
           ) : (
             <Container className={appStyles.Content}>
@@ -93,4 +104,4 @@ function PostsList({ message, filter = "", query }) {
   );
 }
 
-export default PostsList;
+export default PostsListPage;
