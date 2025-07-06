@@ -1,7 +1,8 @@
-// Purpose of Post.js is to render a single post's data using props passed to it.
-// It is used in PostPage.js to display the details of a single post
-// and in PostsList.js to display posts in a list on the homepage.
-// "isListPage" is used to check where the image is being displayed and applies styling accordingly
+// Post.js displays a single post's data.
+// It shows the full post when used in PostPage.js,
+// or only the "culinary_uses" field when used in PostsListPage.js.
+// It receives all post data as props and uses the `isListPage` prop
+// to conditionally render content and apply styles.
 
 import React from "react";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
@@ -40,11 +41,6 @@ function Post(props) {
   // Checks if the currently logged-in user is the owner of the post.
   const is_owner = currentUser?.username === owner;
 
-  // Truncated text for the list page only
-  const truncatedText = culinary_uses
-    ? culinary_uses.split(" ").slice(0, 30).join(" ") + "..."
-    : "";
-
   return (
     <Card className={styles.Post}>
       {/* Main Plant Section */}
@@ -58,12 +54,12 @@ function Post(props) {
             className={isListPage ? styles.PostImage : undefined} // Applies style conditionally
           />
         </Link>
+
         <Card.Body>
-          {isListPage ? ( // Render truncated text in list page
-            <Card.Text>{truncatedText}</Card.Text>
+          {isListPage ? (
+            culinary_uses && <Card.Text>{culinary_uses}</Card.Text>
           ) : (
             <>
-              {/* Render full details in detail page */}
               {main_plant_environment && (
                 <Card.Text>{main_plant_environment}</Card.Text>
               )}
@@ -84,7 +80,7 @@ function Post(props) {
       </section>
 
       {/* Confusable Plant Section */}
-      {!isListPage && ( // Exclude confusable plant section from list page
+      {!isListPage && ( // Excludes the confusable plant section from the list page.
         <section aria-label="Confusable Plant Section">
           {confusable_plant_name && (
             <h3 className="text-center">{confusable_plant_name}</h3>
