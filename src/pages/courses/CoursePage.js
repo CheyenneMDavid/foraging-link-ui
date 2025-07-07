@@ -1,13 +1,13 @@
+// Page to display the full details of a single course
+
 import React, { useEffect, useState } from "react";
 
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-
 import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 
-import appStyles from "../../App.module.css";
 import styles from "../../styles/CoursePage.module.css";
 
 function CoursePage() {
@@ -46,6 +46,7 @@ function CoursePage() {
       <p className={styles.CourseInfo}>
         <strong>Spaces Available:</strong> {course.available_spaces}
       </p>
+      <Button variant="outline-success">Book Now</Button>{" "}
     </Container>
   );
 }

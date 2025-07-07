@@ -1,6 +1,7 @@
 // Page to display the full list of all upcoming courses
 
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import styles from "../../styles/CourseListPage.module.css";
 
@@ -39,12 +40,14 @@ const CoursesListPage = () => {
 
           return (
             <li key={course.id} className={styles.IndividualCourse}>
-              <Course
-                {...course}
-                description={truncatedDescription} // override only this field when in list page.
-                setCourses={setCourses}
-                isListPage={true}
-              />
+              <Link to={`/courses/${course.id}`}>
+                <Course
+                  {...course}
+                  description={truncatedDescription} // override only this field when in list page.
+                  setCourses={setCourses}
+                  isListPage={true}
+                />
+              </Link>
               <hr />
             </li>
           );
