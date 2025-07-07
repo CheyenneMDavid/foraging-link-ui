@@ -1,5 +1,3 @@
-// Page to display the full details of a single course
-
 import React, { useEffect, useState } from "react";
 
 import Container from "react-bootstrap/Container";
@@ -29,7 +27,7 @@ function CoursePage() {
 
   if (!course) return null;
   return (
-    <Container className={styles.Main}>
+    <Container className={styles.CourseContainer}>
       <h2 className={styles.CourseTitle}>{course.title}</h2>
       <p className={styles.CourseInfo}>
         <strong>Date:</strong> {new Date(course.date).toLocaleDateString()}
@@ -46,7 +44,9 @@ function CoursePage() {
       <p className={styles.CourseInfo}>
         <strong>Spaces Available:</strong> {course.available_spaces}
       </p>
-      <Button variant="outline-success">Book Now</Button>{" "}
+      <Button className={styles.BookButton} variant="outline-success">
+        Book Now
+      </Button>
     </Container>
   );
 }
