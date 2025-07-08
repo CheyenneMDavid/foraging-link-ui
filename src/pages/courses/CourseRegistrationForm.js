@@ -12,24 +12,30 @@ const CourseRegistrationForm = ({ courseId }) => {
       <label htmlFor="name">Name:</label>
       <input
         id="name"
+        name="name"
         type="text"
         value={name}
+        placeholder="Joe Blogs"
         onChange={(e) => setName(e.target.value)}
       />
 
       <label htmlFor="email">Email:</label>
       <input
         id="email"
+        name="email"
         type="email"
         value={email}
+        placeholder="user@example.com"
         onChange={(e) => setEmail(e.target.value)}
       />
 
       <label htmlFor="phone">Phone:</label>
       <input
         id="phone"
-        type="phone"
+        name="phone"
+        type="tel"
         value={phone}
+        placeholder="+44 7123 456789"
         onChange={(e) => setPhone(e.target.value)}
       />
 
