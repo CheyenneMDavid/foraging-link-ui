@@ -1,14 +1,51 @@
-// This form collects and submits user details to register for a course.
+// CourseRegistrationForm is presented to the user with their name and email which are fixed values.
+// All other fields are editable state variable.
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+
 import styles from "../../styles/CourseRegistrationForm.module.css";
+import { axiosReq } from "../../api/axiosDefaults";
 
 const CourseRegistrationForm = ({ courseId }) => {
-  // State variables.
+  // Retrieved from CurrentUserContext to display as fixed values in the form.
+  const currentUser = useCurrentUser();
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  console.log("CurrentUser:", currentUser);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const profileResponse = await axiosReq.get(
+          `/profiles/${currentUser?.profile_id}/`
+        );
+        const userResponse = await axiosReq.get("/dj-rest-auth/user/");
+        console.log("Fetched profile:", profileResponse.data);
+        console.log("Fetched user data:", userResponse.data);
+
+        setName(profileResponse.data.owner);
+
+        setEmail(userResponse.data.email);
+        setIsLoading(false);
+      } catch (err) {
+        console.error("Failed to fetch data", err);
+        setIsLoading(false);
+      }
+    };
+
+    if (currentUser?.profile_id) {
+      fetchProfile();
+    }
+  }, [currentUser]);
+
+  // State variables.
   const [phone, setPhone] = useState("");
   const [isDriver, setIsDriver] = useState(false);
   const [dietaryRestrictions, setDietaryRestrictions] = useState(false);
@@ -17,26 +54,19 @@ const CourseRegistrationForm = ({ courseId }) => {
   const [emergencyContactName, setEmergencyContactName] = useState("");
   const [emergencyContactPhone, setEmergencyContactPhone] = useState("");
 
-  // Form submission logic
-  const handleChange = (e) => {
-    setName(e.target.value);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const formData = {
-      course: courseId,
-      name,
-      email,
-      phone,
-      is_driver: isDriver,
-      dietary_restrictions: dietaryRestrictions,
-      dietary_details: dietaryDetails,
-      has_emergency_contact: hasEmergencyContact,
-      emergency_contact_name: emergencyContactName,
-      emergency_contact_phone: emergencyContactPhone,
-    };
+    const formData = new FormData();
+    formData.append("course_title", courseId);
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("phone", phone);
+    formData.append("is_driver", isDriver);
+    formData.append("has_dietary_restrictions", dietaryRestrictions);
+    formData.append("dietary_restrictions", dietaryDetails);
+    formData.append("has_emergency_contact", hasEmergencyContact);
+    formData.append("ice_name", emergencyContactName);
+    formData.append("ice_number", emergencyContactPhone);
 
     axios
       .post("/course_registrations/create/", formData)
@@ -48,35 +78,23 @@ const CourseRegistrationForm = ({ courseId }) => {
       });
   };
 
+  if (isLoading) return <p>loading... </p>;
+
   // Overall form structure
   return (
     <form className={styles.FormContainer} onSubmit={handleSubmit}>
-      {/* Name input */}
+      {/* Fixed values that are supplied by the CurrentUserContext */}
       <div className={styles.FormGroup}>
-        <label htmlFor="name">Name:</label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          value={name}
-          placeholder="Joe Blogs"
-          onChange={(e) => setName(e.target.value)}
-        />
+        <label>Name:</label>
+        <p>{name || "Loading name..."}</p>
       </div>
 
-      {/* Email input */}
       <div className={styles.FormGroup}>
-        <label htmlFor="email">Email:</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          value={email}
-          placeholder="user@example.com"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <label>Email:</label>
+        <p>(email placeholder)</p>
       </div>
 
+      {/* Values supplied by user */}
       <div className={styles.FormGroup}>
         {/* Phone number input */}
         <label htmlFor="phone">Phone:</label>
