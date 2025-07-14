@@ -7,7 +7,7 @@ import NavBar from "./components/NavBar";
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
-// import HomePage from "./pages/HomePage";
+import HomePage from "./pages/HomePage";
 import PostPage from "./pages/posts/PostPage";
 import ProfilePage from "./pages/profiles/ProfilePage";
 import CoursesListPage from "./pages/courses/CoursesListPage";
@@ -26,13 +26,7 @@ function App() {
       <main>
         <Container className={styles.Main}>
           <Switch>
-            {/* <Route exact path="/" render={() => <HomePage query={query} />} /> */}
-            <Route
-              exact
-              path="/"
-              render={() => <CourseRegistrationForm courseId={1} />}
-            />
-
+            <Route exact path="/" render={() => <HomePage query={query} />} />
             <Route
               exact
               path="/courses/full-list"
@@ -44,7 +38,11 @@ function App() {
             <Route exact path="/signup" render={() => <SignUpForm />} />
             <Route exact path="/posts/:id" render={() => <PostPage />} />
             <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
-
+            <Route
+              exact
+              path="/register/:id"
+              render={() => <CourseRegistrationForm />}
+            />
             <Route render={() => <p>Page not found!</p>} />
           </Switch>
         </Container>
