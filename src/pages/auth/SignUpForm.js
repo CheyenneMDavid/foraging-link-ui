@@ -1,3 +1,7 @@
+// SignUpForm.js handles user registrations with username, email, and password.  It collects form data and submits it to /dj-rest-auth/registration/
+// Redirects to SignIn page on successful signup
+// Whilst email is collected, it is not required for signing in.
+
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
@@ -18,11 +22,12 @@ import appStyles from "../../App.module.css";
 function SignUpForm() {
   const [signUpData, setSignUpData] = useState({
     username: "",
+    email: "",
     password1: "",
     password2: "",
   });
 
-  const { username, password1, password2 } = signUpData;
+  const { username, email, password1, password2 } = signUpData;
 
   const [errors, setErrors] = useState({});
 
@@ -70,6 +75,20 @@ function SignUpForm() {
               </Alert>
             ))}
 
+            {/* Email address is collected at Signup but not required at sign in */}
+            <Form.Group controlId="email">
+              <Form.Label className="d-none">Email</Form.Label>
+              <Form.Control
+                className={styles.Input}
+                type="email"
+                placeholder="Enter your email"
+                name="email"
+                value={email}
+                onChange={handleChange}
+                required
+              />
+            </Form.Group>
+
             <Form.Group controlId="password1">
               <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
@@ -99,7 +118,7 @@ function SignUpForm() {
                 required
               />
             </Form.Group>
-            {errors.password1?.map((message, idx) => (
+            {errors.password2?.map((message, idx) => (
               <Alert key={idx} variant="warning">
                 {message}
               </Alert>
