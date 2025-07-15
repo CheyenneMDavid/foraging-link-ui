@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+// The CoursePage displays the details for a specific course.
+// It has a "Book Now" button that takes the user to the Registration form
+// by way of the course's id being dynamically passed to the Linked button.
 
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 
-import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 
 import styles from "../../styles/CoursePage.module.css";
@@ -44,9 +47,12 @@ function CoursePage() {
       <p className={styles.CourseInfo}>
         <strong>Spaces Available:</strong> {course.available_spaces}
       </p>
-      <Button className={styles.BookButton} variant="outline-success">
-        Book Now
-      </Button>
+      {/* Button linked to Registration form with course's id passed dynamically into the route. */}
+      <Link to={`/register/${id}`}>
+        <Button className={styles.BookButton} variant="outline-success">
+          Book Now
+        </Button>
+      </Link>
     </Container>
   );
 }
