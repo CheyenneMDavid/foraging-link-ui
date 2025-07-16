@@ -1,5 +1,5 @@
 // CourseRegistrationForm is presented to the user with their name and email which are fixed values.
-// All other fields are editable state variable.
+// All other fields are editable state variables.
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -10,13 +10,12 @@ import styles from "../../styles/CourseRegistrationForm.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
 
 const CourseRegistrationForm = ({ courseId }) => {
-  // Retrieved from CurrentUserContext to display as fixed values in the form.
+  // Retrieved from CurrentUserContext to display name and email as fixed values.
   const currentUser = useCurrentUser();
-
   const [isLoading, setIsLoading] = useState(true);
 
   console.log("CurrentUser:", currentUser);
-
+  // Fetches profile owner name and user email to populate fixed form fields.
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
@@ -91,7 +90,7 @@ const CourseRegistrationForm = ({ courseId }) => {
 
       <div className={styles.FormGroup}>
         <label>Email:</label>
-        <p>(email placeholder)</p>
+        <p>{email || "Loading name..."}</p>
       </div>
 
       {/* Values supplied by user */}
