@@ -8,6 +8,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 import styles from "../../styles/CourseRegistrationForm.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
+import { Redirect } from "react-router-dom";
 
 const CourseRegistrationForm = ({ courseId }) => {
   // Retrieved from CurrentUserContext to display name and email as fixed values.
@@ -38,10 +39,12 @@ const CourseRegistrationForm = ({ courseId }) => {
         setIsLoading(false);
       }
     };
+    console.log("currentUser inside useEffect:", currentUser);
+    console.log("Calling fetchProfile...");
 
     if (currentUser?.profile_id) {
       fetchProfile();
-    }
+    } else console.log("currentUser.profile_id is not available");
   }, [currentUser]);
 
   // State variables.
@@ -77,6 +80,8 @@ const CourseRegistrationForm = ({ courseId }) => {
       });
   };
 
+  // Using CurrentUserContext, if the user is not currently signed in, they are redirected to the sign-in page
+  if (!currentUser) return <Redirect to="/signin" />;
   if (isLoading) return <p>loading... </p>;
 
   // Overall form structure
@@ -85,12 +90,12 @@ const CourseRegistrationForm = ({ courseId }) => {
       {/* Fixed values that are supplied by the CurrentUserContext */}
       <div className={styles.FormGroup}>
         <label>Name:</label>
-        <p>{name || "Loading name..."}</p>
+        <p>{name || "Please sign in"}</p>
       </div>
 
       <div className={styles.FormGroup}>
         <label>Email:</label>
-        <p>{email || "Loading name..."}</p>
+        <p>{email || "Please sign in"}</p>
       </div>
 
       {/* Values supplied by user */}
