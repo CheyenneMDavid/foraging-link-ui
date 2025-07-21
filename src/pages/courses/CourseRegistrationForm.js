@@ -1,5 +1,7 @@
-// CourseRegistrationForm is presented to the user with their name and email which are fixed values.
+// CourseRegistrationForm is presented to the user with their name and email as fixed values.
 // All other fields are editable state variables.
+// Phone numbers entered by users are checked for a leading zero, which is replaced with +44
+// before submission. This is the format expected by the database.
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -8,9 +10,10 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 import styles from "../../styles/CourseRegistrationForm.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
-import { Redirect } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 
-const CourseRegistrationForm = ({ courseId }) => {
+const CourseRegistrationForm = () => {
+  const { id: courseId } = useParams();
   // Retrieved from CurrentUserContext to display name and email as fixed values.
   const currentUser = useCurrentUser();
   const [isLoading, setIsLoading] = useState(true);
@@ -56,19 +59,32 @@ const CourseRegistrationForm = ({ courseId }) => {
   const [emergencyContactName, setEmergencyContactName] = useState("");
   const [emergencyContactPhone, setEmergencyContactPhone] = useState("");
 
+  // Formating for UK-style numbers before submission by checking for a
+  // leading zero and replacing it with "+44", which is the format expected
+  // by the database.
+  const convertPhone = (num) => {
+    if (num.startsWith("0")) {
+      return "+44" + num.slice(1);
+    }
+    return num;
+  };
+
+  const convertedPhone = convertPhone(phone);
+  const convertedICE = convertPhone(emergencyContactPhone);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("course_title", courseId);
-    formData.append("name", name);
+    formData.append("owner", currentUser?.profile_id);
     formData.append("email", email);
-    formData.append("phone", phone);
+    formData.append("phone", convertedPhone);
     formData.append("is_driver", isDriver);
     formData.append("has_dietary_restrictions", dietaryRestrictions);
     formData.append("dietary_restrictions", dietaryDetails);
     formData.append("has_emergency_contact", hasEmergencyContact);
     formData.append("ice_name", emergencyContactName);
-    formData.append("ice_number", emergencyContactPhone);
+    formData.append("ice_number", convertedICE);
 
     axios
       .post("/course_registrations/create/", formData)
