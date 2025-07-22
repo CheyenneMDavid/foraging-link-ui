@@ -10,7 +10,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 import styles from "../../styles/CourseRegistrationForm.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect, useHistory, useParams } from "react-router-dom";
 
 const CourseRegistrationForm = () => {
   const { id: courseId } = useParams();
@@ -22,6 +22,8 @@ const CourseRegistrationForm = () => {
   // Fetches profile owner name and user email to populate fixed form fields.
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+
+  const history = useHistory();
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -90,6 +92,7 @@ const CourseRegistrationForm = () => {
       .post("/course_registrations/create/", formData)
       .then((response) => {
         console.log("Form Submission Successful", response.data);
+        history.push("/"); // Takes user back to home after success.
       })
       .catch((err) => {
         console.error("Form Submission Failed", err);
