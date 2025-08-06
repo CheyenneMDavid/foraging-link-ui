@@ -20,6 +20,10 @@ another's comments, managing user profiles, and registering for courses.
       - [Post Components](#post-components)
       - [Comments Section Components](#comments-section-components)
       - [Course and Course Registration Components](#course-and-course-registration-components)
+      - [Initial Setup](#initial-setup)
+      - [Temporary Setup for Testing](#temporary-setup-for-testing)
+      - [Refining the Form](#refining-the-form)
+      - ["Hooking in" User Data](#hooking-in-user-data)
     - [Post Management Features](#post-management-features)
       - [Current Features](#current-features)
       - [Future Planned Features](#future-planned-features)
@@ -28,6 +32,7 @@ another's comments, managing user profiles, and registering for courses.
       - [Component Planning](#component-planning)
         - [Comments Section](#comments-section)
   - [Development Notes](#development-notes)
+    - [CourseRegistrationForm – Development Journey](#courseregistrationform--development-journey)
   - [List of Reusable Components](#list-of-reusable-components)
     - [LikeAndUnlike Component](#likeandunlike-component)
   - [Design Choices](#design-choices)
@@ -35,10 +40,14 @@ another's comments, managing user profiles, and registering for courses.
     - [Components and Functionality](#components-and-functionality)
     - [Form Validation and Defensive Design](#form-validation-and-defensive-design)
   - [Development Challenges \& Solutions](#development-challenges--solutions)
+    - [Form Submission Rejected Due to Phone Format](#form-submission-rejected-due-to-phone-format)
+    - [Course Registration Submission – Format and Field Issues](#course-registration-submission--format-and-field-issues)
     - [Naming Conflicts](#naming-conflicts)
+  - [Later Dev Fixes](#later-dev-fixes)
     - [Refactoring Post.js and PostsList.js](#refactoring-postjs-and-postslistjs)
     - [Handling Comments and Replies](#handling-comments-and-replies)
       - [**Additional Fixes to Ensure Replies Display Correctly:**](#additional-fixes-to-ensure-replies-display-correctly)
+    - [Use of Email – Front-End](#use-of-email--front-end)
   - [Credits](#credits)
 
 ## User Stories
@@ -109,9 +118,53 @@ another's comments, managing user profiles, and registering for courses.
 
 #### Course and Course Registration Components
 
-- **`Sidebar`**: Displays the first three/closest dates for upcoming foraging courses.
+- **`Sidebar`**: In desktop view:
+  - Conditionally displays the most popular users, but only if the current user is authenticated. Else, it displays a prompt to sign in.  In mobile view, the `Sidebar` is hidden, and again, the `PopularProfiles` component or a prompt to sign in are displayed according to whether the current user is authenticated
+
+  - Displays UpcomingCourses as a list of the 3 soonest courses, showing title, date, location, and available spaces. Available spaces are dynamically calculated by subtracting the number of registrations from the course’s max capacity.
+
+  - Each list item links to the details page for that course.
+
+- **`CoursesListPage`**: Displays all courses.  Each of the list items acting as a link to that specific course's detail page.
+  
+- **`CoursePage`**: Displays the detail of an individual course, the available spaces and a **`Book Now`** button which takes the unauthenticated user to the sign in page and the authenticated user to the registration form.
+
+- **`CourseRegistrationForm`**: Displays a user's name and email address as fixed values which are taken from the user profile, whilst all other fields are editable, requested input for:
+  - Phone number
+  - Whether they are a driver
+  - Any dietary restrictions
+  - An emergency contact (I.C.E.)
+
+If checked, both the Dietary Restrictions and I.C.E. checkboxes open additional required fields that must be completed before submission.
 
 ---
+
+#### Initial Setup
+
+- Created `CourseRegistrationForm.js`.
+- Used controlled components with `useState` for each form field.
+- Used a basic `handleSubmit` function to send data to the backend using a plain JavaScript object.
+
+#### Temporary Setup for Testing
+
+- Hardcoded `<CourseRegistrationForm courseId={1} />` in App.js.
+- Accepted courseId as a prop inside the form component.
+
+- Allowed consistent testing and styling before adding dynamic routing with the use of `useParams()`
+
+#### Refining the Form
+
+- Replaced hardcoded `courseId={1}` with a dynamic route using `useParams` in React Router.
+
+- Updated route to `/register/:id`.
+- Changed form to extract `id` from URL and use it for submission.
+
+#### "Hooking in" User Data
+
+- Added `useCurrentUser` context.
+
+- Fetched user name and email via API and displayed them as fixed (non-editable) values in the form.
+- Used `console.log`() to inspect `currentUser` and verify profiles data and emails were loading correctly.
 
 ### Post Management Features
 
@@ -119,7 +172,7 @@ another's comments, managing user profiles, and registering for courses.
 
 - While complete post management is handled by admins in the backend, the front end provides basic
   editing and deleting features for admins, limited to posts they authored. This allows for quick
-  edits without needing to access the backend for minor tasks.
+  edits without needing to access the backend for minor tasks
 
 - Displays the total number of likes (`likes_count`) for each post.
 - When a user likes or unlikes a post, the `likes_count` dynamically updates without requiring a page refresh. This is achieved through state updates in the `PostPage` component, which interact with the backend API.
@@ -128,6 +181,7 @@ another's comments, managing user profiles, and registering for courses.
 
 - Introduce a **moderator** tier of users with permissions greater than regular authenticated users.
   Moderators will be able to:
+  
   - Create, read, update, and delete their own posts.
   - Manage posts without requiring full access to the admin panel.
 
@@ -173,6 +227,10 @@ the currently signed-in user.
 
 ![Mobile Expanded Comments](https://res.cloudinary.com/cheymd/image/upload/v1731488212/foraging_link/readme_images/mobile_post_detail_expanded_comments_fqif0x.png)
 
+The G displays the user's name and email as fixed values. Additional fields, including dietary restrictions and emergency contact, appear only when the relevant checkboxes are selected. The layout and conditional fields are shown in the screenshot below.
+
+![Course Registrtation Form](https://res.cloudinary.com/cheymd/image/upload/v1754443368/foraging_link/readme_images/course_registration_form_b7xatk.png)
+
 #### Component Planning
 
 The component planning aims to break down the application into manageable parts, focusing on reusable components to maintain consistency and modularity.
@@ -183,7 +241,17 @@ The comments section is by far the most complex part of the application, due to 
 
 ## Development Notes
 
-**Note**: This section is only being used as a notes section to self for planning out functionality, implementation and reasoning as components are broken down into their shared usage.
+### CourseRegistrationForm – Development Journey
+
+- I started with `CourseRegistrationForm.js` using controlled inputs with `useState`.
+
+- Then, temporarily hardcoded `<CourseRegistrationForm courseId={1} />` into `App.js` to enable simple testing without anything else bluring the task.
+
+- Later replaced with dynamic routing using `useParams()` from React Router.
+  
+- Used useCurrentUser to fetch and display the user's name and email.
+
+- Used `console.log`() to verify user data before building logic for fixed fields, editable inputs, conditional sections, and final submission using `FormData()`.
 
 ## List of Reusable Components
 
@@ -262,6 +330,33 @@ without extra code, making it simple and efficient.
 
 ## Development Challenges & Solutions
 
+### Form Submission Rejected Due to Phone Format
+
+When testing the form submission for course registrations, the failed submission was traced back to the backend validation expecting +44.
+
+This was resolved by adding logic to `CourseRegistrationForm.js` which would check phone numbers for a preceding 0 and swap it for +44 before saving to the database in a format that the valida5ion was expecting, like so:
+
+```js
+const convertPhone = (num) => {
+  if (num.startsWith("0")) {
+    return "+44" + num.slice(1);
+  }
+  return num;
+};
+```
+
+### Course Registration Submission – Format and Field Issues
+
+Initially, form submission failed because the backend expected `multipart/form-data`, but the frontend was sending a plain JavaScript object.
+
+**Solution:**
+Replaced the plain object with a `FormData()` instance to meet the backend’s expectations:
+
+```js
+const formData = new FormData();
+formData.append("name", name);
+```
+
 ### Naming Conflicts
 
 When first creating the `PostPage`, I had difficulty fetching data, unable to get it to display the
@@ -284,6 +379,25 @@ To resolve this, the logic to handle edge cases:
 
 - For unliking a post, likes_count defaults to a 1 before
   decrementing, ensuring it never becomes NaN. Also, by setting it to 1 before decrementing, it doesn't run the risk of becomeing a negative number.
+
+## Later Dev Fixes
+
+Had to change from object to useParams
+Added logic to check for leading zero in phonenumber and swap it for +44 before saving in database.
+Filling all fields in allowed 201
+
+But leaving fields such as ICE contact, not filled in, despite not ticking the bock was stopping submission.
+I was able this by using devtools to check the network response.
+It's appeared that despite using clean(), django was still treating the fields as required.
+So adding Even though you're enforcing conditional logic in clean()
+Only by adding
+
+```python
+    blank=True, 
+    null=True,
+```
+
+and specifying that these could be as such, did django allow this.
 
 ### Refactoring Post.js and PostsList.js
 
@@ -309,6 +423,17 @@ The app allows users to comment on posts and reply to existing comments. To mana
 - Debugged API calls and adjusted how state updates to prevent missing or duplicated replies.  
 
 This structure **avoids circular imports, improves retrieval accuracy, and ensures a functional commenting system.**
+
+### Use of Email – Front-End
+
+Originally, the front end did not collect email addresses during signup — registration was limited to username and password only. While `django-allauth` handled email collection on the backend, that data wasn’t accessed by the frontend interface.
+
+However, once course registration functionality was introduced, email became necessary for associating a logged-in user with a booking. As a result, the frontend was updated to:
+
+- Initially allow users to enter their email manually.  
+- Later replace that field with a fixed, read-only display of the logged-in user’s email, since only authenticated users can submit the registration form.
+
+At this stage, the frontend **does not perform any email validation itself**. It relies entirely on the backend’s validation. Future updates will include more robust validation checks
 
 ---
 
