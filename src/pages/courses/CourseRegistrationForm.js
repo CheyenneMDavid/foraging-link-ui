@@ -74,8 +74,16 @@ const CourseRegistrationForm = () => {
   const convertedPhone = convertPhone(phone);
   const convertedICE = convertPhone(emergencyContactPhone);
 
+  // Alert to user if the phone field is empty
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!phone.trim()) {
+      alert(
+        "Please enter your phone number before attempting to submit this form.."
+      );
+      return;
+    }
+
     const formData = new FormData();
     formData.append("course_title", courseId);
     formData.append("owner", currentUser?.profile_id);
