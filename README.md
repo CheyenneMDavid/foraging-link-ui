@@ -43,6 +43,7 @@ another's comments, managing user profiles, and registering for courses.
     - [Form Submission Rejected Due to Phone Format](#form-submission-rejected-due-to-phone-format)
     - [Course Registration Submission – Format and Field Issues](#course-registration-submission--format-and-field-issues)
     - [Naming Conflicts](#naming-conflicts)
+    - [Authentication Redirect – Page Refresh Issue](#authentication-redirect--page-refresh-issue)
   - [Later Dev Fixes](#later-dev-fixes)
     - [Refactoring Post.js and PostsList.js](#refactoring-postjs-and-postslistjs)
     - [Handling Comments and Replies](#handling-comments-and-replies)
@@ -334,7 +335,7 @@ without extra code, making it simple and efficient.
 
 When testing the form submission for course registrations, the failed submission was traced back to the backend validation expecting +44.
 
-This was resolved by adding logic to `CourseRegistrationForm.js` which would check phone numbers for a preceding 0 and swap it for +44 before saving to the database in a format that the valida5ion was expecting, like so:
+This was resolved by adding logic to `CourseRegistrationForm.js` which would check phone numbers for a preceding 0 and swap it for +44 before saving to the database in a format that the validation was expecting, like so:
 
 ```js
 const convertPhone = (num) => {
@@ -379,6 +380,24 @@ To resolve this, the logic to handle edge cases:
 
 - For unliking a post, likes_count defaults to a 1 before
   decrementing, ensuring it never becomes NaN. Also, by setting it to 1 before decrementing, it doesn't run the risk of becomeing a negative number.
+
+### Authentication Redirect – Page Refresh Issue
+
+Refreshing the `CourseRegistrationForm` page always redirected to **Sign In**,  
+even when already signed in.  
+
+This happened because `CurrentUserProvider` rendered its children before the  
+`/dj-rest-auth/user/` request finished. On refresh, `currentUser` was briefly  
+`null`, which triggered a false redirect.  
+
+As part of troubleshooting, I also updated `SignInForm.js` to use `axiosReq`  
+instead of plain `axios`. This keeps the login request consistent with the  
+rest of the API calls, though it wasn’t the direct fix for the redirect issue.  
+
+The actual fix was adding an `isLoading` state. While `isLoading` is `true`,  
+children aren’t rendered. Once the request completes, `finally` sets  
+`isLoading` to `false` — essentially providing a short delay before the page  
+is rendered.
 
 ## Later Dev Fixes
 
