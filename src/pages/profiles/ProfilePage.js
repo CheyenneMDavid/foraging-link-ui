@@ -84,21 +84,7 @@ function ProfilePage() {
         </Col>
         {/* Name of the profile owner */}
         <Col lg={6}>
-          <h3 className="m-2">
-            {profile?.owner}
-            {/* Displays a trophy for top contributors (set to 2+ comments for now) */}
-            {profile?.total_comments_count >= 2 && (
-              <span
-                style={{
-                  marginLeft: "5px",
-                  fontSize: "0.6em",
-                  display: "inline-block",
-                }}
-              >
-                🏆
-              </span>
-            )}
-          </h3>
+          <h2 className="text-center">{profile?.owner}</h2>
           <Row className="justify-content-center no-gutters">
             <Col xs={3} className="my-2">
               <div>{profile?.followers_count}</div>
@@ -136,15 +122,29 @@ function ProfilePage() {
 
   const mainProfilePosts = (
     <>
-      {/* Section for user's comments */}
+      {/* Section for user's comments and contribution badge logic */}
       <hr />
-      <p className="text-center">Profile owner's comments</p>
+      <h5 className="mx-3">
+        {profile?.owner}'s comments
+        {profile?.total_comments_count >= 3 && (
+          <span
+            style={{
+              marginLeft: "5px",
+              fontSize: "0.8em",
+              display: "inline-block",
+            }}
+          >
+            🏆 (top contributor)
+          </span>
+        )}
+      </h5>
+
       <hr />
 
       {profileComments.results.length ? (
         // Loops through each comment and renders its content with a link to the post
         profileComments.results.map((comment) => (
-          <div key={comment.id} className="mb-3">
+          <div key={comment.id} className="mx-3">
             {/* Display the comment content */}
             <p>{comment.content}</p>
             {/* Link to the original post or comment that this comment belongs to */}

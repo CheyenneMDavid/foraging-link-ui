@@ -11,6 +11,12 @@
   padding-top: 6rem;
 }
 
+h2,
+h3,
+h5 {
+  color: whitesmoke;
+}
+
 hr {
   border: 1px solid #ccc;
   width: 50%;
