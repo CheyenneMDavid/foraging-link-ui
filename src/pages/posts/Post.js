@@ -45,43 +45,44 @@ function Post(props) {
     <Card className={styles.Post}>
       {/* Main Plant Section */}
       <section aria-label="Main Plant Section">
-        {main_plant_name && <h3>{main_plant_name}</h3>}
         <Link to={`/posts/${id}`}>
+          {main_plant_name && <h3>{main_plant_name}</h3>}
+
           <Card.Img
             src={main_plant_image}
             alt={main_plant_name}
             aria-describedby="main-plant-description"
-            className={isListPage ? styles.PostImage : undefined} // Applies style conditionally
+            className={isListPage ? styles.PostImage : undefined} // Conditionally applies style to image size dependent on whether in list page of detail page
           />
-        </Link>
 
-        <Card.Body>
-          {isListPage ? (
-            <>
-              {main_plant_environment && (
-                <Card.Text>{main_plant_environment}</Card.Text>
-              )}
-              {culinary_uses && <Card.Text>{culinary_uses}</Card.Text>}
-            </>
-          ) : (
-            <>
-              {main_plant_environment && (
-                <Card.Text>{main_plant_environment}</Card.Text>
-              )}
-              {culinary_uses && <Card.Text>{culinary_uses}</Card.Text>}
-              {medicinal_uses && <Card.Text>{medicinal_uses}</Card.Text>}
-              {history_and_folklore && (
-                <Card.Text>{history_and_folklore}</Card.Text>
-              )}
-              {main_plant_parts_used && (
-                <Card.Text>{main_plant_parts_used}</Card.Text>
-              )}
-              {main_plant_warnings && (
-                <Card.Text>{main_plant_warnings}</Card.Text>
-              )}
-            </>
-          )}
-        </Card.Body>
+          <Card.Body>
+            {isListPage ? (
+              <>
+                {main_plant_environment && (
+                  <Card.Text>{main_plant_environment}</Card.Text>
+                )}
+                {culinary_uses && <Card.Text>{culinary_uses}</Card.Text>}
+              </>
+            ) : (
+              <>
+                {main_plant_environment && (
+                  <Card.Text>{main_plant_environment}</Card.Text>
+                )}
+                {culinary_uses && <Card.Text>{culinary_uses}</Card.Text>}
+                {medicinal_uses && <Card.Text>{medicinal_uses}</Card.Text>}
+                {history_and_folklore && (
+                  <Card.Text>{history_and_folklore}</Card.Text>
+                )}
+                {main_plant_parts_used && (
+                  <Card.Text>{main_plant_parts_used}</Card.Text>
+                )}
+                {main_plant_warnings && (
+                  <Card.Text>{main_plant_warnings}</Card.Text>
+                )}
+              </>
+            )}
+          </Card.Body>
+        </Link>
       </section>
 
       {/* Confusable Plant Section */}
