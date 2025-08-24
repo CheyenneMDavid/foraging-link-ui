@@ -9,6 +9,7 @@ import btnStyles from "../../styles/Button.module.css";
 import LikeUnlike from "../../components/LikeUnlike";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { MoreDropdown } from "../../components/MoreDropdown";
+import { axiosRes } from "../../api/axiosDefaults";
 import ReplyCreateForm from "./ReplyCreateForm";
 
 function Comment(props) {
@@ -27,6 +28,26 @@ function Comment(props) {
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const [showReplyForm, setShowReplyForm] = useState(false);
+
+  const history = useHistory();
+
+  const handleEdit = () => {
+    history.push(`/comments/${id}/edit`);
+  };
+
+  // Deletes the comment from the backend, filters out the removed comment
+  // updates local state and displays the change immediately.
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/comments/${id}/`);
+      setComments((prev) => ({
+        ...prev,
+        results: (prev.results || []).filter((comment) => comment.id !== id),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Card className={styles.Comment}>
@@ -50,7 +71,9 @@ function Comment(props) {
           </div>
 
           {/* Show edit/delete options if the comment belongs to the current user */}
-          {is_owner && <MoreDropdown />}
+          {is_owner && (
+            <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
+          )}
         </div>
 
         {/* Display the comment's creation date and user interaction options */}
