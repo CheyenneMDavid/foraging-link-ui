@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import styles from "../../styles/Comment.module.css";
 import btnStyles from "../../styles/Button.module.css";
