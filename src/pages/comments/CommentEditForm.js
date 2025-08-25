@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+// CommentEditForm.js is used to edit existing comments
 
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import { axiosRes } from "../../api/axiosDefaults";
-
-import styles from "../../styles/CommentCreateEditForm.module.css";
 
 function CommentEditForm(props) {
   const { id, content, setShowEditForm, setComments } = props;
@@ -42,7 +41,6 @@ function CommentEditForm(props) {
     <Form onSubmit={handleSubmit}>
       <Form.Group className="pr-1">
         <Form.Control
-          className={styles.Form}
           as="textarea"
           value={formContent}
           onChange={handleChange}
@@ -50,18 +48,10 @@ function CommentEditForm(props) {
         />
       </Form.Group>
       <div className="text-right">
-        <button
-          className={styles.Button}
-          onClick={() => setShowEditForm(false)}
-          type="button"
-        >
+        <button onClick={() => setShowEditForm(false)} type="button">
           cancel
         </button>
-        <button
-          className={styles.Button}
-          disabled={!content.trim()}
-          type="submit"
-        >
+        <button disabled={!content.trim()} type="submit">
           save
         </button>
       </div>

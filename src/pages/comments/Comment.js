@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Card, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import styles from "../../styles/Comment.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -11,6 +11,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { axiosRes } from "../../api/axiosDefaults";
 import ReplyCreateForm from "./ReplyCreateForm";
+import CommentEditForm from "./CommentEditForm";
 
 function Comment(props) {
   const {
@@ -26,14 +27,11 @@ function Comment(props) {
   } = props;
 
   const currentUser = useCurrentUser();
-  const is_owner = currentUser?.username === owner;
+  const is_owner = currentUser.username === owner;
+
+  // Toggles reply and edit for the UI
   const [showReplyForm, setShowReplyForm] = useState(false);
-
-  const history = useHistory();
-
-  const handleEdit = () => {
-    history.push(`/comments/${id}/edit`);
-  };
+  const [showEditForm, setShowEditForm] = useState(false);
 
   // Deletes the comment from the backend, filters out the removed comment
   // updates local state and displays the change immediately.
@@ -67,12 +65,26 @@ function Comment(props) {
 
           {/* Display the comment's text content */}
           <div className={styles.CommentContent}>
-            <Card.Text>{content}</Card.Text>
+            {showEditForm ? (
+              <CommentEditForm
+                id={id}
+                profile_id={profile_id}
+                content={content}
+                profileImage={profile_image}
+                setComments={setComments}
+                setShowEditForm={setShowEditForm}
+              />
+            ) : (
+              <Card.Text>{content}</Card.Text>
+            )}
           </div>
 
           {/* Show edit/delete options if the comment belongs to the current user */}
-          {is_owner && (
-            <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
+          {is_owner && !showEditForm && (
+            <MoreDropdown
+              handleEdit={() => setShowEditForm(true)}
+              handleDelete={handleDelete}
+            />
           )}
         </div>
 
@@ -119,7 +131,7 @@ function Comment(props) {
         {/* Show reply form only when toggled on */}
         {showReplyForm && (
           <ReplyCreateForm
-            profile_id={currentUser.profile_id}
+            profile_id={currentUser?.profile_id}
             profileImage={profile_image}
             replying_comment={id}
             setComments={setComments}

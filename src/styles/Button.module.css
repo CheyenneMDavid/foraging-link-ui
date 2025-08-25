@@ -16,6 +16,7 @@
 .AlignRight {
   margin-left: auto;
   display: block;
+  margin-bottom: 1rem;
 }
 
 .Button:hover {
