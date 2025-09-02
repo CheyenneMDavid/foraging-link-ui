@@ -1,8 +1,11 @@
+// ProfilePage shows a user’s profile, their comments, and an edit button if the current user is the owner. owner.
+
 import React, { useEffect, useState } from "react";
 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import { Link } from "react-router-dom";
 
 import Asset from "../../components/Asset";
 
@@ -81,6 +84,16 @@ function ProfilePage() {
             roundedCircle
             src={profile?.image}
           />
+          {is_owner && (
+            <Button
+              className={`${btnStyles.Button} ${btnStyles.Black} m-3`}
+              as={Link}
+              to={`/profiles/${profile?.id}/edit`}
+              style={{ width: "50%" }}
+            >
+              Edit profile
+            </Button>
+          )}
         </Col>
         {/* Name of the profile owner */}
         <Col lg={6}>
