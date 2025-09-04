@@ -1,5 +1,8 @@
+// ProfileDataContext.js keeps track of profile information and makes it
+// available to other components and functions across the app.
+
 import { createContext, useContext, useEffect, useState } from "react";
-import { axiosReq } from "../api/axiosDefaults";
+import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useCurrentUser } from "./CurrentUserContext";
 
 export const ProfileDataContext = createContext();
@@ -15,12 +18,23 @@ export const ProfileDataProvider = ({ children }) => {
   });
   const currentUser = useCurrentUser();
 
+  // Called when follow button is clicked. Sends request to follow the profile.
+  const handleFollow = async (clickedProfile) => {
+    try {
+      const { data } = await axiosRes.post("/followers/", {
+        followed: clickedProfile.id,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     const handleMount = async () => {
       try {
-        // Fetches the profiles data ordered by the followers_count.
+        // // Gets profiles, with most followers
         const { data } = await axiosReq.get(
-          "/profiles/?ordering=followers_count"
+          "/profiles/?ordering=-followers_count"
         );
         // Logs API response for debugging, with better context about the data received.
         console.log(
@@ -41,9 +55,10 @@ export const ProfileDataProvider = ({ children }) => {
     handleMount();
   }, [currentUser]);
 
+  // Provides profile data and update functions to the rest of the app.
   return (
     <ProfileDataContext.Provider value={profileData}>
-      <SetProfileDataContext.Provider value={setProfileData}>
+      <SetProfileDataContext.Provider value={{ setProfileData, handleFollow }}>
         {children}
       </SetProfileDataContext.Provider>
     </ProfileDataContext.Provider>

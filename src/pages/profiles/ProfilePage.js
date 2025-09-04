@@ -1,4 +1,4 @@
-// ProfilePage shows a user’s profile, their comments, and an edit button if the current user is the owner. owner.
+// ProfilePage shows a user’s profile, their comments, and an edit button if the current user is the owner.
 
 import React, { useEffect, useState } from "react";
 
@@ -32,7 +32,7 @@ function ProfilePage() {
   const currentUser = useCurrentUser();
   const { id } = useParams();
 
-  const setProfileData = useSetProfileData();
+  const { setProfileData, handleFollow } = useSetProfileData();
   const { pageProfile } = useProfileData();
 
   const [profile] = pageProfile.results;
@@ -86,7 +86,7 @@ function ProfilePage() {
           />
           {is_owner && (
             <Button
-              className={`${btnStyles.Button} ${btnStyles.Black} m-3`}
+              className={`${btnStyles.Button} ${btnStyles.EditButton} m-3`}
               as={Link}
               to={`/profiles/${profile?.id}/edit`}
               style={{ width: "50%" }}
@@ -114,15 +114,15 @@ function ProfilePage() {
             !is_owner &&
             (profile?.following_id ? (
               <Button
-                className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
+                className={`${btnStyles.Button} ${btnStyles.UnfollowButton}`}
                 onClick={() => {}}
               >
                 unfollow
               </Button>
             ) : (
               <Button
-                className={`${btnStyles.Button} ${btnStyles.Black}`}
-                onClick={() => {}}
+                className={`${btnStyles.Button} ${btnStyles.FollowButton}`}
+                onClick={() => handleFollow(profile)}
               >
                 follow
               </Button>
