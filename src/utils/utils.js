@@ -25,10 +25,10 @@ export const fetchMoreData = async (resource, setResource) => {
   } catch (err) {}
 };
 
-// Updates profile data after a follow action.
-// - For the clicked profile: increments followers_count and sets following_id.
-// - For the logged-in user: increments following_count.
-// - Otherwise: returns profile unchanged.
+// Updates profile data after a follow action: It increments the
+// followers_count and sets following_id for the clicked profile, increments
+// following_count for the logged-in user, and leaves all other profiles
+// unchanged.
 export const followHelper = (profile, clickedProfile, following_id) => {
   return profile.id === clickedProfile.id
     ? {
@@ -43,12 +43,9 @@ export const followHelper = (profile, clickedProfile, following_id) => {
       }
     : profile;
 };
-
-// Updates profile data after an unfollow action.
-// - For the clicked profile: decrements followers_count and clears
-// following_id.
-// - For the logged-in user: decrements following_count.
-// - Otherwise: returns profile unchanged.
+// Updates profile data when an unfollow action: It decreases followers_count
+// for the clicked profile and decreases following_count for the logged-in
+// user.
 export const unfollowHelper = (profile, clickedProfile) => {
   return profile.id === clickedProfile.id
     ? {
