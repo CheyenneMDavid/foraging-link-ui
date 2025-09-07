@@ -9,7 +9,7 @@ import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Asset from "../../components/Asset";
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
@@ -23,6 +23,7 @@ import {
 import { Button, Image } from "react-bootstrap";
 import Sidebar from "../../components/Sidebar";
 import { axiosReq } from "../../api/axiosDefaults";
+import { ProfileEditDropdown } from "../../components/MoreDropdown";
 
 function ProfilePage() {
   // Tracks the loading state for profile data.
@@ -94,6 +95,7 @@ function ProfilePage() {
   // Profile header section: avatar, follow/unfollow and stats.
   const mainProfile = (
     <>
+      {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
       <Row noGutters className="px-3 text-center">
         {/* Profile image. */}
         <Col lg={3} className={`text-lg-left ${styles.ProfileInfo}`}>
@@ -102,17 +104,6 @@ function ProfilePage() {
             roundedCircle
             src={profile?.image}
           />
-          {/* Conditionally displayed edit button. */}
-          {is_owner && (
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.EditButton} m-3`}
-              as={Link}
-              to={`/profiles/${profile?.id}/edit`}
-              style={{ width: "50%" }}
-            >
-              Edit profile
-            </Button>
-          )}
         </Col>
 
         {/* Owner name */}
