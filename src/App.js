@@ -13,6 +13,9 @@ import ProfilePage from "./pages/profiles/ProfilePage";
 import CoursesListPage from "./pages/courses/CoursesListPage";
 import CoursePage from "./pages/courses/CoursePage";
 import CourseRegistrationForm from "./pages/courses/CourseRegistrationForm";
+import UsernameForm from "./pages/profiles/UsernameForm";
+import UserPasswordForm from "./pages/profiles/UserPasswordForm";
+import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -43,6 +46,22 @@ function App() {
               path="/register/:id"
               render={() => <CourseRegistrationForm />}
             />
+            <Route
+              exact
+              path="/profiles/:id/edit/username"
+              render={() => <UsernameForm />}
+            />
+            <Route
+              exact
+              path="/profiles/:id/edit/password"
+              render={() => <UserPasswordForm />}
+            />
+            <Route
+              exact
+              path="/profiles/:id/edit"
+              render={() => <ProfileEditForm />}
+            />
+
             <Route render={() => <p>Page not found!</p>} />
           </Switch>
         </Container>
