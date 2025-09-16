@@ -2,10 +2,9 @@
 
 ## Project Description
 
-The Foraging Link is the front-end React-based user interface that interacts with the
-[ForagingLink-API](https://github.com/CheyenneMDavid/ForagingLink-API). The front-end allows user
-interaction with features such as browsing monthly blog posts, commenting on the posts and one
-another's comments, managing user profiles, and registering for courses.
+The **Foraging Link** is a React-based front end that connects to the [ForagingLink-API](https://github.com/CheyenneMDavid/ForagingLink-API).  
+It provides a user interface for browsing blog posts, commenting and replying, managing user profiles, and registering for seasonal courses.
+
 
 ## Table of Contents
 
