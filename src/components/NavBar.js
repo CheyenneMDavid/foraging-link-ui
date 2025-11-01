@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-import logo from "../assets/logo.jpg";
+
 import styles from "../styles/NavBar.module.css";
 import {
   useCurrentUser,
@@ -13,6 +13,8 @@ import Avatar from "./Avatar";
 import useClickOutsideToggle from "../hooks/src/hooks/useClickOutsideToggle";
 
 import SearchBar from "./SearchBar";
+const LOGO_URL =
+  "https://res.cloudinary.com/cheymd/image/upload/v1761996487/foraging_link/site_design/logo_hcdxhe.jpg";
 
 // Navigation bar component, displays different navigation icons based on the user's
 // authentication status.
@@ -97,7 +99,15 @@ function NavBar({ setQuery }) {
           <div className={styles.Left}>
             <NavLink to="/">
               <Navbar.Brand>
-                <img src={logo} alt="logo" className={styles.Logo} />
+                <img
+                  src={LOGO_URL}
+                  alt="Logo"
+                  width="60"
+                  height="60"
+                  className={styles.Logo}
+                  decoding="async"
+                  fetchpriority="high"
+                />
               </Navbar.Brand>
             </NavLink>
             <SearchBar setQuery={setQuery} />

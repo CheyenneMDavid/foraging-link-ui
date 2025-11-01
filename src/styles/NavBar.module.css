@@ -48,12 +48,12 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: nowrap;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
 }
 
 .Logo {
-  height: 50px;
-  width: auto;
+  height: 60px;
+  width: 60px;
   object-fit: contain;
   border-radius: 50%;
 }
