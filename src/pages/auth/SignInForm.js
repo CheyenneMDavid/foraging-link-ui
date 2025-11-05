@@ -49,79 +49,83 @@ function SignInForm() {
   };
 
   return (
-    <Row className={styles.Row}>
-      <Col className="my-auto p-0 p-md-2" md={6}>
-        <Container className={`${appStyles.Content} p-4 `}>
-          <h1 className={styles.Header}>sign in</h1>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="username">
-              <Form.Label className="d-none">Username</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Username"
-                name="username"
-                className={styles.Input}
-                value={username}
-                onChange={handleChange}
-                required
-              />
-            </Form.Group>
-            {errors.username?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
+    <div className={styles.SignUpWrapper}>
+      <Row className={styles.Row}>
+        <Col className="my-auto p-0 p-md-2" md={6}>
+          <Container className={`${appStyles.Content} p-4 `}>
+            <h1 className={styles.Header}>sign in</h1>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group controlId="username">
+                <Form.Label className="d-none">Username</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Username"
+                  name="username"
+                  className={styles.Input}
+                  value={username}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
+              {errors.username?.map((message, idx) => (
+                <Alert key={idx} variant="warning">
+                  {message}
+                </Alert>
+              ))}
 
-            <Form.Group controlId="password">
-              <Form.Label className="d-none">Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                name="password"
-                className={styles.Input}
-                value={password}
-                onChange={handleChange}
-                required
-              />
-            </Form.Group>
-            {errors.password?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.Wide}`}
-              type="submit"
-            >
-              Sign in
-            </Button>
-            {errors.non_field_errors?.map((message, idx) => (
-              <Alert key={idx} variant="warning" className="mt-3">
-                {message}
-              </Alert>
-            ))}
-          </Form>
-        </Container>
-        <Container className={`mt-3 ${appStyles.Content}`}>
-          <span>
-            Don't have an account?
-            <Link className={styles.Link} to="/signup">
-              {" "}
-              Sign up now!
-            </Link>
-          </span>
-        </Container>
-      </Col>
-      <Col
-        md={6}
-        className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}
-      >
-        <Image
-          className={`${appStyles.FillerImage}`}
-          src="https://res.cloudinary.com/cheymd/image/upload/v1730664157/foraging_link/site_design/hero_xkaiyj.jpg"
-        />
-      </Col>
-    </Row>
+              <Form.Group controlId="password">
+                <Form.Label className="d-none">Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  className={styles.Input}
+                  value={password}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
+              {errors.password?.map((message, idx) => (
+                <Alert key={idx} variant="warning">
+                  {message}
+                </Alert>
+              ))}
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Wide}`}
+                type="submit"
+              >
+                Sign in
+              </Button>
+              {errors.non_field_errors?.map((message, idx) => (
+                <Alert key={idx} variant="warning" className="mt-3">
+                  {message}
+                </Alert>
+              ))}
+            </Form>
+          </Container>
+          <Container className={styles.SignInSignUpPrompt}>
+            <span>
+              Don't have an account?
+              <Link className={styles.Link} to="/signup">
+                {" "}
+                Sign up now!
+              </Link>
+            </span>
+          </Container>
+        </Col>
+        <Col
+          md={6}
+          className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}
+        >
+          <div className={styles.ImageBorder}>
+            <Image
+              className={`${appStyles.FillerImage}`}
+              src="https://res.cloudinary.com/cheymd/image/upload/v1730664157/foraging_link/site_design/hero_xkaiyj.jpg"
+            />
+          </div>
+        </Col>
+      </Row>
+    </div>
   );
 }
 

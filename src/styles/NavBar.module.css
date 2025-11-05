@@ -29,11 +29,11 @@
 }
 
 .NavLink:hover i {
-  color: whitesmoke !important;
+  color: orange !important;
 }
 
 .Active i {
-  color: whitesmoke !important;
+  color: white !important;
 }
 
 .NavbarToggle {

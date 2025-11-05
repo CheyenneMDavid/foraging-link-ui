@@ -2,7 +2,7 @@
 
 .Avatar {
   border-radius: 50%;
-  border: 2px solid white;
+  border: 2px solid black;
   object-fit: cover;
   margin: 0px 5px;
 }
