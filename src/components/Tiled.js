@@ -5,6 +5,8 @@ import styles from "../styles/Tiled.module.css";
 import { cloudinaryBase } from "../utils/utils";
 
 function Tiled() {
+  console.log("Tiled component loaded");
+
   const imageIds = [
     "SeaBuckthorn.png",
     "Carrageen.png",
