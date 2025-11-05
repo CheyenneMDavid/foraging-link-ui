@@ -16,6 +16,7 @@ import CourseRegistrationForm from "./pages/courses/CourseRegistrationForm";
 import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
+import Tiled from "./components/Tiled";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -27,6 +28,7 @@ function App() {
       </header>
 
       <main>
+        <Tiled />
         <Container className={styles.Main}>
           <Switch>
             <Route exact path="/" render={() => <HomePage query={query} />} />
