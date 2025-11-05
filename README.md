@@ -5,7 +5,6 @@
 The **Foraging Link** is a React-based front end that connects to the [ForagingLink-API](https://github.com/CheyenneMDavid/ForagingLink-API).  
 It provides a user interface for browsing blog posts, commenting and replying, managing user profiles, and registering for seasonal courses.
 
-
 ## Table of Contents
 
 - [The Foraging Link](#the-foraging-link)
@@ -49,6 +48,7 @@ It provides a user interface for browsing blog posts, commenting and replying, m
       - [**Additional Fixes to Ensure Replies Display Correctly:**](#additional-fixes-to-ensure-replies-display-correctly)
     - [Use of Email – Front-End](#use-of-email--front-end)
   - [Credits](#credits)
+    - [Images used for grid back ground](#images-used-for-grid-back-ground)
 
 ## User Stories
 
@@ -461,3 +461,59 @@ At this stage, the frontend **does not perform any email validation itself**. It
 - **[Font Awesome](https://fontawesome.com/icons)** : Icons used in the navigation.  
 - **[Picsart](https://picsart.com/)** : Tool used to create the logo.  
 - **[Symbl.cc](https://symbl.cc/)** : Resource for Unicode characters.
+- **[color-hex by RKWhite2](https://www.color-hex.com/member/rkwhite2)** : Color for buttons according to season, in course detail pages
+
+### Images used for grid back ground
+
+**Apple Blossom**
+Photo by [Marc Cordeaulash](https://unsplash.com/@_marcram) on [Unsplash](https://unsplash.com/photos/a-close-up-of-white-flowers-on-a-tree-Wq0EfJcVc7M)
+
+**Nettles**
+Photo by [Paul Morely](https://unsplash.com/@mobography) on [Unsplash](https://unsplash.com/photos/green-leaves-plant-DrYqMhk53dY)
+
+**Dandilion**
+Photo by [Walter Strun](https://unsplash.com/@walter46) on [Unsplash](https://unsplash.com/photos/four-yellow-petaled-flowers-kKmSRORgcnM)
+
+**Hairy Bittercress**
+Photo by [Bekarys Khozhanazar](https://unsplash.com/@aarys) [Unsplash](https://unsplash.com/photos/a-field-full-of-green-plants-with-lots-of-leaves-GK-P7M1UVE0)
+
+**Seaweed**
+Photo by [Ben Wicks](https://unsplash.com/@profwicks) on [Unsplash](https://unsplash.com/photos/yellow-and-black-leaves-on-water-_thl1SQCbPE)
+
+**Seaweeds**
+Photo by [Martin Dawson](https://unsplash.com/@dawsino) on [Unsplash](https://unsplash.com/photos/a-close-up-of-a-green-grass-field-Psx_SS2uUjM)
+
+**Summer Plums**
+Photo by [Kier in Sight Archives](https://unsplash.com/@kierinsightarchives) on [Unsplash](https://unsplash.com/photos/a-bowl-of-berries-Jf459MsgEIw)
+
+**Ramsons Leaves**
+Photo by [Nikolett Emmert](https://unsplash.com/@niki_emmert) on [Unsplash](https://unsplash.com/photos/a-bunch-of-green-leaves-with-water-drops-on-them-9PGNK9Gaf8c)
+
+**Sea Buckthorn**
+Photo by[Yulia khlebnikovayulia](https://unsplash.com/@khlebnikovayulia) on [Unsplash](https://unsplash.com/photos/brown-and-white-flowers-in-tilt-shift-lens-FE1qdFUYVZ0)
+
+**Ramsons Flowers**
+Photo by [C SNow](https://unsplash.com/@snowch) on [Unsplash](https://unsplash.com/photos/a-bunch-of-white-flowers-that-are-in-the-grass-QomRwDQJr9s)
+
+**Various Mushrooms**
+Photo by [Andrew Ridley](https://unsplash.com/@aridley88) on [Unsplash](https://unsplash.com/photos/a-basket-filled-with-lots-of-different-types-of-mushrooms-6KCS---7jbc)
+
+**Various Mushrooms**
+Photo by[Nick Grappone](https://unsplash.com/@ngrapp1) on [Unsplash](https://unsplash.com/photos/variety-of-shrooms-bTFPfoVOqb0)
+
+**Yellow Mushrooms**
+Photo by [Fabian Wikto](https://unsplash.com/@fabianwiktor) on [Unsplash](https://unsplash.com/photos/yellow-mushrooms-BKyih6Rjrxo)
+
+**Hawthorn Berries**
+Photo by [Kristina Kutleša](https://unsplash.com/@kristina001) on [Unsplash](https://unsplash.com/photos/a-close-up-of-a-tree-with-berries-on-it-oFDCsIWx9bk)
+
+Yew Berries
+Photo by [Adél Grőber](https://unsplash.com/@ninszi) on [Unsplash](https://unsplash.com/photos/a-close-up-of-a-plant-lpg3M5v8-TA)
+
+Photo by [Cédric Le Bars](https://unsplash.com/@brronze) on [Unsplash](https://unsplash.com/photos/a-couple-of-strawberries-sitting-on-top-of-a-lush-green-field-0aUwNFImVKY)
+
+**Ramsons**
+Photo by [M.X.](https://unsplash.com/@custom_project) on [Unsplash](https://unsplash.com/photos/a-close-up-of-a-bunch-of-white-flowers-uplqUAJoukM)
+
+**Stining nettles**
+Photo by [Bakd&Raw by Karolin Baitinger](https://unsplash.com/@bakdandraw) on [Unsplash](https://unsplash.com/photos/green-leaf-plant-in-close-up-photography-dQGd4UG0_Hc)
