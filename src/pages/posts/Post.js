@@ -46,13 +46,21 @@ function Post(props) {
       {/* Main Plant Section */}
       <section aria-label="Main Plant Section">
         <Link to={`/posts/${id}`}>
-          {main_plant_name && <h3>{main_plant_name}</h3>}
+          {main_plant_name && <h2>{main_plant_name}</h2>}
 
           <Card.Img
-            src={main_plant_image}
+            src={
+              main_plant_image
+                ? main_plant_image.replace(
+                    "/upload/",
+                    "/upload/f_auto,q_auto,w_600,h_350,c_fill,g_auto/"
+                  )
+                : ""
+            }
             alt={main_plant_name}
             aria-describedby="main-plant-description"
-            className={isListPage ? styles.PostImage : undefined} // Conditionally applies style to image size dependent on whether in list page of detail page
+            width="600"
+            height="400"
           />
 
           <Card.Body>
@@ -100,7 +108,14 @@ function Post(props) {
             )}
             {confusable_plant_image && (
               <Card.Img
-                src={confusable_plant_image}
+                src={
+                  confusable_plant_image
+                    ? confusable_plant_image.replace(
+                        "/upload/",
+                        "/upload/f_auto,q_auto,w_600,h_350,c_fill,g_auto/"
+                      )
+                    : ""
+                }
                 alt={confusable_plant_name}
                 aria-describedby="confusable-plant-description"
               />
