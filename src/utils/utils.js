@@ -80,4 +80,4 @@ export const removeTokenTimestamp = () => {
 // Base URL for Cloudinary image delivery with automatic format, quality,
 // and fixed dimensions for consistency across the site.
 export const cloudinaryBase =
-  "https://res.cloudinary.com/cheymd/image/upload/f_auto,q_auto,w_600,h_400/v1762276701/foraging_link/site_design/";
+  "https://res.cloudinary.com/cheymd/image/upload/f_auto,q_auto,w_500,h_330/v1762276701/foraging_link/site_design/";

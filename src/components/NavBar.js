@@ -14,7 +14,7 @@ import useClickOutsideToggle from "../hooks/src/hooks/useClickOutsideToggle";
 
 import SearchBar from "./SearchBar";
 const LOGO_URL =
-  "https://res.cloudinary.com/cheymd/image/upload/v1761996487/foraging_link/site_design/logo_hcdxhe.jpg";
+  "https://res.cloudinary.com/cheymd/image/upload/f_auto,q_auto,w_60,h_60,c_fill,g_auto/v1761996487/foraging_link/site_design/logo_hcdxhe.jpg";
 
 // Navigation bar component, displays different navigation icons based on the user's
 // authentication status.

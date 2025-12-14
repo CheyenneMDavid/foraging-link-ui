@@ -35,7 +35,7 @@ function UpcomingCourses() {
         {courses.map((course) => (
           <li key={course.id}>
             <Link to={`/courses/${course.id}`}>
-              <h5 className={styles.CourseTitle}>{course.title}</h5>
+              <h4 className={styles.CourseTitle}>{course.title}</h4>
               <p>{new Date(course.date).toLocaleDateString()}</p>
               <p>
                 <strong>Location:</strong> {course.location}

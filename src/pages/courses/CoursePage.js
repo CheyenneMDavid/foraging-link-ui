@@ -49,7 +49,10 @@ function CoursePage() {
       </p>
       {/* Button linked to Registration form with course's id passed dynamically into the route. */}
       <Link to={`/register/${id}`}>
-        <Button className={styles.BookButton} variant="outline-success">
+        <Button
+          className={`${styles.BookButton} ${styles[course.season]}`}
+          variant="outline-success"
+        >
           Book Now
         </Button>
       </Link>

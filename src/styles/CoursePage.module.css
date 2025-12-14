@@ -1,7 +1,7 @@
 .CourseTitle {
-  font-size: 3rem;
+  font-size: 3rem !important;
 
-  margin: 2rem 0;
+  /* justify-content: center; */
 }
 
 .CourseInfo {
@@ -24,6 +24,21 @@
   border-radius: 5px;
   color: whitesmoke;
   justify-content: center;
+}
+
+.Spring {
+  border-color: #d1dd93;
+  color: #d1dd93;
+}
+
+.Summer {
+  border-color: #e39e54;
+  color: #e39e54;
+}
+
+.Autumn {
+  border-color: orange;
+  color: orange;
 }
 
 .BookButton {

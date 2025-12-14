@@ -23,26 +23,7 @@ function Tiled() {
   ];
 
   // Duplicate the set to ensure coverage on large screens
-  const repeatedImages = [
-    ...imageIds,
-    ...imageIds,
-    ...imageIds,
-    ...imageIds,
-    ...imageIds,
-    ...imageIds,
-    ...imageIds,
-    ...imageIds,
-    ...imageIds,
-    ...imageIds,
-    ...imageIds,
-    ...imageIds,
-    ...imageIds,
-    ...imageIds,
-    ...imageIds,
-    ...imageIds,
-    ...imageIds,
-    ...imageIds,
-  ];
+  const repeatedImages = [...imageIds, ...imageIds, ...imageIds];
 
   return (
     <div className={styles.TiledBackground}>

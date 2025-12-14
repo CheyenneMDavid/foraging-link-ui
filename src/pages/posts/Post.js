@@ -53,14 +53,16 @@ function Post(props) {
               main_plant_image
                 ? main_plant_image.replace(
                     "/upload/",
-                    "/upload/f_auto,q_auto,w_600,h_350,c_fill,g_auto/"
+                    isListPage
+                      ? "/upload/f_auto,q_auto,w_600,h_100,c_fill,g_auto/"
+                      : "/upload/f_auto,q_auto,w_600,h_300,c_fill,g_auto/"
                   )
                 : ""
             }
             alt={main_plant_name}
             aria-describedby="main-plant-description"
             width="600"
-            height="400"
+            height={isListPage ? "300" : "400"}
           />
 
           <Card.Body>
@@ -112,7 +114,7 @@ function Post(props) {
                   confusable_plant_image
                     ? confusable_plant_image.replace(
                         "/upload/",
-                        "/upload/f_auto,q_auto,w_600,h_350,c_fill,g_auto/"
+                        "/upload/f_auto,q_auto,w_600,h_300,c_fill,g_auto/"
                       )
                     : ""
                 }
