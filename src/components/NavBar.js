@@ -1,3 +1,7 @@
+// NavBar.js holds the site logo and main navigation.
+// It displays either the signed-in user or the sign-in / sign-up links,
+// and handles toggling between mobile and desktop navigation.
+
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
