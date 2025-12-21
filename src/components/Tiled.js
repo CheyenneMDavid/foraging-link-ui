@@ -1,4 +1,4 @@
-// The Tiled.js isplays 12 Cloudinary images (600x400) arranged in a responsive grid layout, which is then utilized in othe pages as a background.
+// The Tiled.js is 12 Cloudinary images (600x400) arranged in a responsive grid layout, which is then utilized in othe pages as a background.
 
 import React from "react";
 import styles from "../styles/Tiled.module.css";
