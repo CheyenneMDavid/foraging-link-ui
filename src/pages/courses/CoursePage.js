@@ -4,8 +4,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 import { axiosReq } from "../../api/axiosDefaults";
 
@@ -31,31 +30,38 @@ function CoursePage() {
   if (!course) return null;
   return (
     <Container className={styles.CourseContainer}>
-      <h2 className={styles.CourseTitle}>{course.title}</h2>
-      <p className={styles.CourseInfo}>
-        <strong>Date:</strong> {new Date(course.date).toLocaleDateString()}
-      </p>
-      <p className={styles.CourseInfo}>
-        <strong>Season:</strong> {course.season}
-      </p>
-      <p className={styles.CourseInfo}>
-        <strong>Location:</strong> {course.location}
-      </p>
-      <p className={styles.CourseInfo}>
-        <strong>Description:</strong> {course.description}
-      </p>
-      <p className={styles.CourseInfo}>
-        <strong>Spaces Available:</strong> {course.available_spaces}
-      </p>
-      {/* Button linked to Registration form with course's id passed dynamically into the route. */}
-      <Link to={`/register/${id}`}>
-        <Button
-          className={`${styles.BookButton} ${styles[course.season]}`}
-          variant="outline-success"
-        >
-          Book Now
-        </Button>
-      </Link>
+      <Row>
+        <Col xs={12} md={10} lg={8}>
+          <h2 className={`${styles.CourseTitle} text-center`}>
+            {course.title}
+          </h2>
+
+          <p className={styles.CourseInfo}>
+            <strong>Date:</strong> {new Date(course.date).toLocaleDateString()}
+          </p>
+          <p className={styles.CourseInfo}>
+            <strong>Season:</strong> {course.season}
+          </p>
+          <p className={styles.CourseInfo}>
+            <strong>Location:</strong> {course.location}
+          </p>
+          <p className={styles.CourseInfo}>
+            <strong>Description:</strong> {course.description}
+          </p>
+          <p className={styles.CourseInfo}>
+            <strong>Spaces Available:</strong> {course.available_spaces}
+          </p>
+          {/* Button linked to Registration form with course's id passed dynamically into the route. */}
+          <Link to={`/register/${id}`}>
+            <Button
+              className={`${styles.BookButton} ${styles[course.season]}`}
+              variant="outline-success"
+            >
+              Book Now
+            </Button>
+          </Link>
+        </Col>
+      </Row>
     </Container>
   );
 }
