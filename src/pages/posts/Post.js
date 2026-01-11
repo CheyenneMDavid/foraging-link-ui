@@ -54,7 +54,7 @@ function Post(props) {
                 ? main_plant_image.replace(
                     "/upload/",
                     isListPage
-                      ? "/upload/f_auto,q_auto,w_600,h_100,c_fill,g_auto/"
+                      ? "/upload/f_auto,q_auto,w_600,h_300,c_fill,g_auto/"
                       : "/upload/f_auto,q_auto,w_600,h_300,c_fill,g_auto/"
                   )
                 : ""
