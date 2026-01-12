@@ -17,6 +17,7 @@ import Avatar from "./Avatar";
 import useClickOutsideToggle from "../hooks/src/hooks/useClickOutsideToggle";
 
 import SearchBar from "./SearchBar";
+import NavigationControls from "./NavigationControls";
 const LOGO_URL =
   "https://res.cloudinary.com/cheymd/image/upload/f_auto,q_auto,w_60,h_60,c_fill,g_auto/v1761996487/foraging_link/site_design/logo_hcdxhe.jpg";
 
@@ -116,6 +117,9 @@ function NavBar({ setQuery }) {
             </NavLink>
             <SearchBar setQuery={setQuery} />
           </div>
+
+          {/* NavigationControls */}
+          <NavigationControls />
 
           <Navbar.Toggle
             className={styles.NavbarToggle}
