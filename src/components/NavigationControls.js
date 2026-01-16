@@ -1,17 +1,18 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import styles from "../styles/NavigationControls.module.css";
 
 function NavigationControls() {
   const history = useHistory();
 
   return (
-    <div>
+    <div className={styles.controls}>
       <button type="button" onClick={() => history.goBack()}>
-        Back
+        <i class="fas fa-arrow-left"></i>
       </button>
 
       <button type="button" onClick={() => history.goForward()}>
-        Forward
+        <i class="fas fa-arrow-right"></i>
       </button>
     </div>
   );
