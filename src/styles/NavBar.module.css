@@ -1,10 +1,8 @@
-/* Navagation text color always stays brown whilst the icons change to green on hover and indictae current page by being green. */
+/* Navagation text color always stays brown whilst the icons change to green on hover and indicate current page by being green. */
 
 .TopRow {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: nowrap;
   gap: 0.5rem;
   width: 100%;
 }

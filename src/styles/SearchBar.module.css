@@ -2,11 +2,16 @@
 
 .SearchBar {
   width: 100%;
-  max-width: 300px;
-  min-width: 140px;
-  flex-shrink: 1;
-  margin-left: 0;
-  position: relative;
+}
+
+.SearchBar {
+  width: 100%;
+  min-width: 50px;
+}
+
+.SearchBarWrapper {
+  flex: 1;
+  min-width: 0;
 }
 
 .SearchBar input {
@@ -17,10 +22,10 @@
 }
 
 .SearchIcon {
-  position: absolute;
-  font-size: 1.5rem;
+  font-size: 1rem;
   padding: 0.5rem;
   color: #242a3d;
+  position: absolute;
 }
 
 .SearchIcon:hover {
@@ -32,6 +37,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  /* position: relative; */
 }
 
 .SpinnerWrapper {
@@ -49,6 +55,6 @@
 
 @media (max-width: 335px) {
   .SearchBar {
-    max-width: 120px;
+    max-width: 100px;
   }
 }
