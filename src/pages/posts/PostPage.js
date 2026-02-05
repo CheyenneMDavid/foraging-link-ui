@@ -6,14 +6,13 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import appStyles from "../../App.module.css";
-import styles from "../../styles/PostPage.module.css";
+
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useAuth } from "../../contexts/AuthContext";
 import Post from "./Post";
 import CommentSection from "../comments/CommentSection";
 import Sidebar from "../../components/Sidebar";
-import { Link } from "react-router-dom";
 
 function PostPage() {
   const { id } = useParams();
@@ -33,7 +32,7 @@ function PostPage() {
 
         // Fetch post data
         const { data: postData } = await axiosReq.get(
-          `/plants_blog/posts/${id}/`
+          `/plants_blog/posts/${id}/`,
         );
 
         console.log("Post fetched:", postData);
@@ -57,13 +56,9 @@ function PostPage() {
     <>
       <Row className="h-100">
         {/* Main content area */}
-        <Col className="py-2 p-0 p-lg-2" lg={8}>
+        <Col lg={8}>
           {/* Render the post details */}
-          <p>
-            <Link className={styles.backLink} to="/">
-              ← Back to Posts
-            </Link>
-          </p>
+
           <Post {...currentPost} setPosts={setPost} />
           {/* Conditional rendering for comments */}
           {isLoggedIn && (

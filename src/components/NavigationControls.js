@@ -10,10 +10,6 @@ function NavigationControls() {
       <button type="button" onClick={() => history.goBack()}>
         <i class="fas fa-arrow-left"></i>
       </button>
-
-      <button type="button" onClick={() => history.goForward()}>
-        <i class="fas fa-arrow-right"></i>
-      </button>
     </div>
   );
 }
