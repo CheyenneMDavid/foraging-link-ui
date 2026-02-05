@@ -1,8 +1,4 @@
 /* Stylesheet for the Postpage.js */
-
-.backLink {
-  margin-left: 1rem;
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  font-weight: 500;
+.containerForPostsAndComments {
+  background-color: red;
 }
