@@ -1,12 +1,7 @@
 /* Styles for the search bar and search icon */
 
 .SearchBar {
-  width: 100%;
-}
-
-.SearchBar {
-  width: 100%;
-  min-width: 50px;
+  max-width: 100%;
 }
 
 .SearchBarWrapper {
@@ -37,7 +32,6 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  /* position: relative; */
 }
 
 .SpinnerWrapper {
@@ -51,10 +45,4 @@
 .SpinnerPlaceholder {
   width: 1.5rem;
   height: 1.5rem;
-}
-
-@media (max-width: 335px) {
-  .SearchBar {
-    max-width: 100px;
-  }
 }
