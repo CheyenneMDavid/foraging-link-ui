@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Card } from "react-bootstrap";
+import styles from "../../styles/Course.module.css";
 
 function Course(props) {
   const { season, title, date, description, location, available_spaces } =
@@ -9,7 +10,7 @@ function Course(props) {
 
   return (
     <Card.Body>
-      <h4>{title}</h4>
+      <h3 className={styles.courseTitle}>{title}</h3>
       <p>Date: {new Date(date).toLocaleDateString()}</p>
       <p>Season: {season}</p>
       <p>Location: {location}</p>
