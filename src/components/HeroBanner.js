@@ -3,17 +3,18 @@
 import appStyles from "../App.module.css";
 import styles from "../styles/HeroBanner.module.css";
 import { Row, Col } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 function HeroBanner() {
   return (
     <Row className="h-100">
       <Col md={12}>
-        <div className={`${appStyles.Content} ${styles.Hero}`}>
-          <div className={styles.WelcomeTint}>
+        <div className={`${appStyles.content} ${styles.hero}`}>
+          <div className={styles.welcomeTint}>
             <h1>Welcome to The Foraging Link</h1>
-            <a href="/courses/full-list">
-              <p className={styles.BannerText}>See All Courses</p>
-            </a>
+            <NavLink to="/courses/full-list">
+              <p className={styles.bannerText}>See All Courses</p>
+            </NavLink>
           </div>
         </div>
       </Col>
