@@ -1,4 +1,4 @@
-// CommentEditForm.js is used to edit existing comments
+// Form for editing existing comments.
 
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
@@ -33,7 +33,7 @@ function CommentEditForm(props) {
       }));
       setShowEditForm(false);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -51,7 +51,7 @@ function CommentEditForm(props) {
         <button onClick={() => setShowEditForm(false)} type="button">
           cancel
         </button>
-        <button disabled={!content.trim()} type="submit">
+        <button disabled={!formContent.trim()} type="submit">
           save
         </button>
       </div>
