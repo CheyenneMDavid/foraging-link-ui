@@ -18,7 +18,6 @@ const CourseRegistrationForm = () => {
   const currentUser = useCurrentUser();
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log("CurrentUser:", currentUser);
   // Fetches profile owner name and user email to populate fixed form fields.
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -29,11 +28,9 @@ const CourseRegistrationForm = () => {
     const fetchProfile = async () => {
       try {
         const profileResponse = await axiosReq.get(
-          `/profiles/${currentUser?.profile_id}/`
+          `/profiles/${currentUser?.profile_id}/`,
         );
         const userResponse = await axiosReq.get("/dj-rest-auth/user/");
-        console.log("Fetched profile:", profileResponse.data);
-        console.log("Fetched user data:", userResponse.data);
 
         setName(profileResponse.data.owner);
 
@@ -44,12 +41,10 @@ const CourseRegistrationForm = () => {
         setIsLoading(false);
       }
     };
-    console.log("currentUser inside useEffect:", currentUser);
-    console.log("Calling fetchProfile...");
 
     if (currentUser?.profile_id) {
       fetchProfile();
-    } else console.log("currentUser.profile_id is not available");
+    }
   }, [currentUser]);
 
   // State variables.
@@ -79,7 +74,7 @@ const CourseRegistrationForm = () => {
     e.preventDefault();
     if (!phone.trim()) {
       alert(
-        "Please enter your phone number before attempting to submit this form.."
+        "Please enter your phone number before attempting to submit this form..",
       );
       return;
     }
@@ -98,8 +93,7 @@ const CourseRegistrationForm = () => {
 
     axios
       .post("/course_registrations/create/", formData)
-      .then((response) => {
-        console.log("Form Submission Successful", response.data);
+      .then(() => {
         history.push("/"); // Takes user back to home after success.
       })
       .catch((err) => {
@@ -113,20 +107,20 @@ const CourseRegistrationForm = () => {
 
   // Overall form structure
   return (
-    <form className={styles.FormContainer} onSubmit={handleSubmit}>
+    <form className={styles.formContainer} onSubmit={handleSubmit}>
       {/* Fixed values that are supplied by the CurrentUserContext */}
-      <div className={styles.FormGroup}>
+      <div className={styles.formGroup}>
         <label>Name:</label>
         <p>{name || "Please sign in"}</p>
       </div>
 
-      <div className={styles.FormGroup}>
+      <div className={styles.formGroup}>
         <label>Email:</label>
         <p>{email || "Please sign in"}</p>
       </div>
 
       {/* Values supplied by user */}
-      <div className={styles.FormGroup}>
+      <div className={styles.formGroup}>
         {/* Phone number input */}
         <label htmlFor="phone">Phone:</label>
         <input
@@ -140,7 +134,7 @@ const CourseRegistrationForm = () => {
       </div>
 
       {/* Check for driver checkbox */}
-      <div className={styles.FormGroup}>
+      <div className={styles.formGroup}>
         <label>
           <input
             type="checkbox" // Checkbox: Is the user a driver?
@@ -153,7 +147,7 @@ const CourseRegistrationForm = () => {
       </div>
       <hr />
 
-      <div className={styles.FormGroup}>
+      <div className={styles.formGroup}>
         {/* Dietary restrictions, checkbox and conditionally displayed box for input of further details. */}
         <label>
           <input
@@ -166,7 +160,7 @@ const CourseRegistrationForm = () => {
         </label>
       </div>
 
-      <div className={styles.FormGroup}>
+      <div className={styles.formGroup}>
         {dietaryRestrictions && (
           <>
             <label htmlFor="dietaryDetails">
@@ -185,7 +179,7 @@ const CourseRegistrationForm = () => {
       </div>
       <hr />
 
-      <div className={styles.FormGroup}>
+      <div className={styles.formGroup}>
         {/* Emergency contact checkbox and conditionally displayed inputs for contact name and contact number */}
         <label>
           <input
@@ -199,7 +193,7 @@ const CourseRegistrationForm = () => {
         </label>
       </div>
 
-      <div className={styles.FormGroup}>
+      <div className={styles.formGroup}>
         {hasEmergencyContact && ( // Conditional display of box for ICE details.
           <>
             <label htmlFor="emergencyContactName">
@@ -228,7 +222,7 @@ const CourseRegistrationForm = () => {
           </>
         )}
       </div>
-      <div className={styles.FormGroup}>
+      <div className={styles.formGroup}>
         <button type="submit">Submit</button>
       </div>
     </form>
