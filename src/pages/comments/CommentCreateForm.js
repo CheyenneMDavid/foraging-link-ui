@@ -1,54 +1,46 @@
-// Component to handle the creation of comments for a specific post.
+// Form for creating and submitting new comments for a specific post.
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
 import btnStyles from "../../styles/Button.module.css";
-
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 
 function CommentCreateForm(props) {
+  // Props passed from CommentSection
   const { post, setComments, profileImage, profile_id } = props;
+
+  // Local state for comment input
   const [content, setContent] = useState("");
 
+  // Updates content state as user types
   const handleChange = (event) => {
     setContent(event.target.value);
   };
 
+  // Submits new comment and updates local state
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      console.log({
-        content,
-        plant_in_focus_post: parseInt(post),
-      });
 
-      // Makes a POST request to create a new comment
+    try {
       const { data } = await axiosRes.post("/comments/", {
         content,
-        // Ensures the post ID is an integer
-        plant_in_focus_post: parseInt(post),
+        // Ensure post ID is treated as a number
+        plant_in_focus_post: parseInt(post, 10),
       });
 
-      console.log("Comment posted:", data);
-
-      // Updates comments.
+      // Prepend new comment so it appears at the top
       setComments((prevComments) => ({
-        // Adds the new comment to the results array
         results: [data, ...prevComments.results],
       }));
 
-      // Clears the input field after a successful submission
+      // Clear input after successful submission
       setContent("");
-
-      console.log("CommentSection updated!");
     } catch (err) {
-      // Logs ALL errors to console for debugging
-      console.log("All errors:", err);
+      console.error(err);
     }
   };
 
@@ -56,11 +48,14 @@ function CommentCreateForm(props) {
     <Form className="mt-2" onSubmit={handleSubmit}>
       <Form.Group>
         <InputGroup>
+          {/* Link to current user's profile */}
           <Link to={`/profiles/${profile_id}`}>
             <Avatar src={profileImage} />
           </Link>
+
+          {/* Controlled textarea input */}
           <Form.Control
-            placeholder="my comment..."
+            placeholder="My comment..."
             as="textarea"
             value={content}
             onChange={handleChange}
@@ -69,9 +64,9 @@ function CommentCreateForm(props) {
         </InputGroup>
       </Form.Group>
 
-      {/* form's submit button */}
+      {/* Disable submit if input is empty or only whitespace */}
       <button
-        className={`${btnStyles.Button} ${btnStyles.AlignRight}`}
+        className={`${btnStyles.button} ${btnStyles.alignRight}`}
         disabled={!content.trim()}
         type="submit"
       >

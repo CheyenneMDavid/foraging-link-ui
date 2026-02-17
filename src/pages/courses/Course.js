@@ -1,4 +1,4 @@
-// Course.js displays course data using props.
+// Displays course data using props.
 
 import React from "react";
 import { Card } from "react-bootstrap";

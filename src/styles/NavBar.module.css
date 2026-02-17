@@ -1,47 +1,47 @@
-/* Navagation text color always stays brown whilst the icons change to green on hover and indicate current page by being green. */
+/* Navbar: text stays white, icons change on hover */
 
-.TopRow {
+.topRow {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   width: 100%;
 }
 
-.NavBar {
+.navBar {
   background-color: #655d43;
   border-bottom: 2px solid black;
 
   padding: 0.5rem;
 }
 
-.NavLink {
+.navLink {
   padding: 5px;
   white-space: nowrap;
 }
 
-.NavLink,
-.NavLink i,
-.NavLink a {
+.navLink,
+.navLink i,
+.navLink a {
   color: white;
   text-decoration: none !important;
 }
 
-.NavLink:hover i {
+.navLink:hover i {
   color: orange !important;
 }
 
-.Active i {
+.active i {
   color: white !important;
 }
 
-.NavbarToggle {
+.navbarToggle {
   border: 1px solid white !important;
   background-color: #512c0f;
   margin: 0;
   flex-shrink: 0;
 }
 
-.NavContainer {
+.navContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -49,14 +49,14 @@
   padding: 0 0.5rem;
 }
 
-.Logo {
+.logo {
   height: 60px;
   width: 60px;
   object-fit: contain;
   border-radius: 50%;
 }
 
-.Left {
+.left {
   display: flex;
   align-items: center;
   flex-grow: 1;
@@ -66,7 +66,7 @@
   padding: 0 0.5rem;
 }
 
-.Right {
+.right {
   display: flex;
   align-items: center;
   gap: 0.5rem;

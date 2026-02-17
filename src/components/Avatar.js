@@ -6,7 +6,7 @@ const resizeAvatar = (url, width, height) =>
     ? url.replace(
         "/upload/",
 
-        `/upload/f_auto,q_auto,w_${width},h_${height},c_fill,g_auto/`
+        `/upload/f_auto,q_auto,w_${width},h_${height},c_fill,g_auto/`,
       )
     : url;
 
@@ -17,11 +17,11 @@ function Avatar({ src, alt = "avatar", text, height = 50, width = 50 }) {
       <img
         src={formattedSrc}
         alt={alt}
-        className={styles.Avatar}
+        className={styles.avatar}
         style={{ height: `${height}px`, width: `${width}px` }}
       />
 
-      {text && <span className={styles.AvatarText}>{text}</span>}
+      {text && <span className={styles.avatarText}>{text}</span>}
     </span>
   );
 }

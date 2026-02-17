@@ -1,15 +1,16 @@
-.SignUpWrapper {
+/* Stylesheet for Sign-in and Sign-up pages */
+
+.signUpWrapper {
   border: 3px solid #856404;
   border-radius: 5px;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.5); /* optional light overlay */
+  background: rgba(255, 255, 255, 0.5);
   max-width: 900px;
   margin: 100px auto;
 }
 
-.Input {
+.input {
   background: #ffffff;
-  /* border: 3px solid #856404; */
   border: 2px solid #856404;
   box-sizing: border-box;
   border-radius: 100px;
@@ -18,7 +19,7 @@
   padding: 10px;
 }
 
-.Header {
+.header {
   font-style: normal;
   font-weight: bold;
   font-size: 1.3rem;
@@ -29,34 +30,34 @@
   margin-bottom: 1rem;
 }
 
-.SignIn .Link {
+.signIn .link {
   text-decoration: none;
   text-align: center;
   display: block;
   margin: auto;
 }
-.SignInSignUpPrompt {
+.signInSignUpPrompt {
   text-align: center;
 }
 
-.ImageBorder {
+.imageBorder {
   overflow: hidden;
   border: 5px solid #856404;
   border-radius: 5px;
 }
 
-.Container {
+.container {
   padding: 30px 10px;
 }
 
-.SignInCol {
+.signInCol {
   height: 320px;
 }
 
-.SignUpCol {
+.signUpCol {
   height: 375px;
 }
 
-.Link:hover {
+.link:hover {
   color: orange;
 }

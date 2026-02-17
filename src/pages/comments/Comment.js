@@ -48,11 +48,11 @@ function Comment(props) {
   };
 
   return (
-    <Card className={styles.Comment}>
+    <Card className={styles.comment}>
       <Card.Body>
-        <div className={styles.CommentContainer}>
+        <div className={styles.commentContainer}>
           {/* Display user's avatar with a link to their profile */}
-          <div className={styles.CommentHead}>
+          <div className={styles.commentHead}>
             <Link to={`/profiles/${profile_id}`}>
               <Avatar
                 src={profile_image}
@@ -60,11 +60,11 @@ function Comment(props) {
                 alt={`${owner}'s avatar`}
               />
             </Link>
-            <strong className={styles.CommentAuthor}>{owner}</strong>
+            <strong className={styles.commentAuthor}>{owner}</strong>
           </div>
 
           {/* Display the comment's text content */}
-          <div className={styles.CommentContent}>
+          <div className={styles.commentContent}>
             {showEditForm ? (
               <CommentEditForm
                 id={id}
@@ -89,24 +89,24 @@ function Comment(props) {
         </div>
 
         {/* Display the comment's creation date and user interaction options */}
-        <div className={styles.CommentBar}>
-          <span className={styles.CreationDate}>{created_at}</span>
+        <div className={styles.commentBar}>
+          <span className={styles.creationDate}>{created_at}</span>
 
           {/* Likes section - disables likes for the comment owner */}
-          <div className={styles.LikesSection}>
+          <div className={styles.likesSection}>
             {is_owner ? (
               <OverlayTrigger
                 placement="top"
                 overlay={<Tooltip>You can't like your own comment!</Tooltip>}
               >
-                <span className={styles.LikeItem}>
+                <span className={styles.likeItem}>
                   <i className="far fa-heart" />
                   {likes_count > 0 && <span>{likes_count}</span>}
                 </span>
               </OverlayTrigger>
             ) : (
               // Ability to Like and Unlike for users who don't own the comment.
-              <div className={styles.LikeWrapper}>
+              <div className={styles.likeWrapper}>
                 <LikeUnlike
                   id={id}
                   like_id={like_id}
@@ -114,14 +114,14 @@ function Comment(props) {
                   setItems={setComments}
                   itemType="comment"
                 />
-                <span className={styles.LikesCount}>{likes_count}</span>
+                <span className={styles.likesCount}>{likes_count}</span>
               </div>
             )}
           </div>
 
           {/* Button to toggle the reply form on/off */}
           <button
-            className={`${btnStyles.Button}`}
+            className={`${btnStyles.button}`}
             onClick={() => setShowReplyForm(!showReplyForm)}
           >
             {showReplyForm ? "Cancel" : "Reply"}

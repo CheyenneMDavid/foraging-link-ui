@@ -1,4 +1,13 @@
 /* Stylesheet for the Postpage.js */
+
 .containerForPostsAndComments {
-  background-color: red;
+  background-color: #655d43;
+  border: 20px solid black;
+  border-radius: 20px;
+  border-bottom: none;
+
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+  color: whitesmoke;
+  text-align: justify;
 }

@@ -1,4 +1,4 @@
-// The CommentSection.js file fetches and displays comments for posts, using InfiniteScrolling
+// Handles fetching and rendering comments and nested replies for a post.
 
 import React, { useEffect, useState } from "react";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -11,32 +11,33 @@ import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 
 function CommentSection({ postId }) {
-  // Stores all comments
+  // Stores fetched comments
   const [comments, setComments] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
 
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
 
-  // Fetch comments for this post whenever postId changes
+  // Fetch comments whenever the postId changes
   useEffect(() => {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(
-          `/comments/?plant_in_focus_post=${postId}`
+          `/comments/?plant_in_focus_post=${postId}`,
         );
         setComments(data);
       } catch (err) {
-        console.log("Error fetching comments:", err);
+        console.error(err);
       } finally {
         setHasLoaded(true);
       }
     };
-    setHasLoaded(false); // Displays spinner until page is loaded
+
+    setHasLoaded(false);
     handleMount();
   }, [postId]);
 
-  // Recursively renders comments and replies to comments
+  // Recursively renders comments and their nested replies
   const renderComments = (parentId = null) =>
     comments.results
       .filter((c) => c.replying_comment === parentId)
@@ -44,23 +45,21 @@ function CommentSection({ postId }) {
         <div
           key={c.id}
           className={
-            c.replying_comment === null ? styles.Comment : styles.Reply
+            c.replying_comment === null ? styles.comment : styles.reply
           }
         >
-          {/* Renders a single comment */}
           <Comment
             {...c}
             isReply={!!c.replying_comment}
             setComments={setComments}
           />
-          {/* Renders any replies to the single comment */}
           {renderComments(c.id)}
         </div>
       ));
 
   return (
-    // Only logged-in users see the CommentCreateForm.
-    <div className={styles.CommentSection}>
+    <div className={styles.commentSection}>
+      {/* Show comment form only for logged-in users */}
       {currentUser && (
         <CommentCreateForm
           profile_id={currentUser.profile_id}
@@ -70,23 +69,22 @@ function CommentSection({ postId }) {
         />
       )}
 
-      {/* Displays spinner whilst loading */}
+      {/* Loading spinner whilst fetching */}
       {!hasLoaded && <Asset spinner />}
 
-      {/* Once loaded, show the comments or the fallback text */}
+      {/* Render comments once loaded */}
       {hasLoaded &&
         (comments.results?.length > 0 ? (
           <InfiniteScroll
             dataLength={comments.results.length}
-            hasMore={!!comments.next} // keep loading comments all the time there is more.
+            hasMore={!!comments.next}
             next={() => fetchMoreData(comments, setComments)}
             loader={<Asset spinner />}
           >
-            {renderComments()}{" "}
-            {/* Recursively render comments and replies to comments*/}
+            {renderComments()}
           </InfiniteScroll>
         ) : (
-          <p>No comments yet.</p> // Fallback text if no comments are found.
+          <p>No comments yet.</p>
         ))}
     </div>
   );

@@ -26,13 +26,13 @@ function Tiled() {
   const repeatedImages = [...imageIds, ...imageIds, ...imageIds];
 
   return (
-    <div className={styles.TiledBackground}>
+    <div className={styles.tiledBackground}>
       {repeatedImages.map((id, index) => (
         <img
           key={`${id}-${index}`}
           src={`${cloudinaryBase}${id}`}
           alt={`tile ${id}`}
-          className={styles.TileImage}
+          className={styles.tileImage}
         />
       ))}
     </div>

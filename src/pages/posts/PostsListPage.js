@@ -36,7 +36,7 @@ function PostsListPage({ message, filter = "", query }) {
     const fetchPosts = async () => {
       try {
         const { data } = await axiosReq.get(
-          `/plants_blog/posts/?${filter}search=${query}`
+          `/plants_blog/posts/?${filter}search=${query}`,
         );
         setPosts(data); // Updates posts state with api response
         setPageLoading(false); // sets data's loaded
@@ -61,7 +61,7 @@ function PostsListPage({ message, filter = "", query }) {
       <PopularProfiles mobile />
 
       {!pageLoading ? (
-        <div className={styles.PostsListContainer}>
+        <div className={styles.postsListContainer}>
           {posts.results.length ? (
             <InfiniteScroll
               dataLength={posts.results.length} // number of posts
@@ -86,16 +86,16 @@ function PostsListPage({ message, filter = "", query }) {
               })}
             </InfiniteScroll>
           ) : (
-            <Container className={appStyles.Content}>
+            <Container className={appStyles.content}>
               <Asset src={NoResults} message={message} />
             </Container>
           )}
         </div>
       ) : (
         // Spinner displayed while data is loading
-        <Container className={appStyles.Content}>
+        <Container className={appStyles.content}>
           <Asset spinner />
-          <p className={styles.LoadingMessage}>
+          <p className={styles.loadingMessage}>
             Hang on in there, we're just looking for you!
           </p>
         </Container>

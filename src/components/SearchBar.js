@@ -1,4 +1,4 @@
-// SearchBar is a reusable component that can be used in different places.
+// Reusable search input with debounced query updates
 
 import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
@@ -12,21 +12,24 @@ const SearchBar = ({ setQuery }) => {
 
   useEffect(() => {
     setLoading(true);
+
+    // Debounces the search input to prevent updating the query on every.keystroke
     const timer = setTimeout(() => {
-      setQuery(search); // Updates the search query
-      setLoading(false); // Spinner is hidden after search query.
+      setQuery(search);
+      setLoading(false);
     }, 1000);
-    return () => clearTimeout(timer); // Clears the timer on input change
+
+    // Clears previous timeout if user types again.
+    return () => clearTimeout(timer);
   }, [search, setQuery]);
 
-  // Renders search input with feedback from spinner.
   return (
     <Form
-      className={styles.SearchBar}
+      className={styles.searchBar}
       onSubmit={(event) => event.preventDefault()}
     >
-      <div className={styles.InputWrapper}>
-        <i className={`fas fa-search ${styles.SearchIcon}`} />
+      <div className={styles.inputWrapper}>
+        <i className={`fas fa-search ${styles.searchIcon}`} />
 
         <Form.Control
           value={search}
@@ -34,11 +37,11 @@ const SearchBar = ({ setQuery }) => {
           type="text"
           placeholder="Search"
         />
-        {/* Spinner in header, giving feedback  */}
+
         {loading ? (
           <Asset spinner />
         ) : (
-          <div className={styles.SpinnerPlaceholder} />
+          <div className={styles.spinnerPlaceholder} />
         )}
       </div>
     </Form>

@@ -1,4 +1,4 @@
-.CourseTitle {
+.courseTitle {
   font-size: 1.4rem;
   margin: 1rem 0;
 }
@@ -12,6 +12,6 @@ a:hover {
   color: inherit;
 }
 
-.CustomHr {
+.customHr {
   width: auto;
 }

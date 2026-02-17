@@ -1,12 +1,12 @@
 /* Stylesheet for .CommentSection.js Provisional styling to make everything obvious to the eye whilst developing.  */
 
-.CommentSection {
+.commentSection {
   margin-top: 5px; /* Add spacing above the comments section. Double check appearance once more complete. */
   padding: 10px; /* Optional padding for better spacing - revisit once all the colors and measurements are more complete. */
   background-color: #a79a6f; /* change to shades of main post background when deciding on the optional padding and spacing. */
 }
 
-.Reply {
+.reply {
   margin-top: 5px;
   margin-left: 100px;
   padding-left: 10px;

@@ -1,6 +1,6 @@
 /* Styles for profile page, including avatar */
 
-.ProfileImage {
+.profileImage {
   object-fit: cover;
   height: 120px;
   width: 120px;
@@ -10,7 +10,7 @@
   border-radius: 50%;
 }
 
-.ProfileContainer {
+.profileContainer {
   background-color: #655d43;
   border: 2px solid black;
   border-radius: 5px;
@@ -23,7 +23,7 @@
 }
 
 @media screen and (max-width: 991px) {
-  .ProfileImage {
+  .profileImage {
     width: 100px;
     height: 100px;
   }

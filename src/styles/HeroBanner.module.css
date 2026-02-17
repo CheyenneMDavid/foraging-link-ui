@@ -1,6 +1,6 @@
-/* Stylesheet for the hero banner whioch is the link to the full list */
+/* Stylesheet for the hero banner which is the link to the full list */
 
-.Hero {
+.hero {
   background-image: url("../assets/hero.png");
   background-size: cover;
   background-position: center;
@@ -13,7 +13,7 @@
   overflow: hidden;
 }
 
-.WelcomeTint {
+.welcomeTint {
   background-color: rgba(64, 87, 54, 0.6);
   padding: 0.5rem;
   width: 100%;
@@ -21,6 +21,6 @@
   border-radius: 0;
 }
 
-.BannerText {
+.bannerText {
   font-size: 1.2rem;
 }

@@ -1,6 +1,6 @@
 /* Styles for the sidebar layout in desktop and mobile */
 
-.Sidebar {
+.sidebar {
   background-color: #655d43;
   border: black solid 2px;
   border-radius: 5px;
@@ -8,6 +8,6 @@
   color: whitesmoke;
 }
 
-.CustomHr {
+.customHr {
   width: auto;
 }

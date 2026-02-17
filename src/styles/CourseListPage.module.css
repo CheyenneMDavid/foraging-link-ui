@@ -1,6 +1,6 @@
 /* Styles for the listing page for courses */
 
-.CoursesListContainer {
+.coursesListContainer {
   background-color: #655d43;
   padding: 1rem;
   border: 2px solid black;
@@ -9,13 +9,17 @@
   margin-bottom: 1rem;
 }
 
-H2 {
+.allCourses {
+  font-size: 3rem;
+}
+
+.courseHeading {
   font-size: 3rem;
   text-align: center;
   padding: 2rem 3rem;
 }
 
-.IndividualCourse {
+.individualCourse {
   background-color: #655d43;
   padding: 1rem 5rem;
   color: whitesmoke;

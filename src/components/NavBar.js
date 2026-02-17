@@ -44,23 +44,19 @@ function NavBar({ setQuery }) {
   const loggedInIcons = (
     <>
       <NavLink
-        className={styles.NavLink}
-        activeClassName={styles.Active}
+        className={styles.navLink}
+        activeClassName={styles.active}
         to={`/profiles/${currentUser?.profile_id}`}
         // Dynamic labeling displays actual user's name if it's available, otherwise it falls
         // back on a description of "Profile of User"
         aria-label={`Profile of ${owner || "user"}`}
       >
-        <Avatar
-          src={currentUser?.profile_image}
-          text={owner}
-          className={styles.NavAvatar}
-        />
+        <Avatar src={currentUser?.profile_image} text={owner} />
       </NavLink>
 
       {/* Sign Out */}
       <NavLink
-        className={styles.NavLink}
+        className={styles.navLink}
         to="/"
         onClick={handleSignOut}
         aria-label="Sign out"
@@ -74,16 +70,16 @@ function NavBar({ setQuery }) {
   const loggedOutIcons = (
     <>
       <NavLink
-        className={styles.NavLink}
-        activeClassName={styles.Active}
+        className={styles.navLink}
+        activeClassName={styles.active}
         to="/signin"
         aria-label="Sign up"
       >
         <i className="fas fa-sign-in-alt" /> Sign in
       </NavLink>
       <NavLink
-        className={styles.NavLink}
-        activeClassName={styles.Active}
+        className={styles.navLink}
+        activeClassName={styles.active}
         to="/signup"
         aria-label="Sign up"
       >
@@ -95,13 +91,13 @@ function NavBar({ setQuery }) {
   return (
     <Navbar
       expanded={expanded}
-      className={styles.NavBar}
+      className={styles.navBar}
       expand="md"
       fixed="top"
     >
-      <Container className={styles.NavContainer}>
-        <div className={styles.TopRow}>
-          <div className={styles.Left}>
+      <Container className={styles.navContainer}>
+        <div className={styles.topRow}>
+          <div className={styles.left}>
             <NavLink to="/">
               <Navbar.Brand>
                 <img
@@ -109,7 +105,7 @@ function NavBar({ setQuery }) {
                   alt="Logo"
                   width="60"
                   height="60"
-                  className={styles.Logo}
+                  className={styles.logo}
                   decoding="async"
                   fetchpriority="high"
                 />
@@ -122,7 +118,7 @@ function NavBar({ setQuery }) {
           <NavigationControls />
 
           <Navbar.Toggle
-            className={styles.NavbarToggle}
+            className={styles.navbarToggle}
             ref={ref}
             onClick={() => setExpanded(!expanded)}
             aria-controls="basic-navbar-nav"
@@ -130,11 +126,11 @@ function NavBar({ setQuery }) {
           />
         </div>
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className={styles.Right}>
+          <Nav className={styles.right}>
             <NavLink
               exact
-              className={styles.NavLink}
-              activeClassName={styles.Active}
+              className={styles.navLink}
+              activeClassName={styles.active}
               to="/"
               aria-label="Home"
             >
@@ -142,8 +138,8 @@ function NavBar({ setQuery }) {
             </NavLink>
             <NavLink
               to="/courses/full-list"
-              className={styles.NavLink}
-              activeClassName={styles.Active}
+              className={styles.navLink}
+              activeClassName={styles.active}
               isActive={(_, location) =>
                 location.pathname.startsWith("/courses")
               }

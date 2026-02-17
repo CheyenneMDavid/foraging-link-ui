@@ -1,4 +1,4 @@
-.Button {
+.button {
   font-size: 0.8rem;
   align-self: center;
   background-color: #856404;
@@ -13,39 +13,39 @@
   outline: none !important;
 }
 
-.AlignRight {
+.alignRight {
   margin-left: auto;
   display: block;
   margin-bottom: 1rem;
 }
 
-.Button:hover {
+.button:hover {
   background-color: orange;
   border-color: whitesmoke;
   color: black;
   cursor: pointer;
 }
 
-.Button:active,
-.Button:hover:active {
+.button:active,
+.button:hover:active {
   border-width: 2px;
   border-color: whitesmoke;
   background-color: #619158 !important;
 }
 
-.Button:focus {
+.button:focus {
   border-color: whitesmoke;
   background-color: orange;
   color: black;
 }
 
-.Wide {
+.wide {
   padding: 10px 50px;
   width: 100%;
 }
 
-.Black,
-.BlackOutline:hover {
+.black,
+.blackOutline:hover {
   border-width: 2px;
   border-color: whitesmoke;
 }

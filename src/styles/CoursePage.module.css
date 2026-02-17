@@ -1,15 +1,17 @@
-.CourseInfo {
+/* Stylesheet for individual Course's page */
+
+.courseInfo {
   margin-bottom: 0.75rem;
   line-height: 1.6;
 }
 
-.CourseInfo strong {
+.courseInfo strong {
   display: inline-block;
   width: 140px;
   font-weight: 600;
 }
 
-.CourseContainer {
+.courseContainer {
   max-width: 1200px;
   margin: auto;
   background-color: #655d43;
@@ -20,22 +22,22 @@
   justify-content: center;
 }
 
-.Spring {
+.spring {
   border-color: #d1dd93;
   color: #d1dd93;
 }
 
-.Summer {
+.summer {
   border-color: #e39e54;
   color: #e39e54;
 }
 
-.Autumn {
+.autumn {
   border-color: orange;
   color: orange;
 }
 
-.BookButton {
+.bookButton {
   display: block;
   margin: 2rem auto 0 auto;
 }

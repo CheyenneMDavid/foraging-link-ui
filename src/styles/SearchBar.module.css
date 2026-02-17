@@ -1,40 +1,40 @@
 /* Styles for the search bar and search icon */
 
-.SearchBar {
+.searchBar {
   max-width: 100%;
 }
 
-.SearchBarWrapper {
+.searchBarWrapper {
   flex: 1;
   min-width: 0;
 }
 
-.SearchBar input {
+.searchBar input {
   padding: 0.5rem 1rem 0.5rem 2.5rem;
   border: 2px solid black;
   border-radius: 20px;
   color: #242a3d;
 }
 
-.SearchIcon {
+.searchIcon {
   font-size: 1rem;
   padding: 0.5rem;
   color: #242a3d;
   position: absolute;
 }
 
-.SearchIcon:hover {
+.searchIcon:hover {
   color: inherit;
   cursor: pointer;
 }
 
-.InputWrapper {
+.inputWrapper {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.SpinnerWrapper {
+.spinnerWrapper {
   width: 1.5rem;
   height: 1.5rem;
   display: flex;
@@ -42,7 +42,7 @@
   justify-content: center;
 }
 
-.SpinnerPlaceholder {
+.spinnerPlaceholder {
   width: 1.5rem;
   height: 1.5rem;
 }

@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
+
 import appStyles from "../../App.module.css";
 
 import { useParams } from "react-router";
@@ -62,9 +62,9 @@ function PostPage() {
           <Post {...currentPost} setPosts={setPost} />
           {/* Conditional rendering for comments */}
           {isLoggedIn && (
-            <Container className={appStyles.Content}>
+            <div className={appStyles.content}>
               <CommentSection postId={id} />
-            </Container>
+            </div>
           )}
         </Col>
 

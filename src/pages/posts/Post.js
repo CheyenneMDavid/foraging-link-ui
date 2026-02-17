@@ -42,20 +42,20 @@ function Post(props) {
   const is_owner = currentUser?.username === owner;
 
   return (
-    <Card className={styles.Post}>
+    <Card>
       {/* Main Plant Section */}
       <section aria-label="Main Plant Section">
         <Link to={`/posts/${id}`}>
-          {main_plant_name && <h2>{main_plant_name}</h2>}
+          {main_plant_name && (
+            <h2 className={styles.postTitle}>{main_plant_name}</h2>
+          )}
 
           <Card.Img
             src={
               main_plant_image
                 ? main_plant_image.replace(
                     "/upload/",
-                    isListPage
-                      ? "/upload/f_auto,q_auto,w_600,h_300,c_fill,g_auto/"
-                      : "/upload/f_auto,q_auto,w_600,h_300,c_fill,g_auto/"
+                    "/upload/f_auto,q_auto,w_600,h_300,c_fill,g_auto/",
                   )
                 : ""
             }
@@ -114,7 +114,7 @@ function Post(props) {
                   confusable_plant_image
                     ? confusable_plant_image.replace(
                         "/upload/",
-                        "/upload/f_auto,q_auto,w_600,h_300,c_fill,g_auto/"
+                        "/upload/f_auto,q_auto,w_600,h_300,c_fill,g_auto/",
                       )
                     : ""
                 }
@@ -129,10 +129,10 @@ function Post(props) {
       {/* User and Author Interaction Section */}
       <section aria-label="User and Author Interaction Section">
         <Card.Body>
-          <div className={styles.PostBar}>
-            <span className={styles.CreationDate}>{created_at}</span>
-            <div className={styles.LikeCommentWrapper}>
-              <div className={styles.LikeSection}>
+          <div className={styles.postBar}>
+            <span className={styles.creationDate}>{created_at}</span>
+            <div className={styles.likeCommentWrapper}>
+              <div className={styles.likeSection}>
                 {is_owner ? (
                   <OverlayTrigger
                     placement="top"
@@ -156,24 +156,24 @@ function Post(props) {
                     itemType="plant_in_focus_post"
                   />
                 )}
-                <span className={styles.LikesCount}>{likes_count}</span>
+                <span className={styles.likesCount}>{likes_count}</span>
               </div>
               {!currentUser ? (
                 <OverlayTrigger
                   placement="top"
                   overlay={<Tooltip>Sign in to join the discussion!</Tooltip>}
                 >
-                  <div className={styles.CommentSection}>
+                  <div className={styles.commentSection}>
                     <i className="far fa-comments no-hover" />
-                    <span className={styles.CommentsCount}>
+                    <span className={styles.commentsCount}>
                       {comments_count}
                     </span>
                   </div>
                 </OverlayTrigger>
               ) : (
-                <div className={styles.CommentSection}>
+                <div className={styles.commentSection}>
                   <i className="far fa-comments no-hover" />
-                  <span className={styles.CommentsCount}>{comments_count}</span>
+                  <span className={styles.commentsCount}>{comments_count}</span>
                 </div>
               )}
             </div>

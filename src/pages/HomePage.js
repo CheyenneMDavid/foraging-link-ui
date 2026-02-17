@@ -1,14 +1,10 @@
 // Homepage serves as the landing page, utilizing the PostsListPage and Sidebar components in it's
 // layout.
 import React from "react";
-
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-
 import PostsListPage from "./posts/PostsListPage.js";
 import HeroBanner from "../components/HeroBanner";
-
-// import PopularProfiles from "./profiles/PopularProfiles";
 import Sidebar from "../components/Sidebar";
 
 function HomePage({ query }) {

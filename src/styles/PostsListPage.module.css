@@ -1,28 +1,34 @@
-/* Styles for PostsList.js */
+/* Styles for PostsListPage.js */
 
-.PostsListContainer {
-  color: #1a1a1a;
+.postsListContainer {
+  background-color: #655d43;
+
+  border-radius: 20px;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+  color: whitesmoke;
+  text-align: justify;
 }
 
-.SearchIcon:hover {
+.searchIcon:hover {
   cursor: default;
   color: #cfced3;
 }
 
-.StaticHeart {
+.staticHeart {
   color: #f85032;
 }
 
-.StaticComment {
+.staticComment {
   color: whitesmoke;
 }
 
-.PostImage {
+.postImage {
   width: 100%;
   height: 30vh;
   object-fit: cover;
 }
-.PostFooter {
+.postFooter {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,7 +36,7 @@
   margin-bottom: 10px;
 }
 
-.LoadingMessage {
+.loadingMessage {
   text-align: center;
   margin-top: 1rem;
 }

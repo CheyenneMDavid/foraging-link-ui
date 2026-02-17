@@ -1,6 +1,6 @@
 /* Tiled.module.css.  Defines the grid layout and styling for the background image tiles used by the Tiled.js component.  The tiled images are semi-transparent to ensure readability*/
 
-.TiledBackground {
+.tiledBackground {
   position: fixed;
   top: 0;
   left: 0;
@@ -15,7 +15,7 @@
   background-color: #000;
 }
 
-.TileImage {
+.tileImage {
   width: 100%;
   height: 100%;
   object-fit: cover;

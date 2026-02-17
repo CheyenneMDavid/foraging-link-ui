@@ -31,7 +31,7 @@ function LikeAndUnlike({ id, like_id, setItems, itemType }) {
                   likes_count: item.likes_count + 1,
                   like_id: "temp_like_id",
                 }
-              : item // If the id doesn't match, the item remains unchanged.
+              : item, // If the id doesn't match, the item remains unchanged.
         ),
       }));
 
@@ -42,7 +42,7 @@ function LikeAndUnlike({ id, like_id, setItems, itemType }) {
       setItems((prevItems) => ({
         ...prevItems,
         results: prevItems.results.map((item) =>
-          item.id === id ? { ...item, like_id: data.id } : item
+          item.id === id ? { ...item, like_id: data.id } : item,
         ),
       }));
     } catch (err) {
@@ -54,7 +54,7 @@ function LikeAndUnlike({ id, like_id, setItems, itemType }) {
         results: prevItems.results.map((item) =>
           item.id === id
             ? { ...item, likes_count: item.likes_count - 1, like_id: null }
-            : item
+            : item,
         ),
       }));
     }
@@ -74,7 +74,7 @@ function LikeAndUnlike({ id, like_id, setItems, itemType }) {
             // Checks if the current item's id matches the target id
             item.id === id
               ? { ...item, likes_count: item.likes_count - 1, like_id: null }
-              : item // If the id doesn't match, the item remains unchanged.
+              : item, // If the id doesn't match, the item remains unchanged.
         ),
       }));
 
@@ -89,7 +89,7 @@ function LikeAndUnlike({ id, like_id, setItems, itemType }) {
         results: prevItems.results.map((item) =>
           item.id === id
             ? { ...item, likes_count: item.likes_count + 1, like_id }
-            : item
+            : item,
         ),
       }));
     }
@@ -100,13 +100,13 @@ function LikeAndUnlike({ id, like_id, setItems, itemType }) {
       {like_id ? (
         // If the item is already liked, a filled in heart is displayed.
         <span onClick={handleUnlike}>
-          <i className={`fas fa-heart ${styles.Heart}`} />
+          <i className={`fas fa-heart ${styles.heart}`} />
         </span>
       ) : currentUser ? (
         // If the item is not yet liked and the user is logged in, an outlined heart is displayed
         // and liking is allowed.
         <span onClick={handleLike}>
-          <i className={`far fa-heart ${styles.HeartOutline}`} />
+          <i className={`far fa-heart ${styles.heartOutline}`} />
         </span>
       ) : (
         // If the user is not logged in, display a static outline heart icon

@@ -1,5 +1,4 @@
-// Sidebar used for displaying most immediate upcoming dates for courses and most followed
-// profiles of other users.
+// Sidebar showing popular profiles and upcoming courses.
 
 import React from "react";
 import UpcomingCourses from "../pages/courses/UpcomingCourses";
@@ -9,9 +8,9 @@ import styles from "../styles/Sidebar.module.css";
 
 const Sidebar = ({ mobile }) => {
   return (
-    <Container className={styles.Sidebar}>
+    <Container className={styles.sidebar}>
       <PopularProfiles />
-      <hr className={styles.CustomHr} />
+      <hr className={styles.customHr} />
       {!mobile && <UpcomingCourses />}
     </Container>
   );

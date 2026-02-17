@@ -8,7 +8,7 @@ function NavigationControls() {
   return (
     <div className={styles.controls}>
       <button type="button" onClick={() => history.goBack()}>
-        <i class="fas fa-arrow-left"></i>
+        <i className="fas fa-arrow-left"></i>
       </button>
     </div>
   );

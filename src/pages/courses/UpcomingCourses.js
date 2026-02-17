@@ -1,4 +1,4 @@
-// Component to display the 3 most immediate upcoming courses, used in the sidebar
+// Displays the 3 most immediate upcoming courses in the sidebar.
 
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
@@ -17,10 +17,10 @@ function UpcomingCourses() {
       try {
         // Send GET request to the API endpoint for upcoming courses
         const { data } = await axiosReq.get("/courses/");
-        console.log("Fetched data:", data);
+
         setCourses(data.results);
       } catch (err) {
-        console.log("Error fetching upcoming courses:", err);
+        console.error(err);
       }
     };
 
@@ -35,7 +35,7 @@ function UpcomingCourses() {
         {courses.map((course) => (
           <li key={course.id}>
             <Link to={`/courses/${course.id}`}>
-              <h4 className={styles.CourseTitle}>{course.title}</h4>
+              <h4 className={styles.courseTitle}>{course.title}</h4>
               <p>{new Date(course.date).toLocaleDateString()}</p>
               <p>
                 <strong>Location:</strong> {course.location}
@@ -44,7 +44,7 @@ function UpcomingCourses() {
                 <strong>Available Spaces:</strong> {course.available_spaces}
               </p>
             </Link>
-            <hr className={styles.CustomHr} />
+            <hr className={styles.customHr} />
           </li>
         ))}
       </ul>

@@ -1,4 +1,4 @@
-// Page to display the full list of all upcoming courses
+// Displays the full list of all upcoming courses.
 
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -30,8 +30,8 @@ const CoursesListPage = () => {
 
   // Renders a list of courses
   return (
-    <div className={styles.CoursesListContainer}>
-      <h2>All Courses</h2>
+    <div className={styles.coursesListContainer}>
+      <h2 className={styles.allCourses}>All Courses</h2>
       <ul>
         {courses.map((course) => {
           const truncatedDescription = course.description // Checks if the description exists
@@ -39,7 +39,7 @@ const CoursesListPage = () => {
             : "";
 
           return (
-            <li key={course.id} className={styles.IndividualCourse}>
+            <li key={course.id} className={styles.individualCourse}>
               <Link to={`/courses/${course.id}`}>
                 <Course
                   {...course}

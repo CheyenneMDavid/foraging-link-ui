@@ -1,3 +1,5 @@
+// Reusable dropdown components for editing.
+
 import React from "react";
 import { useHistory } from "react-router";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -17,7 +19,7 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
 export function ProfileEditDropdown({ id }) {
   const history = useHistory();
   return (
-    <Dropdown className={`ml-auto px-3 ${styles.Absolute}`} drop="left">
+    <Dropdown className={`ml-auto px-3 ${styles.absolute}`} drop="left">
       <Dropdown.Toggle as={ThreeDots} />
       <Dropdown.Menu>
         <Dropdown.Item
@@ -55,14 +57,14 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
         popperConfig={{ strategy: "fixed" }}
       >
         <Dropdown.Item
-          className={styles.DropdownItem}
+          className={styles.dropdownItem}
           onClick={handleEdit}
           aria-label="edit"
         >
           <i className="fas fa-edit" />
         </Dropdown.Item>
         <Dropdown.Item
-          className={styles.DropdownItem}
+          className={styles.dropdownItem}
           onClick={handleDelete}
           aria-label="delete"
         >

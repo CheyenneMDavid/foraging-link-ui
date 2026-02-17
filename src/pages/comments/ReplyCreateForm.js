@@ -1,8 +1,7 @@
-// ReplyCreateForm.js - Handles the creation of replies to comments.
+// Form for creating and submitting replies to existing comments.
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
@@ -11,54 +10,36 @@ import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 
 function ReplyCreateForm(props) {
+  // Props passed from the parent comment component.
   const { replying_comment, setComments, profileImage, profile_id } = props;
+
+  // Local state for the input of reply text.
   const [replyContent, setReplyContent] = useState("");
 
-  // Updates the replyContent state when a user enters text.
+  // Updates the replyContent as the user types.
   const handleChange = (event) => {
     setReplyContent(event.target.value);
   };
 
+  // Submits reply to backend and updates local comment state.
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log("Replying to comment ID:", replying_comment);
-
-    if (!replying_comment) {
-      console.log("Error: No replying_comment ID provided.");
-      return;
-    }
-
     try {
-      console.log({
-        content: replyContent,
-        replying_comment: parseInt(replying_comment, 10),
-      });
-
-      // Send a POST request to create a reply.
       const { data } = await axiosRes.post("/comments/", {
         content: replyContent,
         replying_comment: parseInt(replying_comment, 10),
       });
 
-      console.log("Reply posted:", data);
-
-      if (typeof setComments !== "function") {
-        console.log("Error: setComments is not a function.");
-        return;
-      }
-
-      // Add the new reply to the existing comment state.
+      // Appends new reply to existing comment state.
       setComments((prevComments) => ({
         results: [...prevComments.results, data],
       }));
 
-      // Clear the input field after a successful submission.
+      // Clears input after a successful submission.
       setReplyContent("");
-
-      console.log("Reply section updated!");
     } catch (err) {
-      console.log("All errors:", err);
+      console.error(err);
     }
   };
 
@@ -66,9 +47,12 @@ function ReplyCreateForm(props) {
     <Form className="mt-2" onSubmit={handleSubmit}>
       <Form.Group>
         <InputGroup>
+          {/* Link to replying user's profile */}
           <Link to={`/profiles/${profile_id}`}>
             <Avatar src={profileImage} />
           </Link>
+
+          {/* Controlled textarea for reply input */}
           <Form.Control
             placeholder="My reply..."
             as="textarea"
@@ -79,9 +63,9 @@ function ReplyCreateForm(props) {
         </InputGroup>
       </Form.Group>
 
-      {/* Use 'trim' method to disable submit button when replyContent only contains whitespace */}
+      {/* Disables the submit if input contains only whitespaces */}
       <button
-        className={`${buttonStyles.Button} AlignRight`}
+        className={`${buttonStyles.button} AlignRight`}
         disabled={!replyContent.trim()}
         type="submit"
       >
