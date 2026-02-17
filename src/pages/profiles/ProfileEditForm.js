@@ -1,3 +1,10 @@
+// ProfileEditForm
+// Based on the Code Institute's "Moments" walkthrough project and,
+// adapted for this application.
+// Allows a logged-in user to update their profile details of
+// name, bio and profile image.
+// Access is restricted to the owner of the profile.
+
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import {
@@ -100,7 +107,7 @@ function ProfileEditForm() {
     <Row>
       <Col className="py-2 mx-auto text-center" md={10} lg={8}>
         <Container
-          className={`${appStyles.Content} ${styles.ProfileContainer}`}
+          className={`${appStyles.content} ${styles.profileContainer}`}
         >
           <h2 className="mb-4">Edit Profile</h2>
           <Form onSubmit={handleSubmit}>
@@ -111,7 +118,7 @@ function ProfileEditForm() {
                   <Image
                     src={image}
                     roundedCircle
-                    className={styles.ProfileImage}
+                    className={styles.profileImage}
                   />
                 </figure>
               )}
@@ -165,13 +172,14 @@ function ProfileEditForm() {
 
             {/* Buttons */}
             <Button
-              className={`${btnStyles.Button} ${btnStyles.Black}`}
+              className={`${btnStyles.button} ${btnStyles.black}`}
               type="submit"
             >
               Save Changes
             </Button>
             <Button
-              className={`${btnStyles.Button} ${btnStyles.BlackOutline} ml-2`}
+              type="button"
+              className={`${btnStyles.button} ${btnStyles.blackOutline} ml-2`}
               onClick={() => history.goBack()}
             >
               Cancel

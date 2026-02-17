@@ -1,9 +1,9 @@
-// Profile.js is Based on the Code Institute “Moments” walkthrough project,
-// and adapted for this app. It renders a single user's profile, with avatar,
-// username, a conditional follow/unfollow button, and uses the
-// ProfileDataContext to trigger follow/unfollow actions, whilst
-// using the CurrentUserContext to ensure the follow/unfollow buttons are
-// hidden for the profile owner.
+// Profile component adapted from the Code Institute
+// “Moments” walkthrough project. It has been modified
+// to suit this application's architecture and styling.
+// It displays the avatar and username, and conditionally
+// renders follow/unfollow controls based on authentication
+// state and profile ownership.
 
 import React from "react";
 import styles from "../../styles/Profile.module.css";
@@ -31,14 +31,14 @@ const Profile = (props) => {
       className={`my-3 d-flex align-items-center ${mobile && "flex-column"}`}
     >
       {/* Avatar with link to the user's profile page */}
-      <div className={styles.AvatarContainer}>
+      <div className={styles.avatarContainer}>
         <Link className="align-self-center" to={`/profiles/${id}`}>
           <Avatar src={image} height={imageSize} width={imageSize} />
         </Link>
       </div>
 
       {/* Username */}
-      <div className={`mx-2 ${styles.WordBreak}`}>
+      <div className={`mx-2 ${styles.wordBreak}`}>
         <strong>{owner}</strong>
       </div>
 
@@ -49,14 +49,14 @@ const Profile = (props) => {
           !is_owner &&
           (following_id ? (
             <Button
-              className={`${btnStyles.Button} ${btnStyles.UnfollowButton}`}
+              className={`${btnStyles.button} ${btnStyles.unfollowButton}`}
               onClick={() => handleUnfollow(profile)}
             >
               unfollow
             </Button>
           ) : (
             <Button
-              className={`${btnStyles.Button} ${btnStyles.FollowButton}`}
+              className={`${btnStyles.button} ${btnStyles.followButton}`}
               onClick={() => handleFollow(profile)}
             >
               follow

@@ -1,5 +1,10 @@
-import React, { useEffect, useState } from "react";
+// UsernameForm
+// Based on the Code Institute "Moments" walkthrough project,
+// adapted for this application.
+// Allows a logged-in user to update their username.
+// Access is restricted to the profile owner.
 
+import React, { useEffect, useState } from "react";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
@@ -26,6 +31,9 @@ const UsernameForm = () => {
 
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+
+  // Populates the form if the logged-in user matches the URL id.
+  // Otherwise redirect to the homepage.
 
   useEffect(() => {
     if (currentUser?.profile_id?.toString() === id) {
@@ -55,7 +63,7 @@ const UsernameForm = () => {
   return (
     <Row>
       <Col className="py-2 mx-auto text-center" md={6}>
-        <Container className={appStyles.Content}>
+        <Container className={appStyles.content}>
           <Form onSubmit={handleSubmit} className="my-2">
             <Form.Group>
               <Form.Label>Change username</Form.Label>
@@ -72,13 +80,15 @@ const UsernameForm = () => {
               </Alert>
             ))}
             <Button
-              className={`${btnStyles.Button} ${btnStyles.Blue}`}
+              type="button"
+              className={`${btnStyles.button} ${btnStyles.blue}`}
               onClick={() => history.goBack()}
             >
               cancel
             </Button>
+
             <Button
-              className={`${btnStyles.Button} ${btnStyles.Blue}`}
+              className={`${btnStyles.button} ${btnStyles.blue}`}
               type="submit"
             >
               save

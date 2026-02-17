@@ -1,3 +1,9 @@
+// UserPasswordForm
+// Based on the Code Institute "Moments" walkthrough project,
+// adapted for this application.
+// Allows a logged-in user to update their password.
+// Access is restricted to the profile owner.
+
 import React, { useEffect, useState } from "react";
 
 import Alert from "react-bootstrap/Alert";
@@ -19,14 +25,17 @@ const UserPasswordForm = () => {
   const { id } = useParams();
   const currentUser = useCurrentUser();
 
+  // Controlled form state for the password fields
   const [userData, setUserData] = useState({
     new_password1: "",
     new_password2: "",
   });
   const { new_password1, new_password2 } = userData;
 
+  // Stores validation errors returned from the API
   const [errors, setErrors] = useState({});
 
+  // Updates form state as the user types
   const handleChange = (event) => {
     setUserData({
       ...userData,
@@ -35,12 +44,14 @@ const UserPasswordForm = () => {
   };
 
   useEffect(() => {
+    // Redirect if the logged-in user does not match
+    // the profile id in the URL
     if (currentUser?.profile_id?.toString() !== id) {
-      // redirect user if they are not the owner of this profile
       history.push("/");
     }
   }, [currentUser, history, id]);
 
+  // Submits the password change request
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -55,7 +66,7 @@ const UserPasswordForm = () => {
   return (
     <Row>
       <Col className="py-2 mx-auto text-center" md={6}>
-        <Container className={appStyles.Content}>
+        <Container className={appStyles.content}>
           <Form onSubmit={handleSubmit}>
             <Form.Group>
               <Form.Label>New password</Form.Label>
@@ -67,11 +78,13 @@ const UserPasswordForm = () => {
                 name="new_password1"
               />
             </Form.Group>
+
             {errors?.new_password1?.map((message, idx) => (
               <Alert key={idx} variant="warning">
                 {message}
               </Alert>
             ))}
+
             <Form.Group>
               <Form.Label>Confirm password</Form.Label>
               <Form.Control
@@ -82,20 +95,26 @@ const UserPasswordForm = () => {
                 name="new_password2"
               />
             </Form.Group>
+
             {errors?.new_password2?.map((message, idx) => (
               <Alert key={idx} variant="warning">
                 {message}
               </Alert>
             ))}
+
+            {/* Cancel returns to the previous page without submitting */}
             <Button
-              className={`${btnStyles.Button} ${btnStyles.Blue}`}
+              type="button"
+              className={`${btnStyles.button} ${btnStyles.blue}`}
               onClick={() => history.goBack()}
             >
               cancel
             </Button>
+
+            {/* Save submits the form */}
             <Button
               type="submit"
-              className={`${btnStyles.Button} ${btnStyles.Blue}`}
+              className={`${btnStyles.button} ${btnStyles.blue}`}
             >
               save
             </Button>

@@ -1,9 +1,12 @@
-// The ProfilePage shows one user's profile. It's based on the Code Institute
-// “Moments” walkthrough and adapted for this app.
-// It display profile information, a list of comments the the profile owner
-// has made along with links back to the associated posts.
-// Conditionally displayed buttons for the edit profile and follow/unfollow
-// are shown, based on whether the logged in user own the profile being viewed.
+// ProfilePage
+// Based on the Code Institute's "Moments" walkthrough project,
+// and adapted for this application.
+// Displays a user's profile, including avatar, bio and follower stats.
+// Also displays a list of comments made by the profile owner with
+// links back to the associated posts.
+// Edit and follow/unfollow controls are conditionally rendered
+// depending on the authentication state and if the current user is the
+// profile ownership.
 
 import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
@@ -78,7 +81,7 @@ function ProfilePage() {
     const fetchComments = async () => {
       try {
         const { data } = await axiosReq.get(
-          `/comments/?owner__username=${profile?.owner}`
+          `/comments/?owner__username=${profile?.owner}`,
         );
 
         setProfileComments(data);
@@ -98,9 +101,9 @@ function ProfilePage() {
       {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
       <Row noGutters className="px-3 text-center">
         {/* Profile image. */}
-        <Col lg={3} className={`text-lg-left ${styles.ProfileInfo}`}>
+        <Col lg={3} className={`text-lg-left ${styles.profileInfo}`}>
           <Image
-            className={styles.ProfileImage}
+            className={styles.profileImage}
             roundedCircle
             src={profile?.image}
           />
@@ -131,14 +134,14 @@ function ProfilePage() {
             !is_owner &&
             (profile?.following_id ? (
               <Button
-                className={`${btnStyles.Button} ${btnStyles.UnfollowButton}`}
+                className={`${btnStyles.button} ${btnStyles.unfollowButton}`}
                 onClick={() => handleUnfollow(profile)}
               >
                 unfollow
               </Button>
             ) : (
               <Button
-                className={`${btnStyles.Button} ${btnStyles.FollowButton}`}
+                className={`${btnStyles.button} ${btnStyles.followButton}`}
                 onClick={() => handleFollow(profile)}
               >
                 follow
@@ -179,7 +182,7 @@ function ProfilePage() {
           <div key={comment.id} className="mx-3">
             <p>{comment.content}</p>
 
-            <p className={styles.Link}>
+            <p className={styles.link}>
               <a href={`/posts/${comment.plant_in_focus_post}`}>
                 {comment.replying_comment !== null
                   ? ". . . Follow the conversation --->"
@@ -206,9 +209,9 @@ function ProfilePage() {
         </div>
 
         <Container
-          className={`${appStyles.Content} ${styles.ProfileContainer}`}
+          className={`${appStyles.content} ${styles.profileContainer}`}
         >
-          <div className={styles.ProfileWrapper}>
+          <div className={styles.profileWrapper}>
             {/* Displays profile + comments with loading spinner whilst loading */}
             {hasLoaded ? (
               <>
